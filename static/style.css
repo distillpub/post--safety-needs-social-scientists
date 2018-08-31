@@ -39,3 +39,15 @@ d-figure > figure {
   top: 26px;
   left: -48px;
 }
+
+.todo {
+  color: red;
+}
+
+.red {
+  color: red;
+}
+
+.blue {
+  color: blue;
+}
