@@ -1,5 +1,5 @@
 {
-  "name": "differentiable-parameterizations",
+  "name": "ai-safety-needs-social-scientists",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --hot",
