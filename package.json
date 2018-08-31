@@ -15,6 +15,7 @@
     "css-loader": "^0.28.11",
     "eases-jsnext": "^1.0.10",
     "file-loader": "^1.1.11",
+    "html-string-replace-webpack-plugin": "^1.0.5",
     "html-webpack-plugin": "^2.29.0",
     "lucid-components": "0.0.6",
     "npm": "^6.4.1",

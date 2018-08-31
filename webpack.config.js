@@ -1,7 +1,8 @@
-var path = require("path");
-var webpack = require("webpack");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require("path")
+const webpack = require("webpack")
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlStringReplace = require('html-string-replace-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -71,7 +72,14 @@ module.exports = {
       filename: "index.html", 
       chunks: ["index"]
     }),
-    new CopyWebpackPlugin([ { from: 'static/' } ])
+    new CopyWebpackPlugin([ { from: 'static/' } ]),
+    new HtmlStringReplace({
+      enable: true,
+      patterns: [{
+        match: /<d-cite\s+key="([^"]*)"\s*\/>/g,
+        replacement: (_, key) => '<d-cite key="' + key + '"></d-cite>'
+      }]
+    })
   ],
   devServer: {
     historyApiFallback: true,
@@ -80,4 +88,4 @@ module.exports = {
     contentBase:  __dirname + "/public"
   },
   devtool: "inline-source-map"
-};
+}
