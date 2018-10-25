@@ -78,6 +78,9 @@ module.exports = {
       patterns: [{
         match: /<d-cite\s+key="([^"]*)"\s*\/>/g,
         replacement: (_, key) => '<d-cite key="' + key + '"></d-cite>'
+      }, {
+        match: /<(\/?)todo>/g,
+        replacement: (_, slash) => slash ? '</div>' : '<div class="todo">'
       }]
     })
   ],

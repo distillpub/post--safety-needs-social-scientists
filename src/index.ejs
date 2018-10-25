@@ -35,32 +35,233 @@
 </d-front-matter>
 
 <d-title>
-  <h1>Human Judgment in AI Safety</h1>
+  <h1>AI safety needs social scientists</h1>
   <p>If we want to train systems to do what humans want, we need to understand how to ask the questions.</p>
 </d-title>
 
 <d-article>
-
-
-
-   <!-- 200w INTRO -->
+  <h2>Why AI safety needs social scientists</h2>
   <p>
+    The goal of long term artificial intelligence (AI) safety is to ensure that advanced AI systems
+    are reliably aligned to human values--that they reliably do things that people want them to do.
+    Since it is difficult to write down precise rules describing what humans want, one approach is
+    to treat goal specification as another learning problem.  We ask humans a large number of questions
+    about what they want, learn a model of their preferences, and optimize the AI system to do well
+    according to the learned preferences.<d-cite key="christiano2017human"/>
+  </p><p>
+    If humans reliably and accurately answered all questions about their goals, the only uncertainties
+    in this scheme would be on the machine learning (ML) side.  Unfortunately, humans have limited
+    knowledge and reasoning ability, and exhibit a variety
+    of cognitive and ethical biases.<d-cite key="tversky1974judgment,hewstone2002intergroup"/>
+    If we learn goals by asking humans questions, we expect different ways of asking questions
+    to interact with human biases in different ways, producing higher or lower quality answers.  Direct
+    questions about goals ("Do you prefer $A$ or $B$?") may be less accurate than questions which target the
+    reasoning behind these goals ("Do you prefer $A$ or $B$ after hearing argument $S$?").  Different
+    people may vary significantly in their ability to answer questions well, and disagreements will
+    persist across people even setting aside answer quality.  Although we have candidates for ML methods
+    which try to learn from human reasoning,<d-cite key="irving2018debate,christiano2018amplification"/>
+    we do not know how they behave with real people in realistic situations.
+  </p><p>
+    We believe the AI safety community needs to invest research effort on the human side of AI alignment.
+    Many of the uncertainties involved are empirical, and can only be answered by experiment.
+    They relate to the psychology of human rationality, emotion, and biases.
+    Critically, we believe investigations into how people interact with AI alignment algorithms should not
+    be held back by the limitations of existing machine learning.
+    Current AI safety research is often limited to simple tasks in video games, robotics, or gridworlds
+    <d-cite key="christiano2017human,ibarz2018demonstrations,leike2017gridworlds"/>, but problems on the
+    human side may only appear in more realistic scenarios such as natural language discussion of value-laden
+    questions.  This is particularly important since many aspects of AI alignment change as ML systems
+    increase in capability.  Asking people direct questions may suffice for ML systems much weaker than
+    humans, but break down when as ML system approaches human performance at a task and becomes capable
+    of deception.
+  </p><p>
+    To avoid the limitations of ML, we can instead conduct experiments consisting entirely of people,
+    replacing ML agents with people playing the role of those agents.
+    These experiments will be motivated by machine learning algorithms but will not involve any ML
+    systems or require an ML background.  In all cases, they will require careful experimental design to
+    avoid fooling ourselves and to build constructively on existing knowledge about how humans think.
+    However, most AI safety researchers are focused on machine learning, which do not believe is sufficient
+    background to carry out these experiments.  To fill the gap, we need social scientists with experience
+    in human cognition, behavior, and ethics, and in the careful design of rigorous experiments.  Since
+    the questions we need to answer are interdisciplinary and somewhat unusual relative to existing
+    research, we believe many fields are social science are applicable, including experimental psychologists,
+    cognitive scientists, economists, political scientists, social physiologists, and communication scholars,
+    as well as those in adjacent fields like neuroscience and law.
+  </p><p>
+    This document is a call for social scientists in AI safety.  We believe close collaborations between
+    social scientists and machine learning researchers will be necessary to improve our understanding of
+    the human side of AI alignment, and hope this document sparks both conversation and collaboration.
+  </p><p>
+    <todo>
+      Summarize layout of rest of talk.  Mention that we're talking to different fields, both
+      social scientists and ML researchers.
+    </todo>
   </p>
 
+  <h1><todo>Outline</todo></h2>
+  <p><d-code block language="markdown">
+    - An introduction to AI alignment / Background: The AI alignment problem
+      - Intended for non-ML readers as well.  Will not be exhaustive.
+      - Alignment is possible, but tricky
+        - Definitions of alignment
+        - Discussion of disagreements, uncertainty, inaction, etc. (why it is not impossible)
+          - Don't need to solve every question: can choose not to act if we're uncertain
+          - Inaction has special properties / is likely to be safer as a default
+        - Simple rules don't work, even with consensus
+          - It's hard to interpret even simple rules reliably
+          - Mention near term alignment failures: simple metrics go bad if optimized too much
+      - Instead of rules, train on a large amount of data about what people want
+        - Bike example: what bikes do people like
+        - Includes both static data and live interactions with people
+        - Has the potential to work even if goals are messy and complicated
+      - Target reasoning as opposed to direct questions
+        - Direct questions may not be sufficient
+        - People exhibit a variety of cognitive and ethical biases
+        - Questions must be very broad, so beyond the range of a random human
+        - Goal is identifying+removing biases / reflective equilibrium / etc.
+      - Alignment gets harder as AI systems get more advanced
+        - Amplifying human biases
+        - Mention AGI
+        - Increases importance of targeting reasoning
 
+    - Debate: one approach to aligning advanced AI
+      - We will focus on debate, but other schemes exist (amplification).
+        - Similar research programs apply to them.
+      - Debate: two debaters play a zero sum game to convince a human judge
+      - Bike example
+      - Progression: start with simple, verifiable domains, then move to complex value-laden questions
+      - Quality of debate depends on goodness and rationality of the judges
+      - Debate threshold argument
+      - Can we identify/train people to be above the threshold?
+      - Superforecasters to superjudges analogy
 
+    - Questions that social science can help us answer
+      - Higher quality answers = more aligned AI
+      - Questions about any method using reward learning from humans
+        - What questions should we ask people?
+        - Who should we ask these questions, and how?
+        - How can we get more information about human values from fewer questions?
+        - Will this produce behavior that is aligned with human values even if the AI
+          is more capable than the humans in some or all areas?
+      - Alternative list in Amanda's version (merge this with the above list)
+        - What questions should we ask people to best ellicit their values?
+        - How can we reduce cognitive and ethical biases in human feedback?
+        - Are some people better than others at answering these questions in an accurate and unbiased fashion?
+        - Can we train people to be better at this?  If so, how?
+        - Are people better at answering questions individually or in teams?
+      - If we want to target reasoning, the questions we need to answer get more complicated
+      - Questions for debate in particular
+        - How skilled are people as judges on average?
+        - Can we distinguish good judges from bad judges?
+          - Maybe: If superjudges exist, can we find them?
+        - Does judge ability generalize across domains?
+        - Can we train people to be better judges?
+        - What questions are people better at answering?
+        - Are there ways to restrict or structure debates to make them easier to judge?
+        - How can people work together to improve quality?
+      - Social scientists required to answer these
+      - Our expertise is just ML, so we can't fully articulate what experiment we need
+      - Need to bring in people with different backgrounds!
 
+    - Experiments needed for debate
+      - Ideally, we'd directly test the full ML + human system
+        - Can't do that yet, since ML is primitive
+        - Wouldn't be able to do general dialog-style debates, and a lot of interesting tasks
+      - Instead, we can replace the ML systems with people, for all-human experiments.
+        - Two human debaters, one human judge
+      - Desiderata for human debate experiments:
+        - List:
+          - True answer is known
+          - False answer is plausible
+          - Definitive argument significantly longer than debate limit
+          - Judges can check ground level evidence
+          - Debates don't depend on information channels that won't apply to an AI
+              - In particular, no leakage of honesty
+          - Debaters know more than the judge
+          - Cognitive or ethical biases play a role (optional)
+          - Question isn't so hard that judge can't possibly evaluate (maybe)
+          - Reflects difficulty of statistical debates (plus)
+          - A short segment of the debate reflects the broader debate (misstated)
+          - We can get a lot of data across many judges and tasks
+        - Don't expect to get all of these in one experiment, and some are in tension
+      - Two experiment options:
+          - Expert debaters, lay judge
+          - Extra information given to debaters
+      - Prototype for (2): single pixel image debate.
+        - Honesty usually wins, but hard to know if this is real
+        - Many ways to fool this game (ruin the game in favor of the honest player)
+      - Task options:
+        - Expert knowledge
+        - Tasks with known human biases
+        - Synthetic tasks
+      - Experiences with expert debates so far
+      - Still hard, requires careful experiments
 
+    - Reasons for optimism
+      - This is about reasons for optimism about the social science research program
+        - See the debate paper for more details about debate specifically
+      - Engineering vs. science
+        - We have a lot more control over the setup than traditional social science experiments
+      - Don't need to answer all questions
+        - If we can recognize areas of uncertainty, can push ML models to treat those areas with care
+      - Relative accuracy may be enough
+        - If debate structure A performs reliably better than debate structure B, that's good evidence
+          that we should use A even if we don't know how performance will change over time / with
+          more advanced agents
+        - Though it'd be great to have absolute accuracy too. :)
+      - Don't need to pin down the best debate scheme exactly
+        - If we narrow down to a smaller design space, we can test that space once that machines are ready
+      - A negative result would be important!
+        - If people aren't good enough as judges as soon as possible, we want to know this!
+        - Debate isn't the only approach to alignment
+
+    - Reasons to worry
+      - Desiderata are conflicting
+        - Hard to pick a task that is sufficiently interesting, verifiable, not too easy, etc., etc.
+      - Want to measure judge quality w.r.t. optimal debaters
+        - But all we have is humans!
+        - Inner / outer optimization structure: train debaters then measure judges
+        - Makes experiments harder to run, requires more generalization to work
+          - I.e., may need to assume that good debates on question X are also good at question Y.
+      - Lack of philosophical clarity
+        - Debate is both a proposed definition of alignment and an algorithm
+        - We don't expect humans to conform to any philosophically consistent scheme
+          - We are not cores of utility functions wrapped in shells of irrationality
+            - From http://rationallyspeakingpodcast.org/show/rs-219-jason-collins-on-a-skeptical-take-on-behavioral-econo.html
+            - Sugden, Looking for a psychology for the inner rational agent
+              - https://ueaeprints.uea.ac.uk/54622/1/psychology_of_inner_agent_1506_01.pdf
+      - ML algorithm side could change a lot
+        - Human experiments would need to adapt to match
+        - This is another kind of generalization: hopefully results mirroring one algorithm generalize to others,
+          but it isn't guaranteed
+      - Need strong out-of-domain generalization
+        - Pure human experiments not a perfect match to ML+human situations
+        - Don't have any advanced AI systems to play with, and we want to learn things that work for AGI
+
+    - Scale: 1,000s to 10,000s of people
+        - Might need a lot of samples to train AGI reliably
+        - Lots of samples means lots of judges
+        - Lots of judges means lots of researchers to maximize quality
+        - Sample complexity concerns: maximizing information per sample
+        - Need close collaborations across a variety of disciplines
+
+    - How you can help
+      - Please contact us!  Interesting in conversation and close collaboration
+        - Probably talk about authors rather than OpenAI as an institution
+      - Encourage other safety researchers to think about the human side
+  </d-code></p>
+
+  <h1><todo>First rewrite follows</todo></h2>
   <h2>The importance of training AI to understand human values</h2>
 <!-- 400w -->
   <p>
 An advanced AI system is a system that can perform some important task currently performed by humans at a greater-than-human level. The more capable an advanced AI system is, the better it can perform the task. The more general an advanced AI system is, the broader the range of tasks it can perform. An artificial general intelligence (AGI) is an advanced AI system that can perform most economically important human tasks at a greater-than-human level. We will generally refer to AGI throughout this document, though many of the issues discussed here also apply to advanced narrow AI systems.<!--true? also this isn't applied consistently below: edit it-->
  </p>
-  <p> 
+  <p>
 The central goal of technical AI safety work is to ensure that trained AI systems are aligned with human values: that they behave in ways that people consider good and that they reliably do things that people want them to do.<d-footnote>The goal of training AI systems to be aligned with human values &mdash; to identify and perform actions humans generally consider good &mdash; should not be confused with the goal of training AI systems to identify actions that are "good" in some more universal sense, even if humans do not generally consider them so. Whether there are actions that are good in this sense is controversial. <d-cite key="(metaethics)"/> Regardless of what position one takes on this philosophical question, they would almost certainly be a bad initial target for training.</d-footnote> This includes training AI to identify the actions that humans generally consider to be a good response to moral disagreement across people and cultures. We generally consider it good to avoid performing actions that will affect many people if there is a great deal of disagreement or uncertainty about whether the action is good or not, and so it is likely that we will want AI to prefer inaction over performing such an action.<!--  <d-footnote>What people will consider good in these cirucumstances will of course depend on the stakes for those involved. <d-cite key="(tyranny of the marjority)"/> We anticipate that in such cases, however, humans will generally want an AI to avoid acting or to undertake an alternative action that is the subject of less disagreement and uncertainty. </d-footnote> and affects fewer people? -->
 </p>
-<p> 
-The importance that trained AI systems are aligned with human values scales with the capability and generality of the AI system, since the consequences of a slight misalignment will be greater in a system that is widely deployed and trusted to make important decisions.<d-footnote>The importance that an AI system is aligned also scales with the degree to which the degree to which the individual decisions of the system are not subject to human oversight. Since human oversight is costly and interpretability is hard, it will probably not be possible or desirable to subject advanced AI systems to continuous human oversight. As we note below, however, safety via debate may be able to assist us in making an AI's decisions more interpretable and subject to greater oversight, while also improving the decisions that the system makes independent of human oversight.</d-footnote>If an advanced AI system were being used to recommend prescriptions for patients across the US, for example, then a failure to correctly identify how much risk people are willing to tolerate could result in many people being prescribed medications that are not safe.<d-footnote>It might be objected that an AI assisting with prescriptions could be trained using the demonstration of human doctors. This is because human doctors have been trained to weigh the risks to their patients when prescribing. Advanced AI systems will have to make decisions where no intermediary procedures have been created, however, and must therefore train on this data directly.<!--could cite risk assessment methods. I'm not sure this response is totally satisfactory -- discuss.--></d-footnote> <!-- <d-footnote>The idea that greater capabilities entail a greater ability to identify what people want is not unique to AI. You might trust that your friend has a generally good moral compass while also doubting that their moral compass is good enough for them to be a member of the Supreme Court, for example.</d-footnote>--> This means that AI systems that are highly capable and widely deployed must have learned human values well enough to know what actions humans would approve of in a wide range of potentially novel circumstances, and must be able to identify situations in which humans would not approve of any action being taken. It is therefore important that as the capabilities and generality of AI systems increase, we have some method for training AI systems to learn human values with a high level of accuracy. 
+<p>
+The importance that trained AI systems are aligned with human values scales with the capability and generality of the AI system, since the consequences of a slight misalignment will be greater in a system that is widely deployed and trusted to make important decisions.<d-footnote>The importance that an AI system is aligned also scales with the degree to which the degree to which the individual decisions of the system are not subject to human oversight. Since human oversight is costly and interpretability is hard, it will probably not be possible or desirable to subject advanced AI systems to continuous human oversight. As we note below, however, safety via debate may be able to assist us in making an AI's decisions more interpretable and subject to greater oversight, while also improving the decisions that the system makes independent of human oversight.</d-footnote>If an advanced AI system were being used to recommend prescriptions for patients across the US, for example, then a failure to correctly identify how much risk people are willing to tolerate could result in many people being prescribed medications that are not safe.<d-footnote>It might be objected that an AI assisting with prescriptions could be trained using the demonstration of human doctors. This is because human doctors have been trained to weigh the risks to their patients when prescribing. Advanced AI systems will have to make decisions where no intermediary procedures have been created, however, and must therefore train on this data directly.<!--could cite risk assessment methods. I'm not sure this response is totally satisfactory -- discuss.--></d-footnote> <!-- <d-footnote>The idea that greater capabilities entail a greater ability to identify what people want is not unique to AI. You might trust that your friend has a generally good moral compass while also doubting that their moral compass is good enough for them to be a member of the Supreme Court, for example.</d-footnote>--> This means that AI systems that are highly capable and widely deployed must have learned human values well enough to know what actions humans would approve of in a wide range of potentially novel circumstances, and must be able to identify situations in which humans would not approve of any action being taken. It is therefore important that as the capabilities and generality of AI systems increase, we have some method for training AI systems to learn human values with a high level of accuracy.
 </p>
 
 
@@ -113,16 +314,16 @@ If AI safety work will require asking humans about what they want and what they 
 </p><p> These are empirical questions that can only be answered by experiment. They relate to the psychology of human rationality, emotion, biases, etc. Ideally, human experiments designed to answer these questions would involve the intersection of machine learning and social science, explicitly testing whether human-in-the-loop training of AI systems works.  We do not believe that many technical ML
 researchers and engineers have the skills to do these experiments unassisted.  To fill this gap, AI safety work will need social scientists with experience in human cognition, behavior, and ethics and in the careful design of rigorous experiments.  Since the questions we need to answer are interdisciplinary and somewhat unusual relative to existing research, we believe the expertise of those in a variety of fields will be applicable, including (but not limited to) experimental psychologists, cognitive scientists, economists, political scientists, social physiologists, and communication scholars, as well as those in adjacent fields like neuroscience and law.
   </p><p>
-Even if we manage to improve the quality of human responses to questions, however, we believe there are reasons to be skeptical that teaching values by asking humans questions will be sufficient to produce behavior that is aligned with human values in advanced AI or AGI. Although answers to questions may reveal what humans want in a given scenario, it is our hypothesis that training on answers to questions is not the most efficient way to learn the <em>reasons</em> behind people's answers. There are many reasons a human might have for giving an answer to a question. Therefore an RL agent trained on human answers to questions could converge on a policy that is quite unlike the policy that humans are employing, but gets similar outputs to the human policy in the training set. 
+Even if we manage to improve the quality of human responses to questions, however, we believe there are reasons to be skeptical that teaching values by asking humans questions will be sufficient to produce behavior that is aligned with human values in advanced AI or AGI. Although answers to questions may reveal what humans want in a given scenario, it is our hypothesis that training on answers to questions is not the most efficient way to learn the <em>reasons</em> behind people's answers. There are many reasons a human might have for giving an answer to a question. Therefore an RL agent trained on human answers to questions could converge on a policy that is quite unlike the policy that humans are employing, but gets similar outputs to the human policy in the training set.
  <!-- i.e. the target is too indirect. there's almost certainly a better way of saying this -->
  </p><p>
 We believe it is valuable to find a more efficient way of training an AI to identify the reasons behind humans' answers to questions. There are three respects in which identifying the reasons behind answers is useful. First, if an AI understands the reasons behind humans' answers, it may be able to predict their answers to questions more accurately in a broader set of scenarios.<d-footnote>If we discover that humans find cost and durability the most relevant reasons to buy or not buy a bike, for example, we can use this to predict the bikes that humans will want to buy in scenarios quite different from those in the training set.</d-footnote>  Second, it may be easier to spot if an AI agent has learned a policy that is different from the human policy if it is trained to identify human reasons rather than to predict humans' answers to questions.  <!--footnote example?--> Third, training AI to identify reasons that people find compelling may be more likely to result in aligned behavior in an AI that is better than humans at most tasks. An AI that has not been trained to identify human reasons will be less well-positioned to predict what humans would want if their capabilities were vastly increased, or to help humans reason through such decisions. <!--footnote on amplification -->
  </p><p>
 We have presented several speculative benefits to learning to identify the reasons behind humans' answers to questions: namely that this approach to AI safety may be more generalizable, scrutable, and scalable. In the next section we will discuss our proposed method for training AI to identify human reasons. We will then discuss the research into humans that we believe will be required for this method to work.
 <!--I think there's a better way of putting the content of this paragraph -->
-<!-- another reason I don't mention here: learning reasons is integrated with training AI to reason more generally --> 
+<!-- another reason I don't mention here: learning reasons is integrated with training AI to reason more generally -->
 </p>
-<!-- somewhere: footnote on moral inconsistency/dumbfounding. the worry that human judgment will be a mess--> 
+<!-- somewhere: footnote on moral inconsistency/dumbfounding. the worry that human judgment will be a mess-->
 <!-- somewher: footnote or sentence on the difficulty of aggregating judgments and that we're mainly talking about cases of consensus for now -->
 
 
@@ -143,7 +344,7 @@ Both debaters are presented with the question and the goal of the debaters is to
       however. If the AI debaters have explored sufficiently during training then a
       tie gives us strong evidence that the correct answer has been identified.
     </d-footnote>
-This can consist of anything: reasons for their answer, rebuttals of reasons for the alternative answer, subtleties the judge might miss, or pointing out biases which might mislead the judge.  At the end of the debate, we give the debate transcript to a human to judge (similar to expert witnesses debating in front of a jury). Based on this transcript, the human judge says which debater they believe is correct &mdash; the debater that gave the most compelling case for their answer &mdash; and that debater wins the game. 
+This can consist of anything: reasons for their answer, rebuttals of reasons for the alternative answer, subtleties the judge might miss, or pointing out biases which might mislead the judge.  At the end of the debate, we give the debate transcript to a human to judge (similar to expert witnesses debating in front of a jury). Based on this transcript, the human judge says which debater they believe is correct &mdash; the debater that gave the most compelling case for their answer &mdash; and that debater wins the game.
   </p><p>
 Suppose, for example, that you are thinking of buying one of two bikes: a red road bike or a blue fixie. The reasons that you would find compelling to buy the blue fixie are that it's cheaper and you prefer the color blue. The reasons you would find compelling to buy the red road bike are that it's easier to ride on local hills. Suppose that you would find the fact that the road bike is easier to ride on local hills the most compelling: once this fact was made salient to you, none of the reasons for buying the blue fixie would be strong enough to change your mind.  If we limit the debate length to one answer and one statement then, during training, the agent debating in favor of the red road bike will learn to identify and express  this reason to prefer the road bike.  This means that, after training, the final debate transcript presented to the human judge might be as follows:
   </p><p>
@@ -192,7 +393,7 @@ Safety via debate can therefore only work well if the training data that we get 
 <!-- (A) define forecasters, introduce superjudges--> and they seem to be less prone to cognitive biases than non-superforecasters. <!-- cite: ibid. and p. 234-6, tetlock, superforecasters -->
 It would be extremely useful to develop similar measures of human judges, and to determine whether some individuals have the same aptitude for judging debate that superforecasters have for forecasting outcomes.
  </p> <p>
-Let a "superjudge" be the debate judge equivalent of a superforecaster: a person that is able to determine who is telling the truth in a debate even if they have limited time and can only see a small segment of the debate. The better the judging ability of the humans used to judge debate, the more likely it is that debate will produce an AI that understands human reasons and the fewer samples we will need to make this happen. <d-footnote>Though since more samples means less noise and more safety,  if we are uncertain about how many samples we will need then we will want a lot of samples.</d-footnote> Therefore in order to improve the human data we get if we are to train an AI to debate questions, it is important that we find answers to the following questions: 
+Let a "superjudge" be the debate judge equivalent of a superforecaster: a person that is able to determine who is telling the truth in a debate even if they have limited time and can only see a small segment of the debate. The better the judging ability of the humans used to judge debate, the more likely it is that debate will produce an AI that understands human reasons and the fewer samples we will need to make this happen. <d-footnote>Though since more samples means less noise and more safety,  if we are uncertain about how many samples we will need then we will want a lot of samples.</d-footnote> Therefore in order to improve the human data we get if we are to train an AI to debate questions, it is important that we find answers to the following questions:
    <ol>
 	<li> How good are people at judging debates, on average?</li>
       	<li> Are some people naturally superjudges? If so, how can we identify them?</li>
@@ -204,10 +405,10 @@ Let a "superjudge" be the debate judge equivalent of a superforecaster: a person
   </p><p>
 <!-- we could expand this (as we do in the previous version of the document) -->
 Much like the questions from the previous section, these are empirical quesions that can only be answered by experiment and that require the expertise of social scientists. In the next section we outline some social science experiments that we believe would be extremely useful for AI safety via debate, and describe some ongoing prototype experiments currently being performed.
-</p> 
+</p>
 
   <h2>Identifying and training superjudges: the need for social science experiments</h2>
-  
+
 <p>
     To recap, in debate we have two AI agents engaged in debate, trying to
     convince a human judge.  The debaters are trained only to win the game: they do
@@ -267,7 +468,7 @@ Judging debate may seem to be easy in cases where the truth is easy for most peo
 	   </ul>
   </ol>
 </p><p>
-It may not be possible to meet all of these desiderata in a single experiment, and there is some tension between these desiderata that requires striking a balance between them. For example, we have to find the sweet spot between debating questions that are too hard for any judge to evaluate (desideratum 8) and a question that is not so easy to judge that it will make human judges appear better than they actually are (desiderata 2 and 3). 
+It may not be possible to meet all of these desiderata in a single experiment, and there is some tension between these desiderata that requires striking a balance between them. For example, we have to find the sweet spot between debating questions that are too hard for any judge to evaluate (desideratum 8) and a question that is not so easy to judge that it will make human judges appear better than they actually are (desiderata 2 and 3).
   </p><p>
     In order to prototype debate experiments, we at OpenAI built a <a href="https://debate-game.openai.com">prototype version</a>
     of a single pixel image debate game.  In informal play, the honest debate
@@ -316,15 +517,18 @@ It may not be possible to meet all of these desiderata in a single experiment, a
     <b>Writing & Diagrams:</b> The text was initially drafted by...
   </p>
 
-  <h3><div class="todo">TODOs</div></h3>
-  <div class="todo">
+  <h3><todo>TODOs</todo></h3>
+  <todo>
     <p><ol>
       <li>Add urls for all references</li>
       <li>Check reference formatting</li>
       <li>Acknowledgements</li>
       <li>Author contributions</li>
+      <li>Note contrast to computational social science?  Similar field combination, very different goals.</li>
+      <li>Try to cite non-OpenAI, non-DeepMind human feedback work.</li>
+      <li>Reasons to worry / reasons for optimism sections</li>
     </ol></p>
-  </div>
+  </todo>
 
   <d-footnote-list></d-footnote-list>
   <d-citation-list></d-citation-list>
