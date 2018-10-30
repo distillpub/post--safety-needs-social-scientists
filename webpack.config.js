@@ -80,6 +80,9 @@ module.exports = {
         replacement: (_, key) => '<d-cite key="' + key + '"></d-cite>'
       }, {
         match: /<(\/?)todo>/g,
+        replacement: (_, slash) => slash ? '</span>' : '<span class="todo">'
+      }, {
+        match: /<(\/?)dtodo>/g,
         replacement: (_, slash) => slash ? '</div>' : '<div class="todo">'
       }]
     })
