@@ -1,0 +1,139 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://distill.pub/template.v2.js"></script>
+  <style><%= require("raw-loader!../static/style.css") %></style>
+</head>
+<body>
+
+  <h2><todo>Outline</todo></h2>
+  <p><d-code block language="markdown">
+    - Debate: one approach to aligning advanced AI
+      - We will focus on debate, but other schemes exist (amplification).
+        - Similar research programs apply to them.
+      - Debate: two debaters play a zero sum game to convince a human judge
+      - Bike example
+      - Progression: start with simple, verifiable domains, then move to complex value-laden questions
+      - Quality of debate depends on goodness and rationality of the judges
+      - Debate threshold argument
+      - Can we identify/train people to be above the threshold?
+      - Superforecasters to superjudges analogy
+
+    - Questions that social science can help us answer
+      - Higher quality answers = more aligned AI
+      - Questions about any method using reward learning from humans
+        - What questions should we ask people?
+        - Who should we ask these questions, and how?
+        - How can we get more information about human values from fewer questions?
+        - Will this produce behavior that is aligned with human values even if the AI
+          is more capable than the humans in some or all areas?
+      - Alternative list in Amanda's version (merge this with the above list)
+        - What questions should we ask people to best ellicit their values?
+        - How can we reduce cognitive and ethical biases in human feedback?
+        - Are some people better than others at answering these questions in an accurate and unbiased fashion?
+        - Can we train people to be better at this?  If so, how?
+        - Are people better at answering questions individually or in teams?
+      - If we want to target reasoning, the questions we need to answer get more complicated
+      - Questions for debate in particular
+        - How skilled are people as judges on average?
+        - Can we distinguish good judges from bad judges?
+          - Maybe: If superjudges exist, can we find them?
+        - Does judge ability generalize across domains?
+        - Can we train people to be better judges?
+        - What questions are people better at answering?
+        - Are there ways to restrict or structure debates to make them easier to judge?
+        - How can people work together to improve quality?
+      - Social scientists required to answer these
+      - Our expertise is just ML, so we can't fully articulate what experiment we need
+      - Need to bring in people with different backgrounds!
+
+    - Experiments needed for debate
+      - Ideally, we'd directly test the full ML + human system
+        - Can't do that yet, since ML is primitive
+        - Wouldn't be able to do general dialog-style debates, and a lot of interesting tasks
+      - Instead, we can replace the ML systems with people, for all-human experiments.
+        - Two human debaters, one human judge
+      - Desiderata for human debate experiments:
+        - List:
+          - True answer is known
+          - False answer is plausible
+          - Definitive argument significantly longer than debate limit
+          - Judges can check ground level evidence
+          - Debates don't depend on information channels that won't apply to an AI
+              - In particular, no leakage of honesty
+          - Debaters know more than the judge
+          - Cognitive or ethical biases play a role (optional)
+          - Question isn't so hard that judge can't possibly evaluate (maybe)
+          - Reflects difficulty of statistical debates (plus)
+          - A short segment of the debate reflects the broader debate (misstated)
+          - We can get a lot of data across many judges and tasks
+        - Don't expect to get all of these in one experiment, and some are in tension
+      - Two experiment options:
+          - Expert debaters, lay judge
+          - Extra information given to debaters
+      - Prototype for (2): single pixel image debate.
+        - Honesty usually wins, but hard to know if this is real
+        - Many ways to fool this game (ruin the game in favor of the honest player)
+      - Task options:
+        - Expert knowledge
+        - Tasks with known human biases
+        - Synthetic tasks
+      - Experiences with expert debates so far
+      - Still hard, requires careful experiments
+
+    - Reasons for optimism
+      - This is about reasons for optimism about the social science research program
+        - See the debate paper for more details about debate specifically
+      - Engineering vs. science
+        - We have a lot more control over the setup than traditional social science experiments
+      - Don't need to answer all questions
+        - If we can recognize areas of uncertainty, can push ML models to treat those areas with care
+      - Relative accuracy may be enough
+        - If debate structure A performs reliably better than debate structure B, that's good evidence
+          that we should use A even if we don't know how performance will change over time / with
+          more advanced agents
+        - Though it'd be great to have absolute accuracy too. :)
+      - Don't need to pin down the best debate scheme exactly
+        - If we narrow down to a smaller design space, we can test that space once that machines are ready
+      - A negative result would be important!
+        - If people aren't good enough as judges as soon as possible, we want to know this!
+        - Debate isn't the only approach to alignment
+
+    - Reasons to worry
+      - Desiderata are conflicting
+        - Hard to pick a task that is sufficiently interesting, verifiable, not too easy, etc., etc.
+      - Want to measure judge quality w.r.t. optimal debaters
+        - But all we have is humans!
+        - Inner / outer optimization structure: train debaters then measure judges
+        - Makes experiments harder to run, requires more generalization to work
+          - I.e., may need to assume that good debates on question X are also good at question Y.
+      - Lack of philosophical clarity
+        - Debate is both a proposed definition of alignment and an algorithm
+        - We don't expect humans to conform to any philosophically consistent scheme
+          - We are not cores of utility functions wrapped in shells of irrationality
+            - From http://rationallyspeakingpodcast.org/show/rs-219-jason-collins-on-a-skeptical-take-on-behavioral-econo.html
+            - Sugden, Looking for a psychology for the inner rational agent
+              - https://ueaeprints.uea.ac.uk/54622/1/psychology_of_inner_agent_1506_01.pdf
+      - ML algorithm side could change a lot
+        - Human experiments would need to adapt to match
+        - This is another kind of generalization: hopefully results mirroring one algorithm generalize to others,
+          but it isn't guaranteed
+      - Need strong out-of-domain generalization
+        - Pure human experiments not a perfect match to ML+human situations
+        - Don't have any advanced AI systems to play with, and we want to learn things that work for AGI
+
+    - Scale: 1,000s to 10,000s of people
+        - Might need a lot of samples to train AGI reliably
+        - Lots of samples means lots of judges
+        - Lots of judges means lots of researchers to maximize quality
+        - Sample complexity concerns: maximizing information per sample
+        - Need close collaborations across a variety of disciplines
+
+    - How you can help
+      - Please contact us!  Interesting in conversation and close collaboration
+        - Probably talk about authors rather than OpenAI as an institution
+      - Encourage other safety researchers to think about the human side
+  </d-code></p>
+</d-article>
+</body>
