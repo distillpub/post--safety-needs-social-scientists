@@ -121,19 +121,33 @@
     Second, more advanced systems may be capable of deceiving the human supervisory signal, giving answers that sound plausible but are wrong in nonobvious ways.  Such deception could be possible even for an AI which is comparable or better than humans in a very limited domain, and examples of limited superhuman agents already exist<d-cite key="silver2017alphazero"/>.  To avoid such deception, we would like AI alignment algorithms to reveal possible deceptive behavior as part of the training process, surfacing possible failures to humans and helping us provide more accurate data.  As with human-to-human deception, we expect this deceit to take advantage of human biases in complicated ways, and could lead to amplification of human biases as AI systems grow more capable.
   </p>
 
+  <h2>Debate: learning human reasons</h2>
+  <p>
+    We would like to learn models of what is good and bad by asking humans questions, but we would like those questions to approximate reflective equilibrium: what we would believe if we had all available knowledge and had thought long enough to remove our inconsistencies.  In particular, we would like our questions to cut through biases: removing errors in intuition and reasoning that we don't like rather than amplifying biases further.
+  </p><p>
+    Here we discuss one approach to reasoning-oriented alignment, called debate<d-cite key="irving2018debate"/>.  Given a question, we have two AI agents engage in a debate about the correct answer, then show the transcript of the debate to a human to judge.  The judge decides which debater gave the most true, useful information, and declares that debater the winner.  This defines a two player zero sum games between the debaters, where the goal is to convince the human that one's answer is correct.  Arguments in a debate can consist of anything: reasons for an answer, rebuttals of reasons for the alternative answer, subtleties the judge might miss, or pointing out biases which might mislead the judge.  Once we have defined this game, we can train AI systems to play it similar to how we train AIs to play other games such as Go or Dota 2 <todo>(Citations)</todo>.  Our hope is that the following hypothesis holds:
+  </p><p>
+    <strong>Hypothesis:</strong> Optimal play in the debate game (giving the argument most convincing to a human) results in true, useful answers to questions.
+  </p><p>
+    Consider our needless injury example.  <todo>Write down an example in detail.  It's possible I should just go back to the bike one since it doesn't require expertise; I feel like writing a good example for needless injury would require more discussion with Gillian.</todo>
+  </p><p>
+    As with learning by asking humans direct questions, whether debate is effective or not depends on how rational and good the human judge is: how good at reasoning they are and how ethical they are.<d-footnote>We don't take a strong stand on what it means to be "more ethical" but it seems plausible that it's better to have ethically consistent and unprejudiced judges over ethically inconsistent or prejudiced ones.</d-footnote>  Unlike direct questioning, however, debate has the potential to give correct answers beyond what the judge could provide without assistance.  This is because a sufficiently strong judge could follow along with arguments the judge could not come up with on their own, checking complex reasoning for both self consistency and consistency with human checkable facts.  A judge who is biased but willing to adjust once those biases are revealed could result in unbiased debates, or a judge who is able to check facts but does not know where to look could be helped along by honest debaters.  If the hypothesis holds, a misleading debater would not be able to counter the points of an honest debater, since the honest points would appear more consistent to the judge.
+  </p><p>
+    On the other hand, we can also imagine debate going the other way: amplifying biases and failures of reason.  A judge with an ethical bias who is happy to accept statements reinforcing that bias could result in even more biased debates.  A judge with too much confirmation bias might happily accept misleading sources (such as misleading news articles) with incorrect evidence, and be unwilling to accept arguments showing why that evidence is wrong.  In this case, an optimal debate agent might be quite malicious, taking advantage of biases and weakness in the judge to win with convincing but wrong arguments.
+  </p><p>
+    In both these cases, debate acts as an amplifier.  For strong judges, this amplification is positive, removing biases and simulating extra reasoning abilities for the judge.  For weak judges, the biases and weaknesses would themselves be amplified.  If this model holds, debate would have threshold behavior: it would work for judges above some threshold of ability and fail below the threshold.<d-footnote>The threshold model is only intuition, and could fail for a variety of reasons: the intermediate region could be very large, or the threshold could differ widely per question so that even quite strong judges are insufficient for many questions.</d-footnote>  Assuming the threshold exists, it is unclear whether people are above or below it.  People are capable of general reasoning, but our ability is limited and riddled with cognitive biases.  People are capable of advanced ethical sentiment but also full of biases, both conscious and unconscious.
+  </p><p>
+    Thus, if we debate is the method we use to align an AI, we need to know if people are strong enough as judges to make debate work.  In other words, whether the human judges are sufficiently good at discerning whether a debater is telling the truth or not.  This question depends on many details: the type of questions under consideration, whether judges are trained or not, restrictions on what debaters can say, etc.  We believe experiment will be necessary to determine whether people are sufficient judges, and which form of debate is most truth seeking.
+  </p><p>
+    An analogy with the task of probabilistic forecasting is useful here.  Tetlock's "Good Judgment Project" showed that some amateurs were significantly better at forecasting world events than both their peers and many professional forecasters.  These "superforecasters" maintained their prediction accuracy over years (did not regress), were able to make predictions with limited time and information<d-cite key="mellers2015identifying"/>, and seem to be less prone to cognitive biases than non-superforecasters (<d-cite key="tetlock2016superforecasting"/>, p. 234-236).  Crucially, this superforecasting trait was not immutable: it was traceable to particular methods and thought processes followed by the forecasters, improved with careful practice, and could be amplified if superforecasters were collected into teams.  For forecasters in general, brief probabilistic training significantly improved forecasting ability even 1-2 years after the training.  We believe a similar research program is possible for debate and other AI alignment algorithms.  In the best case, we would be able to find, train, or assemble "superjudges": individuals or teams where we have high confidence that optimal debate with them as judges would produce aligned behavior.
+  </p><p>
+    In the forecasting case, much of the research difficulty lay in assembling a large corpus of high quality forecasting questions.  Similarly, measuring how good people are as debate judges will not be easy.  The difficulty is that we would like to apply debate to problems where there is no other source of truth: if we had that source of truth, we may as well train ML models on it directly.  But if there is no source of truth, there is no way to measure whether debate produced the correct answer.  This problem can be avoided by starting with simple, verifiable domains, where we (the experimenters) know the answer but the judge would not.  "Success" then means that the winning debate argument is telling the (externally known) truth.  The challenge gets harder as we scale up to more complex, value-laden questions, as we discuss in detail later.
+  </p><p>
+    Although we will focus the rest of this paper on debate for concreteness, other approaches exist with similar goals.  In particular, debate is a modified version of iterated amplification<d-cite key="christiano2018amplification"/>, which uses humans to break down hard questions into easier questions and trains ML models to be consistent with this decomposition (and thus hopefully consistent with the reasoning behind the decomposition).  <todo>More citations?  I sort of want to cite inverse reward design, but it's not a great fit.</todo>  We believe the need to study how humans interact with AI alignment algorithms applies to any of these approaches.  Moreover, we believe knowledge gained about how humans perform with one approach is likely to partially generalize to other approaches; for example, knowledge about how to structure truth seeking debates could inform how to structure truth seeking amplification.
+  </p>
+
   <h2><todo>Outline</todo></h2>
   <p><d-code block language="markdown">
-    - Debate: one approach to aligning advanced AI
-      - We will focus on debate, but other schemes exist (amplification).
-        - Similar research programs apply to them.
-      - Debate: two debaters play a zero sum game to convince a human judge
-      - Bike example
-      - Progression: start with simple, verifiable domains, then move to complex value-laden questions
-      - Quality of debate depends on goodness and rationality of the judges
-      - Debate threshold argument
-      - Can we identify/train people to be above the threshold?
-      - Superforecasters to superjudges analogy
-
     - Questions that social science can help us answer
       - Higher quality answers = more aligned AI
       - Questions about any method using reward learning from humans
@@ -462,6 +476,9 @@
         "If we want to train systems to do what humans want, we need to understand how to ask the questions."</p>
       <li>Cite https://arxiv.org/abs/1810.10733</li>
       <li>Remove old.ejs, outline.ejs, amanda.ejs</li>
+      <li>Get citation from Gillian about "needless injury" requiring complex rules.</li>
+      <li>List ways in which debate differs from existing human debates.</li>
+      <li>https://en.wikipedia.org/wiki/Cognitive_hierarchy_theory</li>
     </ol></p>
   </dtodo>
 
