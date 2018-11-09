@@ -42,11 +42,11 @@
 <d-article>
   <h2>Why AI safety needs social scientists</h2>
   <p>
-    The goal of long term artificial intelligence (AI) safety is to ensure that advanced AI systems are reliably aligned to human values--that they reliably do things that people want them to do.  Since it is difficult to write down precise rules describing what humans want, one approach is to treat goal specification as another learning problem.  We ask humans a large number of questions about what they want, learn a model of their preferences, and optimize the AI system to do well according to the learned preferences.<d-cite key="christiano2017human"/>
+    The goal of long term artificial intelligence (AI) safety is to ensure that advanced AI systems are reliably aligned to human values&mdash;that they reliably do things that people want them to do.  Since it is difficult to write down precise rules describing what humans want, one approach is to treat goal specification as another learning problem.  We ask humans a large number of questions about what they want, learn a model of their preferences, and optimize the AI system to do well according to the learned preferences<d-cite key="christiano2017human"/>.
   </p><p>
-    If humans reliably and accurately answered all questions about their goals, the only uncertainties in this scheme would be on the machine learning (ML) side.  Unfortunately, humans have limited knowledge and reasoning ability, and exhibit a variety of cognitive and ethical biases.<d-cite key="tversky1974judgment,hewstone2002intergroup"/> If we learn goals by asking humans questions, we expect different ways of asking questions to interact with human biases in different ways, producing higher or lower quality answers.  Direct questions about goals ("Do you prefer $A$ or $B$?") may be less accurate than questions which target the reasoning behind these goals ("Do you prefer $A$ or $B$ after hearing argument $S$?").  Different people may vary significantly in their ability to answer questions well, and disagreements will persist across people even setting aside answer quality.  Although we have candidates for ML methods which try to learn from human reasoning,<d-cite key="irving2018debate,christiano2018amplification"/> we do not know how they behave with real people in realistic situations.
+    If humans reliably and accurately answered all questions about their goals, the only uncertainties in this scheme would be on the machine learning (ML) side.  Unfortunately, humans have limited knowledge and reasoning ability, and exhibit a variety of cognitive and ethical biases<d-cite key="tversky1974judgment,hewstone2002intergroup"/>. If we learn goals by asking humans questions, we expect different ways of asking questions to interact with human biases in different ways, producing higher or lower quality answers.  Direct questions about goals ("Do you prefer $A$ or $B$?") may be less accurate than questions which target the reasoning behind these goals ("Do you prefer $A$ or $B$ after hearing argument $S$?").  Different people may vary significantly in their ability to answer questions well, and disagreements will persist across people even setting aside answer quality.  Although we have candidates for ML methods which try to learn from human reasoning<d-cite key="irving2018debate,christiano2018amplification"/>, we do not know how they behave with real people in realistic situations.
   </p><p>
-    We believe the AI safety community needs to invest research effort on the human side of AI alignment.  Many of the uncertainties involved are empirical, and can only be answered by experiment.  They relate to the psychology of human rationality, emotion, and biases.  Critically, we believe investigations into how people interact with AI alignment algorithms should not be held back by the limitations of existing machine learning.  Current AI safety research is often limited to simple tasks in video games, robotics, or gridworlds <d-cite key="christiano2017human,ibarz2018demonstrations,leike2017gridworlds"/>, but problems on the human side may only appear in more realistic scenarios such as natural language discussion of value-laden questions.  This is particularly important since many aspects of AI alignment change as ML systems increase in capability.  Asking people direct questions may suffice for ML systems much weaker than humans, but break down when as ML system approaches human performance at a task and becomes capable of deception.
+    We believe the AI safety community needs to invest research effort on the human side of AI alignment.  Many of the uncertainties involved are empirical, and can only be answered by experiment.  They relate to the psychology of human rationality, emotion, and biases.  Critically, we believe investigations into how people interact with AI alignment algorithms should not be held back by the limitations of existing machine learning.  Current AI safety research is often limited to simple tasks in video games, robotics, or gridworlds<d-cite key="christiano2017human,ibarz2018demonstrations,leike2017gridworlds"/>, but problems on the human side may only appear in more realistic scenarios such as natural language discussion of value-laden questions.  This is particularly important since many aspects of AI alignment change as ML systems increase in capability.  Asking people direct questions may suffice for ML systems much weaker than humans, but break down when as ML system approaches human performance at a task and becomes capable of deception.
   </p><p>
     To avoid the limitations of ML, we can instead conduct experiments consisting entirely of people, replacing ML agents with people playing the role of those agents.  These experiments will be motivated by machine learning algorithms but will not involve any ML systems or require an ML background.  In all cases, they will require careful experimental design to avoid fooling ourselves and to build constructively on existing knowledge about how humans think.  However, most AI safety researchers are focused on machine learning, which do not believe is sufficient background to carry out these experiments.  To fill the gap, we need social scientists with experience in human cognition, behavior, and ethics, and in the careful design of rigorous experiments.  Since the questions we need to answer are interdisciplinary and somewhat unusual relative to existing research, we believe many fields are social science are applicable, including experimental psychologists, cognitive scientists, economists, political scientists, social physiologists, and communication scholars, as well as those in adjacent fields like neuroscience and law.
   </p><p>
@@ -78,7 +78,7 @@
     on white men failed to recognize black women up to 34% of the time.
   </p><p>
     "Needless" is trickier still.  Humans have an intuitive sense of when injuring someone is needless or not: we don't think it needless to injure in order to save someone from mortal danger, but it is certainly wrong to injure when shaking someone's hand.  However, it is extremely difficult to specify the precise rule underlying this intuition using introspection alone.  Worse, we may suffer from the "introspection illusion" that we are
-    capable of articulating the reasons behind our intuitions <d-cite key="pronin2009introspection"/>, so any intuitive sense that we know reliable reasons behind our moral or ethical beliefs should be suspect.  Instead, we should expect that, once expanded, our "do not needlessly injure people" rule will be quite complex and depend on a vast number of details about the world (as is true in the medical law setting <todo>(medical law citation)</todo>.  And even this complex rule will have holes and corner cases which a trained AI could learn to exploit to our detriment.
+    capable of articulating the reasons behind our intuitions<d-cite key="pronin2009introspection"/>, so any intuitive sense that we know reliable reasons behind our moral or ethical beliefs should be suspect.  Instead, we should expect that, once expanded, our "do not needlessly injure people" rule will be quite complex and depend on a vast number of details about the world (as is true in the medical law setting <todo>(medical law citation)</todo>.  And even this complex rule will have holes and corner cases which a trained AI could learn to exploit to our detriment.
   </p>
   <h3>Instead, learn rules by asking humans questions</h3>
   <p>
@@ -98,13 +98,13 @@
       <li><strong>Lack of domain knowledge:</strong>
         We may be interested in questions that require domain knowledge unavailable to people answering the questions.  For example, a correct answer to whether a particular injury constitutes medical malpractice may require detailed knowledge of medicine and law.  In some cases, a question might require so many areas of specialized expertise that no one person is sufficient, or (if AI is sufficiently advanced) more expertise than any human possesses.</li>
       <li><strong>Limited cognitive capacity:</strong>
-        Some questions may require too much computation for a human to reasonably evaluate, especially in a short period of time.  This includes synthetic tasks such as chess and Go (where AIs already surpass human ability <d-cite key="campbell2002deepblue,silver2017alphazero"/>), or large real world tasks such as "design the best transit system".</li>
+        Some questions may require too much computation for a human to reasonably evaluate, especially in a short period of time.  This includes synthetic tasks such as chess and Go (where AIs already surpass human ability<d-cite key="campbell2002deepblue,silver2017alphazero"/>), or large real world tasks such as "design the best transit system".</li>
     </ol>
   </p><p>
     In these cases, a single human may be unable to provide the right answer, but we still believe the right answer exists as a meaningful concept.  We are aware of a large number of conceptual biases: imagine we point out these biases in a way that helps the human to avoid them.  Imagine the human has access to all the domain knowledge in the world, and is able to think for an arbitrarily long time in order to think through an answer to a question.  We would like to define alignment as "the answer they give then, after these limitations have been removed."
     The corresponding philosophical concept is "reflective equilibrium", where inconsistent moral judgments are gradually refined until all inconsistencies are removed.  This reflective equilibrium process is described in <d-cite key="goodman1983fact"/> and made explicit in <d-cite key="rawls2009theory"/> (Ch. 1, §9).  We discuss particular algorithms that try to approximate reflective equilibrium in <a href="#debate"><todo>the next section</todo></a>
   </p><p>
-    However, it is not obvious that reflective equilibrium is a sensible or sufficient definition of alignment when applied to actual humans.  As discussed in <d-cite key="sugden2015looking"/>, a human is not "a neoclassically rational entity encased in, and able to interact with the world only through, an error-prone psychological shell."  Our actual moral judgments are made via a messy combination of many different brain areas, where reasoning plays a "restricted but significant role" <d-cite key="greene2002and"/>.  A reliable solution to the alignment problem that uses human judgment as input will need to engage with this complexity, and ask how specific alignment techniques interact with actual humans.
+    However, it is not obvious that reflective equilibrium is a sensible or sufficient definition of alignment when applied to actual humans.  As discussed in <d-cite key="sugden2015looking"/>, a human is not "a neoclassically rational entity encased in, and able to interact with the world only through, an error-prone psychological shell."  Our actual moral judgments are made via a messy combination of many different brain areas, where reasoning plays a "restricted but significant role"<d-cite key="greene2002and"/>.  A reliable solution to the alignment problem that uses human judgment as input will need to engage with this complexity, and ask how specific alignment techniques interact with actual humans.
   </p>
   <h3>Disagreements, uncertainty, and inaction: a hopeful note</h3>
   <p>
@@ -128,88 +128,158 @@
     Here we discuss one approach to reasoning-oriented alignment, called debate<d-cite key="irving2018debate"/>.  Given a question, we have two AI agents engage in a debate about the correct answer, then show the transcript of the debate to a human to judge.  The judge decides which debater gave the most true, useful information, and declares that debater the winner.  This defines a two player zero sum games between the debaters, where the goal is to convince the human that one's answer is correct.  Arguments in a debate can consist of anything: reasons for an answer, rebuttals of reasons for the alternative answer, subtleties the judge might miss, or pointing out biases which might mislead the judge.  Once we have defined this game, we can train AI systems to play it similar to how we train AIs to play other games such as Go or Dota 2 <todo>(Citations)</todo>.  Our hope is that the following hypothesis holds:
   </p><p>
     <strong>Hypothesis:</strong> Optimal play in the debate game (giving the argument most convincing to a human) results in true, useful answers to questions.
+  </p>
+  <h3>An example of debate</h3>
+  <p>
+    Imagine we're building a personal assistant that helps people decide where to go on vacation.  The assistant has a bunch of knowledge of people's personal preferences, and is trained via debate to come up with convincing arguments that back up vacation decisions.  As the human judge, you also know your personal preferences, but have limited knowledge about the wide variety of possible vacation destinations and their advantages and distantages.  A debate about the question "Where should I go on vacation?" might open as follows:
   </p><p>
-    Consider our needless injury example.  <todo>Write down an example in detail.  It's possible I should just go back to the bike one since it doesn't require expertise; I feel like writing a good example for needless injury would require more discussion with Gillian.</todo>
+    <ol>
+      <li><span class="red">Alice:</span> Alaska.</li>
+      <li><span class="blue">Bob:</span> Bali.</li>
+    </ol>
   </p><p>
-    As with learning by asking humans direct questions, whether debate is effective or not depends on how rational and good the human judge is: how good at reasoning they are and how ethical they are.<d-footnote>We don't take a strong stand on what it means to be "more ethical" but it seems plausible that it's better to have ethically consistent and unprejudiced judges over ethically inconsistent or prejudiced ones.</d-footnote>  Unlike direct questioning, however, debate has the potential to give correct answers beyond what the judge could provide without assistance.  This is because a sufficiently strong judge could follow along with arguments the judge could not come up with on their own, checking complex reasoning for both self consistency and consistency with human checkable facts.  A judge who is biased but willing to adjust once those biases are revealed could result in unbiased debates, or a judge who is able to check facts but does not know where to look could be helped along by honest debaters.  If the hypothesis holds, a misleading debater would not be able to counter the points of an honest debater, since the honest points would appear more consistent to the judge.
+    If you are able to reliably decide between these two destinations, we could end here.  Unfortunately, Bali has a hidden flaw:
+  </p><p>
+    <ol start="3">
+      <li><span class="red">Alice:</span> Bali is out since your passport won’t arrive in time.</li>
+    </ol>
+  </p><p>
+    At this point it looks like Alice wins, but Bob has one more countermove: 
+  </p><p>
+    <ol start="4">
+      <li><span class="blue">Bob:</span> Expedited passport service only takes two weeks.</li>
+    </ol>
+  </p><p>
+    Here Alice fails to think of additional points, and loses to Bob and Bali.  Note that a debate does not need to cover all possible arguments.  There are many other ways the debate could have gone, such as:
+  </p><p>
+    <ol>
+      <li><span class="red">Alice:</span> Alaska.</li>
+      <li><span class="blue">Bob:</span> Bali.</li>
+      <li><span class="red">Alice:</span> Bali is way too hot.</li>
+      <li><span class="blue">Bob:</span> You prefer too hot to too cold.</li>
+      <li><span class="red">Alice:</span> Alaska is pleasantly warm in the summer.</li>
+      <li><span class="blue">Bob:</span> It's January.</li>
+    </ol>
+  </p><p>
+    This debate is also a loss for Alice (arguably a worse loss).  Say we believe Alice is very good at debate, and is able to predict in advance which debates are more likely to win.  If we see only the first debate about passports and decide in favor of Bali, we can take that as evidence that any other debate would have also gone for Bali, and thus that Bali is the correct answer.
+  </p><p>
+    If trained debaters aren't as good at predicting which debates will win, the quality of the answers will degrade since the debaters will be unable to think of important arguments and counterarguments.  However, as long as the two sides are reasonably well matched, we can hope that at least the results are not malicious: that deceptive behavior is still a losing strategy.  Let's set aside the ability of the debaters for now, and turn to the ability of the judge.
+  </p>
+  <h3>Are people good enough as judges?</h3>
+  <p>
+    As with learning by asking humans direct questions, whether debate produces aligned behavior depends on how rational and good the human judge is: how good at reasoning they are and how ethical they are.<d-footnote>We don't take a strong stand on what it means to be "more ethical" but it seems plausible that it's better to have ethically consistent and unprejudiced judges over ethically inconsistent or prejudiced ones.</d-footnote>  Unlike direct questioning, however, debate has the potential to give correct answers beyond what the judge could provide without assistance.  This is because a sufficiently strong judge could follow along with arguments the judge could not come up with on their own, checking complex reasoning for both self consistency and consistency with human checkable facts.  A judge who is biased but willing to adjust once those biases are revealed could result in unbiased debates, or a judge who is able to check facts but does not know where to look could be helped along by honest debaters.  If the hypothesis holds, a misleading debater would not be able to counter the points of an honest debater, since the honest points would appear more consistent to the judge.
   </p><p>
     On the other hand, we can also imagine debate going the other way: amplifying biases and failures of reason.  A judge with an ethical bias who is happy to accept statements reinforcing that bias could result in even more biased debates.  A judge with too much confirmation bias might happily accept misleading sources (such as misleading news articles) with incorrect evidence, and be unwilling to accept arguments showing why that evidence is wrong.  In this case, an optimal debate agent might be quite malicious, taking advantage of biases and weakness in the judge to win with convincing but wrong arguments.
   </p><p>
     In both these cases, debate acts as an amplifier.  For strong judges, this amplification is positive, removing biases and simulating extra reasoning abilities for the judge.  For weak judges, the biases and weaknesses would themselves be amplified.  If this model holds, debate would have threshold behavior: it would work for judges above some threshold of ability and fail below the threshold.<d-footnote>The threshold model is only intuition, and could fail for a variety of reasons: the intermediate region could be very large, or the threshold could differ widely per question so that even quite strong judges are insufficient for many questions.</d-footnote>  Assuming the threshold exists, it is unclear whether people are above or below it.  People are capable of general reasoning, but our ability is limited and riddled with cognitive biases.  People are capable of advanced ethical sentiment but also full of biases, both conscious and unconscious.
   </p><p>
     Thus, if we debate is the method we use to align an AI, we need to know if people are strong enough as judges to make debate work.  In other words, whether the human judges are sufficiently good at discerning whether a debater is telling the truth or not.  This question depends on many details: the type of questions under consideration, whether judges are trained or not, restrictions on what debaters can say, etc.  We believe experiment will be necessary to determine whether people are sufficient judges, and which form of debate is most truth seeking.
-  </p><p>
+  </p>
+  <h3>From superforecasters to superjudges</h3>
+  <p>
     An analogy with the task of probabilistic forecasting is useful here.  Tetlock's "Good Judgment Project" showed that some amateurs were significantly better at forecasting world events than both their peers and many professional forecasters.  These "superforecasters" maintained their prediction accuracy over years (did not regress), were able to make predictions with limited time and information<d-cite key="mellers2015identifying"/>, and seem to be less prone to cognitive biases than non-superforecasters (<d-cite key="tetlock2016superforecasting"/>, p. 234-236).  Crucially, this superforecasting trait was not immutable: it was traceable to particular methods and thought processes followed by the forecasters, improved with careful practice, and could be amplified if superforecasters were collected into teams.  For forecasters in general, brief probabilistic training significantly improved forecasting ability even 1-2 years after the training.  We believe a similar research program is possible for debate and other AI alignment algorithms.  In the best case, we would be able to find, train, or assemble "superjudges": individuals or teams where we have high confidence that optimal debate with them as judges would produce aligned behavior.
   </p><p>
     In the forecasting case, much of the research difficulty lay in assembling a large corpus of high quality forecasting questions.  Similarly, measuring how good people are as debate judges will not be easy.  The difficulty is that we would like to apply debate to problems where there is no other source of truth: if we had that source of truth, we may as well train ML models on it directly.  But if there is no source of truth, there is no way to measure whether debate produced the correct answer.  This problem can be avoided by starting with simple, verifiable domains, where we (the experimenters) know the answer but the judge would not.  "Success" then means that the winning debate argument is telling the (externally known) truth.  The challenge gets harder as we scale up to more complex, value-laden questions, as we discuss in detail later.
-  </p><p>
+  </p>
+  <h3>Debate is only one possible approach</h3>
+  <p>
     Although we will focus the rest of this paper on debate for concreteness, other approaches exist with similar goals.  In particular, debate is a modified version of iterated amplification<d-cite key="christiano2018amplification"/>, which uses humans to break down hard questions into easier questions and trains ML models to be consistent with this decomposition (and thus hopefully consistent with the reasoning behind the decomposition).  <todo>More citations?  I sort of want to cite inverse reward design, but it's not a great fit.</todo>  We believe the need to study how humans interact with AI alignment algorithms applies to any of these approaches.  Moreover, we believe knowledge gained about how humans perform with one approach is likely to partially generalize to other approaches; for example, knowledge about how to structure truth seeking debates could inform how to structure truth seeking amplification.
+  </p>
+
+  <h2>Experiments needed for debate</h2>
+  <p>
+    To recap, in debate we have two AI agents engaged in debate, trying to convince a human judge.  The debaters are trained only to win the game, and are not motivated by truth separate from the human's judgments.  On the human side, we would like to know whether people are strong enough as judges in debate to make this scheme work, or how to modify debate to fix it if it doesn't.  Unfortunately, actual debates in natural language are well beyond the capabilities of present AI systems, so previous work on debate and similar schemes has been restricted to synthetic or toy tasks<d-cite key="irving2018debate,christiano2018amplification"/>.
+  </p><p>
+    Rather than waiting for ML to catch up to natural language debate, we propose simulating our eventual setting (two AI debaters and one human judge) with all human debates: two human debaters and one human judge.  Since an all human debate doesn't involve any machine learning, it becomes a pure social science experiment: motivated by ML considerations but not requiring ML expertise to run.  This lets us focus on the component of AI alignment uncertainty specific to humans, without waiting for ML to catch up to near human performance.
+  </p><p>
+    To make human+human+human debate experiments concrete, we need to choose who to use as judges and debaters and which tasks to consider.  We also can choose to structure the debate in various ways, some of which overlaps with the choice of judge since we can instruct a judge to penalize deviations from an agreed upon format.  By task we mean the questions our debates will try to resolve, together with any information made available to the debaters or to the judge as part of the task.  Such an experiment would then try to answer the following question:
+  </p><p>
+    <strong>Question:</strong> For a given task and judge, does the winning debate strategy produce honest information?
+  </p><p>
+    The "winning strategy" aspect is important: an experiment that picked judges at random might conclude that honest behavior won, missing the fact that more practiced debaters would learn to successfully lie.  We can try to solve this by training debaters, letting them practice against each other, filtering out debaters that win more often, and so on, but we will still be left with uncertainty about whether a better strategy exists.  Even assuming we can find or train strong debaters, the choice of task and judge is quite tricky if we want an informative proxy for our eventual AI+AI+human setting.  Here are some desiderata constraining our choices of task:
+  </p><p>
+    <ol>
+      <li><strong>True answers are known:</strong>
+        Although our eventual goal is debates where no source of truth is available, to conduct a useful experiment we must be able to measure success.  This means we must know what the correct answer is separate from debate, in order to compare with the results of debate.</li>
+      <li><strong>False answers are plausible:</strong>
+        If the truth is obvious or no plausible counternarrative exists, honest debates will win for uninteresting and uninformative reasons regardless of judge ability.  In particular, the judge shouldn't know the answer upfront.</li>
+      <li><strong>Debaters know more than the judge:</strong>
+        Debate can produce interesting results only when the debaters know more than the judge; otherwise asking the judge direct questions is enough.</li>
+      <li><strong>Definitive argument longer than debate limit:</strong>
+        If one debater can write out a full proof of their answer (ignoring their opponent's moves), the task won't be a good test of interactive debate.</li>
+      <li><strong>Some checkable facts:</strong>
+        There must be some facts which the judge is able to check, either because they can recognize them as true once presented or look them up (say on Wikipedia).<d-footnote>It is impossible to usefully debate a question where the judge has nothing to check: consider debating the result of a coin flip shown to the two debaters but not the judge.</d-footnote></li>
+      <li><strong>No "tells":</strong>
+        Human "tells" of deception could result in honest debaters winning for reasons that wouldn't apply to an AI.  These tells include tone of voice, eye contact, or additional time required to construct plausible lies.  These tells can be reduced by showing judges completed debate transcripts instead of engaging in interactive debates, but others might remain.</li>
+      <li><strong>Available data:</strong>
+        We have a large enough pool of questions, judges, and debaters to achieve statistical significance.  This is made more difficult because we may have a large number of hypotheses to test, in the form of many variations on debate or interventions to improve judging.</li> 
+      <li><strong>Known biases (optional):</strong>
+        We are specifically interested in debate tasks which test specific types of cognitive or ethical biases.
+        Are judges with some racial or gender bias able to fight those biases aside if they are highlighted, or does debate amplify bias?  Do debates about statistical or probabilistic questions make it too easy to lie with statistics?
+      <li><strong>Realistic tasks (ideally):</strong>
+        If possible, we would like to try debate with interesting, real world tasks that reflect the types of questions we would like to apply AI to in the future, including science, mathematics, ethics, etc.
+    </ol>
+  </p><p>
+    It may not be possible to meet all of these criteria with a single experiment.  Several of the criteria are in tension: (1) and (2) are essentially "not too hard" and "not too easy", and any restriction on the types of questions that work may make it difficult to find large numbers of questions, judges, or debaters.  Realistic tasks are particularly hard, especially since many of the criteria are easy to fulfill with synthetic tasks as discussed below.  Thus, we may need to begin with synthetic tasks and move up towards realistic tasks over time.
+    We turn next to a few examples of experiments to see how many criteria we can meet simultaneously.
+  </p>
+  <h3>Synthetic experiments: single pixel image debate</h3>
+  <p>
+    As a first prototype of a human+human+human debate experiment, we built a <a href="https://debate-game.openai.com">prototype website</a> where two debaters argue over the contents of an image.  We choose an image of a cat or a dog, and show the image to the two debaters but not the judge.  One debater is honest and argues for the true contents of the image, and the other debater lies.  The debaters can talk to the judge and illustrate their points by drawing rectangles on the image, but the judge sees only the rectangles.  At the end of the debate, each debater is allowed to reveal a single pixel to the judge, which is the only part of the debate which cannot be a lie.
+  </p>
+  <figure class="subgrid">
+    <figcaption style="grid-column: kicker">
+      An example debate with two human debaters and a human judge.  Only the debaters can see the image. Red is arguing that the image is a dog, Blue is arguing for cat. <a href="https://commons.wikimedia.org/wiki/File:Beagle_puppy_sitting_on_grass.jpg">Image credit: Wikipedia, CC-BY-SA.</a>
+    </figcaption>
+    <div class="l-body"><img src="debate-game-animation_4-26c.gif"></div>
+  </figure>
+  <p>
+    In informal play, the honest debater indeed wins most of the time.  Although the judge only gets to check a single pixel, the honest player can try to pin down the liar towards disagreements on smaller and smaller regions of the image until one pixel is enough to reveal the lie.  However, it is hard to know whether this is a real result or an artificat that would not carry across to training an AI.  There are many ways to ruin the game, such as the judge asking each player to spend 15 seconds naming as many details about the image as possible.  Worse, this trick ruins the game in favor of the honest player, who can easily name many true details while a human liar may have difficulty lying fluently at speed.  Therefore, we are wary of trying to perform a full version of this experiment without more careful experimental design building on the experimental knowledge base of existing social science research.
+  </p><p>
+    As a synthetic experiment, single pixel debate satisfies many of our experimental criteria for all human debate.  The true answer is obvious to the debaters, and they know more than the judge by construction since only the debaters see the image.  Anything is plausible to the judge who sees only one or two pixels over the course of the debate.  Since the argument bottoms out at single pixels, the "full argument" would be a huge list of pixels and how they relate, forcing the debaters to pin each other down and focus in on disagreements.  The single pixels constitute checkable facts by construction, and we have an endless supply of questions in terms of images chosen at random.  Less fortunately, it is easy with the current website for the judge to force "tells" which reveal who is lying, the task has no obvious relation to biases, and is quite unrealistic.
+  </p>
+  <h3>Realistic experiments: domain expert debate</h3>
+  <p>
+    For a more interesting task, we can find two debaters who are experts in a domain, pick a question in their area of expertise, and use a layperson as the judge.  The debaters could be experts in some area of science, law or ethics, but "domain expertise" could also mean knowledge about particular hobbies, customs in a particularly region, sports, or any other subject the judge does not know.  We again choose one of the debaters to lie and one to tell the truth.  To guarantee a source of truth, we can choose a question with an agreed upon answer, either between the two debaters or more broadly in their field.  This is only approximate truth, but is hopefully good enough for informative experiments.  We must also specify what facts the judge has access too: a debate about physics might allow the debaters to quote a sentence or paragraph from Wikipedia, perhaps with restrictions on what pages are allowed.
+  </p><p>
+    Expert debate satisfies most of our desiderata, and it is likely possible to target specific biases (such as race or gender bias) by picking domain areas that overlap with these biases.  It may be quite difficult or expensive to find suitable debaters, but this may be solvable either by throwing resources at the problem (machine learning is a well funded field), enlarging the kinds of domain expertise considered (soccer, football, cricket, etc.), or by making the experiments interesting enough that volunteers are available.  However, even if domain experts can be found, there is no guarantee that they will be experts in debate viewed as a game.  With the possible exception of law, politics, or philosophy<d-cite key="schopenhauer2013art"/>, domain experts are not necessarily trained to construct intentionally misleading but self consistent narratives: they may be experts only in trying to tell the truth.
+  </p><p>
+    We've tried a few informal expert debates using theoretical computer science questions, and the main lesson so far is that the structure of the debate matters a great deal.  The debaters were allowed to point to a small snippet of a mathematical definition on Wikipedia, in particular not to any page that directly answered the question.  To reduce tells, we first tried to write a full debate transcript with only minimal interaction with a layperson, then showed the completed transcript to several more laypeople judges.  Unfortunately, even the layperson who was present when the debate was conducted picked the lying debater as honest, due to a misunderstanding of the initial statement of question (which was whether the complexity classes $P$ and $BPP$ are probably equal).  As a result, throughout the debate the honest debater did not understand what the judge was thinking, and thus failed to correct an easy but important misunderstanding.  We fixed this in a second debate by letting a judge ask questions throughout, but still showing the completed transcript to a second set of judges to reduce tells.  See <todo>appendix</todo> for the transcript of this second debate.
+  </p>
+  <h3>Other tasks: bias tests, probability puzzles, etc.</h3>
+  <p>
+    Synthetic image debates and expert debates are just two examples of possible tasks.  We expect more thought will be required to find tasks that satisfy all relevant criteria, and these criteria will change over time as experiments progress.  Pulling from existing social science research will be useful here, as there are many cognitive tasks with existing research results.  If we can map these tasks to debate, we may be able to compare debate directly against baselines in psychology and other fields.
+  </p><p>
+    For example, <d-cite key="bertrand2004emily"/> sent around 5000 resumes in response to real employment ads, randomizing the names at the top of the resume between White and African American sounding names.  With otherwise identical resumes, the choice of name significantly changed the probability of a response.  This experiment corresponds to the direct question "Should we call back given this resume?"  What if we introduce a few steps of debate?  An argument against a candidate based on name or implicit inferences from that name might come across as obviously racist, and convince at least some judges away from their initial discriminatory views.  Unfortunately,such an experiment would necessarily differ from Bertrand et al.'s original, where employers did not realize they were part of an experiment.  Note that this experiment works even though the source of truth is partial: we do not know whether a particular resume should be hired or not, only that it should not ethically depend on the name.
+  </p><p>
+    Similar focused tasks exist for many cognitive biases.  For biases affecting probabilistic reasoning and decision making, there is a long literature exploring how people decide between gambles such as "Would you prefer <span>$2</span> with certainty or <span>$1</span> 40% of the time and <span>$3</span> otherwise?"<d-cite      key="kahneman1979prospect,tversky1992advances"/>  For a recent example, <d-cite key="erev2017anomalies"/> constructed an 11-dimensional space of gambles sufficient to reproduce 14 known cognitive biases, from which new instances can be algorithmically generated.  Would debates about particular gambles reduce cognitive biases?  One difficulty here is that simple gambles might fail the "definitive argument longer than debate limit" criteria if a simple expected utility calculation is sufficient to prove the answer, making it difficult for a lying debater to meaningfully compete.
+  </p><p>
+
+  <h2>Questions that social science can help us answer</h2>
+  <p>
+    We've laid out the general program for learning AI goals by asking humans questions, and discussed how to use debate to strengthen what we can learn by targeting the reasoning behind conclusions.  Whether we use direct questions or something like debate, any intervention that gives us higher quality answers is more likely to produce aligned AI.  The quality of those answers depends on the human judges, and social science research can help to measure answer quality and improve it.  Let's go into more detail about what types of questions we want to answer, and what we hope to do with that information.  Although we will frame these questions as they apply to debate, most of them apply to any other method which learns goals from humans.
+  </p><p>
+    <ol>
+      <li><strong>How skilled are people as judges by default?</strong>
+        If we ran debate using a person chosen at random as the judge, and gave them no training, would the result be aligned behavior?  Note that here the debaters are not chosen at random: once the judge is fixed, we care about debaters who either learn to help the judge along (in the good case) or learn to exploit the judges weaknesses (in the bad case).</li>
+      <li><strong>Can we distinguish good judges from bad judges?</strong>
+        People likely differ in the ability to accurately judge debates.  There are many possible filters we could use to identify good judges: comparing their verdicts to those of other judges, to people given more time to think, or to known expert judgment if available<d-footnote>Note that domain expertise may be quite different from what makes a good judge of debate.  Although there is evidence that domain expertise reduces bias<d-cite key="bornstein2001rationality"/>, <d-cite key="tetlock2017expert"/> (Chapter 3) presents evidence that "expert" political forecasters may actually be worse than non-experts.</d-footnote>.  Ideally we would like filters that do not require an independent source of truth, though at experiment time we will need a source of truth to know whether a measure works.  It is not obvious a priori that good filters exist, and any filter would need careful scrutiny to ensure it does not introduce bias into our choice of judges.</li>
+      <li><strong>Does judge ability generalize across domains?</strong>
+        If judge ability in one domain fails to transfer to other domains, we will have low confidence that it transfers to new questions and arguments arising from highly capable AI debaters.  This kind of necessary if we want to trust debate as a method for alignment, especially once we move to questions where no independent source of truth is available.  We emphasize that judge ability is not the same as direct knowledge: there is evidence that expertise often fails to generalize across domains<d-cite key="chi2006two"/>, but argument evaluation could transfer where expertise does not.</li>
+      <li><strong>Can we train people to be better judges?</strong>
+        Peer review, practice, debiasing techniques<d-cite key="larrick2004debiasing"/>, formal training such as argument mapping<d-cite key="dwyer2012evaluation"/>, expert panels, tournaments<d-cite key="tetlock2014forecasting"/>, and other interventions may make people better at judging debates.  Which mechanisms work best?</li>
+      <li><strong>What questions are people better at answering?</strong>
+        If we know that humans are bad at answering certain types of questions, we can shift the process away from those questions towards more reliable formulations.  For example, <d-cite key="gigerenzer1991make"/> provides evidence that phrasing questions in frequentist terms can reduce known cognitive biases.  <d-cite key="graham2009liberals"/> argue that different political views follow from different weights placed on fundamental moral considerations, and similar analysis could help understand where we can expect moral disagreements to persist after reflective equilibrium.  In cases where reliable answers are unavailable, we need to ensure that trained models know their own limits, and express uncertainty or disagreement as required.</li>
+      <li><strong>Are there ways to restrict debate to make it easier to judge?</strong>
+        People might be better at judging debates formulated in terms of calm, factual statements, and worse at judging debates containing statements designed to trigger strong emotions.  Or, counterintuitively, it could be the other way around<d-cite key="goel2011negative"/>.  If we know which styles of debates that people are
+        better at judging, we may be able to restrict AI debaters to these styles.</li>
+      <li><strong>How can people work together to imporve quality?</strong>
+        If individuals are insufficient judges, can teams of judges give better answers?  Majority vote is the simplest option, but perhaps several people talking through an answer together is even stronger, either actively or after the fact through a peer review mechanism.  Condorcet's jury theorem implies that majority votes can amplify weakly good judgments to strong judgments (or weakly bad judgments to worse)<d-cite key="list2001epistemic"/>, but aggregation may be more complex in cases of probabilistic judgment<d-cite key="list2002aggregating"/>.</li>
+    </ol>
   </p>
 
   <h2><todo>Outline</todo></h2>
   <p><d-code block language="markdown">
-    - Questions that social science can help us answer
-      - Higher quality answers = more aligned AI
-      - Questions about any method using reward learning from humans
-        - What questions should we ask people?
-        - Who should we ask these questions, and how?
-        - How can we get more information about human values from fewer questions?
-        - Will this produce behavior that is aligned with human values even if the AI
-          is more capable than the humans in some or all areas?
-      - Alternative list in Amanda's version (merge this with the above list)
-        - What questions should we ask people to best ellicit their values?
-        - How can we reduce cognitive and ethical biases in human feedback?
-        - Are some people better than others at answering these questions in an accurate and unbiased fashion?
-        - Can we train people to be better at this?  If so, how?
-        - Are people better at answering questions individually or in teams?
-      - If we want to target reasoning, the questions we need to answer get more complicated
-      - Questions for debate in particular
-        - How skilled are people as judges on average?
-        - Can we distinguish good judges from bad judges?
-          - Maybe: If superjudges exist, can we find them?
-        - Does judge ability generalize across domains?
-        - Can we train people to be better judges?
-        - What questions are people better at answering?
-        - Are there ways to restrict or structure debates to make them easier to judge?
-        - How can people work together to improve quality?
-      - Social scientists required to answer these
-      - Our expertise is just ML, so we can't fully articulate what experiment we need
-      - Need to bring in people with different backgrounds!
-
-    - Experiments needed for debate
-      - Ideally, we'd directly test the full ML + human system
-        - Can't do that yet, since ML is primitive
-        - Wouldn't be able to do general dialog-style debates, and a lot of interesting tasks
-      - Instead, we can replace the ML systems with people, for all-human experiments.
-        - Two human debaters, one human judge
-      - Desiderata for human debate experiments:
-        - List:
-          - True answer is known
-          - False answer is plausible
-          - Definitive argument significantly longer than debate limit
-          - Judges can check ground level evidence
-          - Debates don't depend on information channels that won't apply to an AI
-              - In particular, no leakage of honesty
-          - Debaters know more than the judge
-          - Cognitive or ethical biases play a role (optional)
-          - Question isn't so hard that judge can't possibly evaluate (maybe)
-          - Reflects difficulty of statistical debates (plus)
-          - A short segment of the debate reflects the broader debate (misstated)
-          - We can get a lot of data across many judges and tasks
-        - Don't expect to get all of these in one experiment, and some are in tension
-      - Two experiment options:
-          - Expert debaters, lay judge
-          - Extra information given to debaters
-      - Prototype for (2): single pixel image debate.
-        - Honesty usually wins, but hard to know if this is real
-        - Many ways to fool this game (ruin the game in favor of the honest player)
-      - Task options:
-        - Expert knowledge
-        - Tasks with known human biases
-        - Synthetic tasks
-      - Experiences with expert debates so far
-      - Still hard, requires careful experiments
-
     - Reasons for optimism
       - This is about reasons for optimism about the social science research program
         - See the debate paper for more details about debate specifically
@@ -479,6 +549,9 @@
       <li>Get citation from Gillian about "needless injury" requiring complex rules.</li>
       <li>List ways in which debate differs from existing human debates.</li>
       <li>https://en.wikipedia.org/wiki/Cognitive_hierarchy_theory</li>
+      <li>Verify that it's okay to pull bits of text from previous debate material.</li>
+      <li>Acknowledge Tom Griffiths (for pointing out the synthetic gamble task).</li>
+      <li>Somewhere, something like: "Whatever the task, we expect careful experimental design to be necessary to avoid misleading results.  Tells that reveal honest vs. dishonest debaters can easily ruin an experiment, in the worse case giving us false confidence that debate is working.  Debate experiments might work only because a task is unrealistic (and thus misses important cognitive biases), or because the debaters are not playing well."</li>
     </ol></p>
   </dtodo>
 
