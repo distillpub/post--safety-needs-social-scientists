@@ -276,28 +276,43 @@
       <li><strong>How can people work together to imporve quality?</strong>
         If individuals are insufficient judges, can teams of judges give better answers?  Majority vote is the simplest option, but perhaps several people talking through an answer together is even stronger, either actively or after the fact through a peer review mechanism.  Condorcet's jury theorem implies that majority votes can amplify weakly good judgments to strong judgments (or weakly bad judgments to worse)<d-cite key="list2001epistemic"/>, but aggregation may be more complex in cases of probabilistic judgment<d-cite key="list2002aggregating"/>.</li>
     </ol>
+  </p><p>
+    We believe this questions require social science experiments to satisfactorily answer.
+  </p><p>
+    Given our lack of experience outside of ML, we are not able to precisely articulate all of the different experiments we need.  The only way to fix this is to talk to more people with different backgrounds and expertise.  We have started this process, but are eager for more conversations with social scientists about what experiments could be run, and encourage other AI safety efforts to do engage similarly.
+  </p>
+
+  <h2>Reasons for optimism</h2>
+  <p>
+    We believe that understanding how humans interact with long term AI alignment is difficult but possible.  In this section and the next, we discuss our reasons for optimism and pessimism.  We focus on issues specific to human uncertainty and associated social science research; for similar discussion on machine learning uncertainty in the case of debate we refer to <d-cite key="irving2018debate"/>.
+  </p>
+  <h3>Engineering vs. science</h3>
+  <p>
+    Most conventional social science seeks to understand the truth about humans "in the wild".  Even if the experiments are performed in a laboratory setting, the goal is results that generalize to people going about their everyday lives.  The social scientist has limited control over these lives, so most differences between laboratory and real life are bad from the scientific perspective.  This holds even for situations where we are trying to achieve some sort of influence, nudging people in the direction of making better decisions <todo>(citation)</todo>; our nudging power is limited, and must work in the context of otherwise uncontrolled circumstance.
+  </p><p>
+    In contrast to this scientific pursuit of understanding humans, the end goal of AI alignment is to extract the best version of what humans want, utilizing as much control as we like.  That is, we have an engineering goal rather than a scientific goal, and correspondingly more freedom to intervene.  If judges in debate need a large amount of training to perform well, we can provide that training as long as resources permit.  If some people still do not provide good data, or even if we are not confident that they provide good data, we can remove them from experiments (as long as this filter does not create too much bias for value disagreement).  This freedom to intervene means that some of the historical difficulty in understanding and improving human reasoning may not apply, though we will only know once we try.
+  </p><p>
+    However, science is still required: once all of our interventions are in place, we need to correctly know whether our AI alignment methods work.  Since our experiments will necessarily be an imperfect model of the final goal, careful experiment design will be necessary to minimize this mismatch, just as is required by existing social science.
+  </p>
+  <h3>We don't need to answer all questions</h3>
+  <p> 
+    Our most powerful intervention is to give up: to recognize that we are unable to answer some types of questions, and instead prevent AI systems from pretending to answer.  Humans might be good judges on some topics but not others, or with some types of reasoning but not others; if we discover that we can adjust our goals appropriately.  Giving up on some types of questions is achievable either on the machine learning side, using careful uncertainty modeling to know when we do not know, or on the human side by training judges to understand their own areas of uncertainty.  Although we will attempt to formulate ML systems that automatically detect areas of uncertainty, any information we can gain on the social science side about human uncertainty can be used both to augment ML uncertainty modeling and to test whether ML uncertainty modeling works.
+  </p>
+  <h3>Relative accuracy may be enough</h3>
+  <p>
+    Say we have a variety of different ways to structure debate with humans.  Ideally, we would like to achieve results of the form "debate structure $A$ is truth seeking with 90% confidence".  Unfortunately, we may be unconfident that an absolute result of this form will generalize to advanced AI systems: it may hold for an experiment with simple tasks but break down later on.  However, even if we can't achieve such absolute results, we can still hope for relative results of the form "debate structure $A$ is reliably better than debate structure $B$".  Such a result may be more likely to generalize into the future, and assuming it does we will know to use structure $A$ rather than $B$.
+  </p>
+  <h3>We don't need to pin down the best alignment scheme</h3>
+  <p>
+    As the AI safety field progresses to increasingly advanced ML systems, we expect research on the ML side and the human side to merge.  Starting social science experiments prior to this merging will give the field a head start, but we can also take advantage of the expected merging to make our goals easier.  If social science research narrows the design space of human-friendly AI alignment algorithms but does not produce a single best scheme, we can test the smaller design space once the machines are ready.
+  </p>
+  <h3>A negative result would be important!</h3>
+  <p>
+    If we test an AI alignment scheme from the social science perspective and it fails, we've learned valuable information.  There are a variety of proposed alignment schemes, and learning which don't work early gives us more time to switch to others, or to intervene on a policy level to slow down dangerous development.  In fact, given our belief that AI alignment is harder for more advanced agents, a negative result might be easier to believe and thus more valuable that a less trustworthy positive result.
   </p>
 
   <h2><todo>Outline</todo></h2>
   <p><d-code block language="markdown">
-    - Reasons for optimism
-      - This is about reasons for optimism about the social science research program
-        - See the debate paper for more details about debate specifically
-      - Engineering vs. science
-        - We have a lot more control over the setup than traditional social science experiments
-      - Don't need to answer all questions
-        - If we can recognize areas of uncertainty, can push ML models to treat those areas with care
-      - Relative accuracy may be enough
-        - If debate structure A performs reliably better than debate structure B, that's good evidence
-          that we should use A even if we don't know how performance will change over time / with
-          more advanced agents
-        - Though it'd be great to have absolute accuracy too. :)
-      - Don't need to pin down the best debate scheme exactly
-        - If we narrow down to a smaller design space, we can test that space once that machines are ready
-      - A negative result would be important!
-        - If people aren't good enough as judges as soon as possible, we want to know this!
-        - Debate isn't the only approach to alignment
-
     - Reasons to worry
       - Desiderata are conflicting
         - Hard to pick a task that is sufficiently interesting, verifiable, not too easy, etc., etc.
