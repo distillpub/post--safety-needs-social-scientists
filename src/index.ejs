@@ -340,20 +340,25 @@
     Any AI alignment scheme will be both an algorithm for training ML systems and a proposed definition of what it means to be aligned.  However, we do not expect humans to conform to any philosophically consistent notion of values, and concepts like reflective equilibrium must be treated with caution in case they break down when applied to real human judgement.  Fortunately, AI alignment algorithms like debate need not presuppose philosophical consistency: a back and forth conversation between agents trying to convince a human judge still makes sense if the human is leaning heavily on heuristics, intuition, and emotion.  It is not obvious that debate still works in this messy setting, but there is hope if we take advantage of inaction bias, uncertainty modeling, and other escape hatches.  Fundamentally, we believe this lack of philosophical clarity is a strong argument for investing in social science research applied to AI alignment: if humans are not simple, we must engage with their complexity.
   </p>
 
-  <h2><todo>Outline</todo></h2>
-  <p><d-code block language="markdown">
-    - Scale: 1,000s to 10,000s of people
-        - Might need a lot of samples to train AGI reliably
-        - Lots of samples means lots of judges
-        - Lots of judges means lots of researchers to maximize quality
-        - Sample complexity concerns: maximizing information per sample
-        - Need close collaborations across a variety of disciplines
+  <h2>Scale: 1,000s to 10,000s of people?</h2>
+  <p>
+    Long term AI safety is particularly important if we manage to train artificial general intelligence (AGI), which <d-cite key="openai2018charter"/> defines as highly autonomous systems that outperform humans at most economically valuable work.  If we want to train an AGI with reward learning from humans, it is unclear how many samples will be required to align it.  As much as possible, we can try to replace human samples with knowledge about the world gained by reading language, the internet, and other sources of information.  But it is likely that a fairly large number of samples from people will still be required.  Since more samples means less noise and more safety, if we are uncertain about how many samples we need then we will want a lot of samples!
+  </p><p>
+    A lot of samples would mean recruiting a lot people.  We cannot rule out needing to involve thousands to tens of thousands of people for millions to tens of millions of short interactions: answering questions, judging debates, etc.  We may need to train these people to be better judges, arrange for peers to judge each other's reasoning, determine who is doing better at judging and give them more weight or a more supervisory role, and so on.  Many researchers would be required on the social science side would be required to extract the highest quality information from the judges.
+  </p><p>
+    A task of this scale would be a large interdisciplinary project, requiring close collaborations in which people with different backgrounds fill in each other's missing knowledge.  We are uncertain if the machine learning field will reach this scale, but assuming it does: the collaborations should start soon.
+  </p>
 
-    - How you can help
-      - Please contact us!  Interesting in conversation and close collaboration
-        - Probably talk about authors rather than OpenAI as an institution
-      - Encourage other safety researchers to think about the human side
-  </d-code></p>
+  <h2>Conclusion: how you can help</h2>
+  <p>
+    We have argued that the AI safety community needs social scientists and social science to tackle a major source of uncertainty about AI alignment algorithms: will humans give good answers to questions?  This uncertainty is difficult to tackle with conventional machine learning experiments, since machine learning is primitive.  We are still in the early days of performance on natural language and other tasks, and problems with human reward learning may only show up on tasks we cannot yet tackle.
+  </p><p>
+    Our proposed solution to replace machine learning with people.  If we want to understand a game played with ML and human participants, replace the ML participants with people, and see how the all human games plays out.  For the specific example of debate, we start with debates with two ML debaters and a human judges, then switch to two human debaters and a human judge.  The result is a pure human experiment, motivated by machine learning but available to anyone with a solid background in experimental social science.  It won't be an easy experiment, which is all the more reason to start soon.
+  </p><p>
+    If you are a social scientist interested in these questions, please talk to AI safety folk!  We (the authors) are interested in both conversation and close collaboration.  There are many institutions engaged with safety work using reward learning, including our own institution OpenAI, DeepMind, and Berkeley's CHAI.  <todo>Ask people at these places and get permission for contacts!</todo>  The AI safety organization Ought is already exploring similar questions, asking how iterated amplification behaves with humans.
+  </p><p>
+    If you are a machine learning researcher interested or already working on safety, please think about how alignment algorithms will work once we advance to tasks beyond the abilities of current machine learning.  If your prefered alignment scheme uses humans in an important way, can you simulate the future by replacing some or all ML components with people?  If you can imagine these experiments but don't feel you have the expertise to perform them, find someone who does.
+  </p>
 
 </d-article>
 
@@ -401,6 +406,8 @@
       <li>Clarify Amanda's worry about reasons for belief vs. reasons for action.  Update: I have a better picture of this now.  Even if debate as a mathematical object or algorithm doesn't distinguish between these types of reasons or reasoning, <strong>humans</strong> might well make this distinction.  Thus, the social science side of the uncertainty may depend critically on this or other distinctions: people might be good as judges on epistemic reasoning but bad on moral reasoning, or vice versa, or similarly for some other dimension.  This is an important point: the mathematical structure may treat certain things the same, but once we introduce a particular kind of judge distinctions may become very important.</li>
       <li>Have an interactive figure with a nontrivial debate tree: a bunch of branches that readers can explore.</li>
       <li>Amanda says the philosophical notion of “values” actually does correspond to what I want, not to what Rob MacCoun said.  Solution: be explicit about where we are getting our terminology from.</li>
+      <li>Make sure Ought is well cited</li>
+      <li>Emphasize that other AI fields are already doing this: computational social science, fairness/bias, etc.</li>
     </ol></p>
   </dtodo>
 
