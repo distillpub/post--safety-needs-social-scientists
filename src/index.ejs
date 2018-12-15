@@ -238,7 +238,7 @@
   </p><p>
     As a synthetic experiment, single pixel debate satisfies many of our experimental criteria for all human debate.  The true answer is obvious to the debaters, and they know more than the judge by construction since only the debaters see the image.  Anything is plausible to the judge who sees only one or two pixels over the course of the debate.  Since the argument bottoms out at single pixels, the "full argument" would be a huge list of pixels and how they relate, forcing the debaters to pin each other down and focus in on disagreements.  The single pixels constitute checkable facts by construction, and we have an endless supply of questions in terms of images chosen at random.  Less fortunately, it is easy with the current website for the judge to force "tells" which reveal who is lying, the task has no obvious relation to biases, and is quite unrealistic.
   </p>
-  <h3>Realistic experiments: domain expert debate</h3>
+  <h3 id="expert">Realistic experiments: domain expert debate</h3>
   <p>
     For a more interesting task, we can find two debaters who are experts in a domain, pick a question in their area of expertise, and use a layperson as the judge.  The debaters could be experts in some area of science, law, or ethics, but "domain expertise" could also mean knowledge about particular hobbies, customs in a particularly region, sports, or any other subject the judge does not know.  We again choose one of the debaters to lie and one to tell the truth.  To guarantee a source of truth, we can choose a question with an agreed upon answer, either between the two debaters or more broadly in their field.  This is only approximate truth, but is hopefully good enough for informative experiments.  We must also specify what facts the judge has access too: a debate about physics might allow the debaters to quote a sentence or paragraph from Wikipedia, perhaps with restrictions on what pages are allowed.
   </p><p>
@@ -362,6 +362,37 @@
     If you are a machine learning researcher interested or already working on safety, please think about how alignment algorithms will work once we advance to tasks beyond the abilities of current machine learning.  If your prefered alignment scheme uses humans in an important way, can you simulate the future by replacing some or all ML components with people?  If you can imagine these experiments but don't feel you have the expertise to perform them, find someone who does.
   </p>
 
+  <h2 id="quantum">Appendix: Quantum SAT solver debate</h2>
+  <p>
+    <todo>Make this an actual appendix once <a href="https://github.com/distillpub/template/issues/97">https://github.com/distillpub/template/issues/97</a> is fixed.</todo>
+  </p><p>
+    We've conducted a few informal <a href="#expert">domain expert debates</a> among people at OpenAI.  Here is one example on the following question:
+  </p><p>
+    <strong>Question:</strong> How fast can quantum computers solve boolean satisfiability?
+  </p><p>
+    Note that this question does not have a proven answer, so "correctness" is a mix of mathematical knowledge and subjective human judgement.  Both debaters knew quantum computation and had the same beliefs about the question, but one was trying to lie.  The judge was invited to comment and ask questions throughout the debate.  Full interaction from the judge was a change from a previous debate, where lack of judge participation meant that misinterpretations of statements early in the debate were not corrected.  Once the transcript was complete, it was shown to several other people to ensure that the first judge's confidence wasn't purely a result of facial expressions in the room or other side channels (this is far from perfect given the judge interaction).  All judges correctly determined who was telling the truth.
+  </p><p>
+    Each debater was given a budget of one sentence from Wikipedia to truthfully cite, excluding pages directly discussing the difficulty of quantum SAT solvers.  All their other statements could be lies.  The debaters were not allowed to take back moves, mostly to save time: a previous debate trying to get "the best transcript" by allowing debaters to rewind the game took many hours to complete.  As a result, the original debate transcript goes off on a variety of tangents before settling on a central disagreement.  As an illustration of how long the debate "might have been" if such tangents were avoided, we have provided a pruned transcript which culls away paths not relevant to the final deciding "line of argument".
+  </p><p>
+    Neither the original transcript or the pruned version are intended to be taken as real data: they serve only as an example of the types of interaction one might find in debate with domain experts and a lay judge.
+  </p>
+  <h3>Instructions shown to judges</h3>
+  <p>
+    <ol>
+      <li>The question of the debate and answers are given below.</li>
+      <li><Blue/> and <Red/> are domain expert debaters.</li>
+      <li>The <Judge/> is a non-domain expert that interacts with the debaters to help them model judges.</li>
+      <li>The debate was capped at 3000 words (for the unpruned version).</li>
+      <li>Check the time: we don't want judging to take more than 15 to 20 minutes.</li>
+      <li>Read the question and <Blue/> and <Red/>'s answers and before reading the debate answer question (2) at the bottom of the document.</li>
+      <li>Read through the debate transcript.</li>
+      <li>Answer the questions at the end of the document. Your key goal is to determine who is telling the truth.</li>
+    </ul>
+  </p>
+  <h3>Pruned debate transcript</h3>
+  <debate name="pruned"/>
+  <h3>Raw debate transcript</h3>
+  <debate name="unpruned"/>
 </d-article>
 
 <!-- END MATTER -->
@@ -369,7 +400,7 @@
 <d-appendix>
   <h3>Acknowledgments</h3>
   <p>
-    <todo>Gillian Hadfield, Dario Amodei, many others for feedback.  Tom Griffiths for pointing to synthetic gamble tasks.  Many social scientists (Tino?) for extensive discussion.</todo>.
+    <todo>Gillian Hadfield, Dario Amodei, many others for feedback.  Tom Griffiths for pointing to synthetic gamble tasks.  Many social scientists (Tino?) for extensive discussion.  Paul Christiano for extensive discussion and participation in the domain expert debates.</todo>.
   </p>
 
   <p>
@@ -400,6 +431,7 @@
 
   <d-footnote-list></d-footnote-list>
   <d-citation-list></d-citation-list>
+
 </d-appendix>
 
 <d-bibliography src="references.bib"></d-bibliography>
