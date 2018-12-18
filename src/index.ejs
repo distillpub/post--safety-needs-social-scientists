@@ -161,8 +161,17 @@
       <li><span class="blue">Bob:</span> It's January.</li>
     </ol>
   </p><p>
-    This debate is also a loss for Alice (arguably a worse loss).  Say we believe Alice is very good at debate, and is able to predict in advance which debates are more likely to win.  If we see only the first debate about passports and decide in favor of Bali, we can take that as evidence that any other debate would have also gone for Bali, and thus that Bali is the correct answer.
+    This debate is also a loss for Alice (arguably a worse loss).  Say we believe Alice is very good at debate, and is able to predict in advance which debates are more likely to win.  If we see only the first debate about passports and decide in favor of Bali, we can take that as evidence that any other debate would have also gone for Bali, and thus that Bali is the correct answer.  A larger portion of this hypothetical debate tree is shown below:
+  </p>
+  <figure class="subgrid" id="debate-tree">
+    <figcaption style="grid-column: kicker">
+      A hypothetical partial debate tree for the question "Where should I go on vacation?"  A single debate would explore only one of these paths, but a single path chosen by good debaters is evidence that other paths would not change the result of the game.
+    </figcaption>
+    <div class="l-body"><img src="debate-tree.jpg"></div>
+  </figure>
   </p><p>
+    <todo>Turn this into a nice figure.  For the gibberish path, use "Meck pren plaphth".</todo>
+  <p>
     If trained debaters aren't as good at predicting which debates will win, the quality of the answers will degrade since the debaters will be unable to think of important arguments and counterarguments.  However, as long as the two sides are reasonably well matched, we can hope that at least the results are not malicious: that deceptive behavior is still a losing strategy.  Let's set aside the ability of the debaters for now, and turn to the ability of the judge.
   </p>
   <h3>Are people good enough as judges?</h3>
@@ -191,7 +200,14 @@
     To recap, in debate we have two AI agents engaged in debate, trying to convince a human judge.  The debaters are trained only to win the game, and are not motivated by truth separate from the human's judgments.  On the human side, we would like to know whether people are strong enough as judges in debate to make this scheme work, or how to modify debate to fix it if it doesn't.  Unfortunately, actual debates in natural language are well beyond the capabilities of present AI systems, so previous work on debate and similar schemes has been restricted to synthetic or toy tasks<d-cite key="irving2018debate,christiano2018amplification"/>.
   </p><p>
     Rather than waiting for ML to catch up to natural language debate, we propose simulating our eventual setting (two AI debaters and one human judge) with all human debates: two human debaters and one human judge.  Since an all human debate doesn't involve any machine learning, it becomes a pure social science experiment: motivated by ML considerations but not requiring ML expertise to run.  This lets us focus on the component of AI alignment uncertainty specific to humans, without waiting for ML to catch up to near human performance.
-  </p><p>
+  </p>
+  <figure class="subgrid" id="dog-debate">
+    <figcaption style="grid-column: kicker">
+      Our end goal is ML+ML+human debates, but ML is too primitive to do many interesting tasks.  Therefore, we propose replacing ML debaters with human debaters, learning how do best conduct debates in this human-only setting, and eventually applying what we learn to the ML+ML+human case.  <todo>Cleaner figure.</todo>
+    </figcaption>
+    <div class="l-body"><img src="ml-to-human-debate.jpg" style="width: 50%"></div>
+  </figure>
+  <p>
     To make human+human+human debate experiments concrete, we must choose who to use as judges and debaters and which tasks to consider.  We also can choose to structure the debate in various ways, some of which overlaps with the choice of judge since we can instruct a judge to penalize deviations from an agreed upon format.  By task we mean the questions our debates will try to resolve, together with any information made available to the debaters or to the judge as part of the task.  Such an experiment would then try to answer the following question:
   </p><p>
     <strong>Question:</strong> For a given task and judge, does the winning debate strategy produce honest information?
@@ -227,7 +243,7 @@
   <p>
     As a first prototype of a human+human+human debate experiment, <d-cite key="irving2018debate"/> built a <a href="https://debate-game.openai.com">prototype website</a> where two debaters argue over the contents of an image.  We choose an image of a cat or a dog, and show the image to the two debaters but not the judge.  One debater is honest and argues for the true contents of the image, and the other debater lies.  The debaters can talk to the judge and illustrate their points by drawing rectangles on the image, but the judge sees only the rectangles.  At the end of the debate, each debater is allowed to reveal a single pixel to the judge, which is the only part of the debate which cannot be a lie.
   </p>
-  <figure class="subgrid">
+  <figure class="subgrid" id="dog-debate">
     <figcaption style="grid-column: kicker">
       An example debate with two human debaters and a human judge.  Only the debaters can see the image. Red is arguing that the image is a dog, Blue is arguing for cat. <a href="https://commons.wikimedia.org/wiki/File:Beagle_puppy_sitting_on_grass.jpg">Image credit: Wikipedia, CC-BY-SA.</a>
     </figcaption>
@@ -250,7 +266,7 @@
   <p>
     Synthetic image debates and expert debates are just two examples of possible tasks.  We expect more thought will be required to find tasks that satisfy all relevant criteria, and these criteria will change over time as experiments progress.  Pulling from existing social science research will be useful here, as there are many cognitive tasks with existing research results.  If we can map these tasks to debate, we may be able to compare debate directly against baselines in psychology and other fields.
   </p><p>
-    For example, <d-cite key="bertrand2004emily"/> sent around 5000 resumes in response to real employment ads, randomizing the names at the top of the resume between White and African American sounding names.  With otherwise identical resumes, the choice of name significantly changed the probability of a response.  This experiment corresponds to the direct question "Should we call back given this resume?"  What if we introduce a few steps of debate?  An argument against a candidate based on name or implicit inferences from that name might come across as obviously racist, and convince at least some judges away from their initial discriminatory views.  Unfortunately,such an experiment would necessarily differ from Bertrand et al.'s original, where employers did not realize they were part of an experiment.  Note that this experiment works even though the source of truth is partial: we do not know whether a particular resume should be hired or not, only that it should not ethically depend on the name.
+    For example, <d-cite key="bertrand2004emily"/> sent around 5000 resumes in response to real employment ads, randomizing the names at the top of the resume between White and African American sounding names.  With otherwise identical resumes, the choice of name significantly changed the probability of a response.  This experiment corresponds to the direct question "Should we call back given this resume?"  What if we introduce a few steps of debate?  An argument against a candidate based on name or implicit inferences from that name might come across as obviously racist, and convince at least some judges away from their initial discriminatory views.  Unfortunately, such an experiment would necessarily differ from Bertrand et al.'s original, where employers did not realize they were part of an experiment.  Note that this experiment works even though the source of truth is partial: we do not know whether a particular resume should be hired or not, only that it should not ethically depend on the name.
   </p><p>
     Similar focused tasks exist for many cognitive biases.  For biases affecting probabilistic reasoning and decision making, there is a long literature exploring how people decide between gambles such as "Would you prefer <span>$2</span> with certainty or <span>$1</span> 40% of the time and <span>$3</span> otherwise?"<d-cite      key="kahneman1979prospect,tversky1992advances"/>  For a recent example, <d-cite key="erev2017anomalies"/> constructed an 11-dimensional space of gambles sufficient to reproduce 14 known cognitive biases, from which new instances can be algorithmically generated.  Would debates about particular gambles reduce cognitive biases?  One difficulty here is that simple gambles might fail the "definitive argument longer than debate limit" criteria if a simple expected utility calculation is sufficient to prove the answer, making it difficult for a lying debater to meaningfully compete.
   </p><p>
@@ -387,7 +403,7 @@
       <li>Read the question and <Blue/> and <Red/>'s answers and before reading the debate answer question (2) at the bottom of the document.</li>
       <li>Read through the debate transcript.</li>
       <li>Answer the questions at the end of the document. Your key goal is to determine who is telling the truth.</li>
-    </ul>
+    </ol>
   </p>
   <h3>Pruned debate transcript</h3>
   <debate name="pruned"/>
@@ -421,17 +437,13 @@
     <p><ol>
       <li>List ways in which debate differs from existing human debates.</li>
       <li>Clarify Amanda's worry about reasons for belief vs. reasons for action.  Update: I have a better picture of this now.  Even if debate as a mathematical object or algorithm doesn't distinguish between these types of reasons or reasoning, <strong>humans</strong> might well make this distinction.  Thus, the social science side of the uncertainty may depend critically on this or other distinctions: people might be good as judges on epistemic reasoning but bad on moral reasoning, or vice versa, or similarly for some other dimension.  This is an important point: the mathematical structure may treat certain things the same, but once we introduce a particular kind of judge distinctions may become very important.</li>
-      <li>Have an interactive figure with a nontrivial debate tree: a bunch of branches that readers can explore.</li>
       <li>Amanda says the philosophical notion of “values” actually does correspond to what I want, not to what Rob MacCoun said.  Solution: be explicit about where we are getting our terminology from.</li>
       <li>Try to clarify the miscommunications from the conversation with Tino and Rob MacCoun.</li>
-      <li>From Dario: "a diagram of ML+ML+human debate as what we ultimately want to do, with an upward arrow to human+human+human debate because it's easy to do now, a bunch of iteration on human+human+human debate, and then eventual application back to ML+ML+human.  It's a slightly silly diagram but gets across a conceptual point that's made several times in the text and is a bit complicated/subtle."</li>
-      <li>Spell check.</li>
     </ol></p>
   </dtodo>
 
   <d-footnote-list></d-footnote-list>
   <d-citation-list></d-citation-list>
-
 </d-appendix>
 
 <d-bibliography src="references.bib"></d-bibliography>
