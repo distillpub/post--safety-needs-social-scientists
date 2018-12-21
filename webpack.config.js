@@ -155,9 +155,6 @@ module.exports = {
         match: /<(\/?)dtodo>/g,
         replacement: (_, slash) => slash ? '</div>' : '<div class="todo">'
       }, {
-        match: /<(red|blue|judge)\/>/gi,
-        replacement: (_, name) => '<span class="' + name.toLowerCase() + '" style="font-weight: bold">' + name + '</span>'
-      }, {
         match: /( *)<debate name="([^"]+)"\/>/g,
         replacement: (_, indent, name) => format_debate(indent, name)
       }]
