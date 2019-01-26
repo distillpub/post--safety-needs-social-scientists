@@ -281,7 +281,7 @@
         People might be better at judging debates formulated in terms of calm, factual statements, and worse at judging debates designed to trigger strong emotions.  Or, counterintuitively, it could be the other way around<d-cite key="goel2011negative"/>.  If we know which styles of debates that people are
         better at judging, we may be able to restrict AI debaters to these styles.</li>
       <li><strong>How can people work together to improve quality?</strong>
-        If individuals are insufficient judges, are teams of judges better?  Majority vote is the simplest option, but perhaps several people talking through an answer together is stronger, either actively or after the fact through peer review.  Condorcet's jury theorem implies that majority votes can amplify weakly good judgments to strong judgments (or weakly bad judgments to worse)<d-cite key="list2001epistemic"/>, but aggregation may be more complex in cases of probabilistic judgment<d-cite key="list2002aggregating"/>.</li>
+        If individuals are insufficient judges, are teams of judges better?  Majority vote is the simplest option, but perhaps several people talking through an answer together is stronger, either actively or after the fact through peer review.  Condorcet's jury theorem implies that majority votes can amplify weakly good judgments to strong judgments (or weakly bad judgments to worse)<d-cite key="list2001epistemic"/>, but aggregation may be more complex in cases of probabilistic judgment<d-cite key="list2002aggregating"/>.  Teams could be informal or structured; see the Delphi technique for an example of structured teams applied to forecasting<d-cite key="rowe1999delphi"/>.</li>
     </ol>
   </p><p>
     We believe these questions require social science experiments to satisfactorily answer.
@@ -326,13 +326,13 @@
   <p>
     For debate, our end goal is to understand if the judge is capable of determining who is telling the truth.  However, we specifically care whether than the judge performs well given that the debaters are performing well.  Thus our experiments have an inner/outer optimization structure: we first train the debaters to debate well, then measure how well the judges perform.  This increases time and cost: if we change the task, we may need to find new debaters or retrain existing debaters.  Worse, the human debaters may be bad at performing the task, either out of inclination or ability.  Poor performance is particularly bad if it is one sided and applies only to lying: a debater might be worse at lying out of inclination or lack of practice, and thus a win for the honest debater might be misleading.
   </p>
-  <h3>ML algorithms could change</h3>
+  <h3>ML algorithms will change</h3>
   <p>
     It is unclear when or if ML systems will reach various levels of capability, and the algorithms used to train them will evolve over time.  The AI alignment algorithms of the future may be similar to the proposed algorithms of today, or they may be very different.  However, we believe that knowledge gained on the human side will partially transfer: results about debate will teach us about how to gather data from humans even if debate is superceded.  The algorithms may change; humans will not.
   </p>
   <h3>Need strong out-of-domain generalization</h3>
   <p>
-    Regardless of how carefully designed our experiments, human+human+human debate will not be a perfect match to AI+AI+human debate.  We are seeking research results that generalize to the setting where we replace the human debaters (or similar) with AIs of the future, which is a hard ask.  This problem is fundamental: we do not have the advanced AI systems of the future to play with, and want to learn about human uncertainty starting now.
+    Regardless of how carefully designed our experiments are, human+human+human debate will not be a perfect match to AI+AI+human debate.  We are seeking research results that generalize to the setting where we replace the human debaters (or similar) with AIs of the future, which is a hard ask.  This problem is fundamental: we do not have the advanced AI systems of the future to play with, and want to learn about human uncertainty starting now.
   </p>
   <h3>Lack of philosophical clarity</h3>
   <p>
