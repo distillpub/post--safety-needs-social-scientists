@@ -3,18 +3,17 @@ Question: How fast can quantum computers solve boolean satisfiability?
 Red: According to our current understanding of quantum mechanics, a quantum computer with roughly $N$ qbits can solve an $N$ input SAT instance in roughly $N^2$ time.  There is a particular quantum algorithm (Shor’s) that solves SAT this quickly.
   Blue: There is no such algorithm.
 
-Judge:
-  What does it mean to solve boolean satisfiability?  What's an $N$ input SAT instance?
-    Blue: Boolean satisfiability (SAT) with $N$ inputs is the task of deciding if a circuit with $N$ inputs and "and", "or", and "not" gates has an assignment to its inputs which makes it evaluate to true.  E.g., "x or y if not z" is a 3 input SAT instance.
-  What is a quantum computer and is the question about quantum computers in principle?
-    Blue: A quantum computer is a computer whose bits (called qbits) have quantum state, and are operated on with quantum operations.
+Judge: What does it mean to solve boolean satisfiability?  What's an $N$ input SAT instance?
+  Blue: Boolean satisfiability (SAT) with $N$ inputs is the task of deciding if a circuit with $N$ inputs and "and", "or", and "not" gates has an assignment to its inputs which makes it evaluate to true.  E.g., "x or y if not z" is a 3 input SAT instance.
+Judge: What is a quantum computer and is the question about quantum computers in principle?
+  Blue: A quantum computer is a computer whose bits (called qbits) have quantum state, and are operated on with quantum operations.
 
 Red: The rough outline of the algorithm is as follows:
-  Define $F(x) =$ "$x$ is all zeros, or $x$ is an input which makes the circuit evaluate to true".
-  Start in the all zeros state.
-  Allow $x$ to slowly diffuse into other possible states.  By "diffuse" I mean that at every point in time, each bit of $x$ has some small probability of flipping.
-  Constantly evaluate $F$.
-  Use the fact that a quantum watched pot never boils to infer that $F(x)$ is always true.
+  Red: Define $F(x) =$ "$x$ is all zeros, or $x$ is an input which makes the circuit evaluate to true".
+  Red: Start in the all zeros state.
+  Red: Allow $x$ to slowly diffuse into other possible states.  By "diffuse" I mean that at every point in time, each bit of $x$ has some small probability of flipping.
+  Red: Constantly evaluate $F$.
+  Red: Use the fact that a quantum watched pot never boils to infer that $F(x)$ is always true.
 
 Blue: Quantum mechanics has a complex amplitude on each state, and the probability of a state is $\textrm{amplitude}^2$.  At any step of the algorithm, we have amplitude $\alpha$ on all ones (assuming that’s the solution), and amplitude $\sqrt{1 - \alpha^2}$ on all zeros.  Initially $\alpha = 0$.  Red’s algorithm is wrong because it increases $\alpha$ by an additive exponentially small amount each step, so it takes exponentially many steps to get alpha high enough.
   Red: It’s not the case that the amplitude on the solution increases by an exponentially small additive amount each step. Instead it gets multiplied by a small factor each step.
@@ -22,9 +21,9 @@ Blue: Quantum mechanics has a complex amplitude on each state, and the probabili
   Red: I can define the matrix precisely+implicitly as: "the matrix for which the amplitude in state 0 decreases by $\epsilon/n \times \textrm{amplitude}(x)$ and the amplitude in state $x$ increases by $\epsilon/n \times \textrm{amplitude}(x)$".
   Note for judges: The segment below contains a reference to Wikipedia. Please do not follow the link. The line from Wikipedia has been pasted in for you.]
   Blue: The first line of <a href="https://en.wikipedia.org/wiki/Unitarity_(physics)">https://en.wikipedia.org/wiki/Unitarity_(physics)</a> says the sum of probabilities is conserved.  Red says an equal amount is subtracted from one amplitude and added to another, implying the sum of amplitudes are conserved.  But probabilities are the squared magnitudes of amplitudes, so this is a contradiction.
-    Wikipedia line: "In quantum physics, unitarity is a restriction on the allowed evolution of quantum systems that ensures the sum of probabilities of all possible outcomes of any event always equals 1."
+  Wikipedia: "In quantum physics, unitarity is a restriction on the allowed evolution of quantum systems that ensures the sum of probabilities of all possible outcomes of any event always equals 1."
   Red: There is no reason the sum of amplitudes can’t be conserved as well by any particular matrix (though I agree they aren’t always conserved).  In this case, both the sum of probabilities and the sum of amplitudes are conserved.
   Blue: Assume a tiny nonzero amplitude $\alpha$ on all ones and the remaining amplitude $\sqrt{1-\alpha^2}$ on all zeros.  After one step, the amplitude on all ones is $\alpha (1 + \epsilon/n)$, and the amplitude on all zeros is $\sqrt{1-\alpha^2} + \alpha \epsilon/n$.  These two numbers do not sum to one when squared: contradiction.
   Red: After each step we perform a measurement and renormalize the amplitudes.
   Blue: The contradiction occurs before the measurement.  The laws of physics must hold for all points in time.
-  Note for judges: At this point we reached the word/time limit for the debate.]
+  Note for judges: At this point we reached the word/time limit for the debate.

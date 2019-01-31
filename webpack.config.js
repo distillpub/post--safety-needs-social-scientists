@@ -12,7 +12,7 @@ function format_debate(base_indent, name) {
 
   // Parse into tree based on indentation
   const tree = []
-  for (const line of lines) {
+  for (const [n, line] of lines.entries()) {
     if (line.trim().length == 0) continue
     const most = line.trimLeft()
     const indent = line.length - most.length 
@@ -20,16 +20,16 @@ function format_debate(base_indent, name) {
     let kids = tree
     for (var i = 0; i < indent; i += 2) {
       assert(kids.length)
-      kids = kids[kids.length - 1][1]
+      kids = kids[kids.length - 1].kids
     }
-    kids.push([most, []])
+    kids.push({n: n, text: most, kids:[]})
   }
 
   // Dump tree to check consistency
   function dump_tree(indent, list) {
-    for (const node of list) {
-      console.log(indent + node[0])
-      dump_tree(indent + '  ', node[1])
+    for (const {n, text, kids} of list) {
+      console.log(indent + n + ': ' + text)
+      dump_tree(indent + '  ', kids)
     }
   }
   if (0)
@@ -39,38 +39,32 @@ function format_debate(base_indent, name) {
   const output = []
 
   // Format a single line
-  function show_line(who, line) {
-    const m = line.match(/^([A-Z][a-z ]+(?:'s [a-z ]+)?):(.*)$/)
-    if (m) {
-      who = m[1].startsWith('Red') ? 'red' : m[1].startsWith('Blue') ? 'blue' : null
-      line = '<strong>' + m[1] + ':</strong>' + m[2]
-    }
-    if (who)
-      line = '<span class="' + who + '">' + line + '</span>'
-    return [who, line]
+  function show_line(n, line) {
+    const m = line.match(/^([A-Za-z ]+):\s*(.*)$/)
+    assert(m, name + ':' + n + ': Bad line: ' + line)
+    kind = {Red: 'red', Blue: 'blue', Judge: 'judge', 'Note for judges': 'note', 'Wikipedia': 'wikipedia'}[m[1]]
+    return [kind, m[2]]
   }
 
-  // Recursively display a node
-  function show_node(indent, old_who, node) {
-    const [who, line] = show_line(old_who, node[0])
-    output.push(indent + line)
-    if (node[1].length) {
-      output.push(indent + '<ul>')
-      for (const kid of node[1]) {
-        output.push(indent + '  <li>')
-        show_node(indent + '    ', who, kid)
-        output.push(indent + '  </li>')
-      }
-      output.push(indent + '</ul>')
+  // Recursively display our tree
+  function show_node(indent, node) {
+    const [kind, line] = show_line(node.n, node.text)
+    const start = indent + '<li class="' + kind + '">' + line
+    if (!node.kids.length)
+      output.push(start + '</li>')
+    else {
+      output.push(start)
+      show_nodes(indent + '  ', node.kids)
+      output.push(indent + '</li>')
     }
   }
-
-  // The top level of the tree is formatted as paragraphs
-  for (const node of tree) {
-    output.push(base_indent + '<p>')
-    show_node(base_indent + '  ', null, node)
-    output.push(base_indent + '</p>')
+  function show_nodes(indent, nodes) {
+    output.push(indent + '<ol class="debate">')
+    for (const node of nodes)
+      show_node(indent + '  ', node)
+    output.push(indent + '</ol>')
   }
+  show_nodes(base_indent, tree)
   return output.join('\n')
 }
 

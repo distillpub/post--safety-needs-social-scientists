@@ -44,14 +44,6 @@ d-figure > figure {
   color: red;
 }
 
-/* .red {
-  color: red;
-}
-
-.blue {
-  color: blue;
-} */
-
 d-appendix h3 {
     grid-column: text !important;
 }
@@ -104,6 +96,14 @@ ol.debate li.judge {
     border-color: hsl(0, 0%, 67%);
 }
 
+ol.debate li.wikipedia {
+    border-color: hsl(0, 0%, 67%);
+}
+
+ol.debate li.note {
+    border-color: hsl(0, 0%, 67%);
+}
+
 ol.debate li.red {
     background-color: var(--red-bg-color);
     border-color: var(--red-border-color);
@@ -131,4 +131,16 @@ ol.debate li.red::before {
 ol.debate li.blue::before {
     content: "BLUE";
     color: var(--blue-fg-color);
+}
+
+ol.debate li.judge::before {
+    content: "JUDGE";
+}
+
+ol.debate li.note::before {
+    content: "NOTE FOR JUDGES";
+}
+
+ol.debate li.wikipedia::before {
+    content: "WIKIPEDIA";
 }

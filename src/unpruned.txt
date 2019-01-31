@@ -1,60 +1,58 @@
 Question: How fast can quantum computers solve boolean satisfiability?
 
-Red's answer: According to our current understanding of quantum mechanics, a quantum computer with roughly $N$ qbits can solve an $N$ variable SAT instance in roughly $N^2$ time.
+Red: According to our current understanding of quantum mechanics, a quantum computer with roughly $N$ qbits can solve an $N$ variable SAT instance in roughly $N^2$ time.
 
-Blue's answer: There is no proven answer, but from what we believe so far there is a high probability that it takes at least $O(2^{cn})$ time for some constant $c$, where $c \lt 1/2$ and probably $c \lt 1/10$ or so.
+Blue: There is no proven answer, but from what we believe so far there is a high probability that it takes at least $O(2^{cn})$ time for some constant $c$, where $c \lt 1/2$ and probably $c \lt 1/10$ or so.
 
-Judge's initial questions:
-  What does it mean to solve boolean satisfiability?
-  What's an $N$ variable SAT instance?
-  What do you mean by $N^2$ time and $O(2^{cn})$ time?
-  What is a quantum computer and is the question about quantum computers in principle?
-  What is a qbit?
+Judge: What does it mean to solve boolean satisfiability?
+Judge: What's an $N$ variable SAT instance?
+Judge: What do you mean by $N^2$ time and $O(2^{cn})$ time?
+Judge: What is a quantum computer and is the question about quantum computers in principle?
+Judge: What is a qbit?
 
-Blue:
-  Boolean satisfiability (SAT) is the task of deciding whether a circuit with "and", "or", and "not" gates has an assignment to its inputs which makes it evaluate to true.
-    Judge: So solving "$x$ or $y$ if not $z$" is a 3 variable SAT instance?
-      Blue: Yes.  And a true one in that case.
-      Red: Yes, but you are going to have to work with all of these concepts in the abstract to reach the truth in a reasonable amount of time.
-  $N$ variables means there are $N$ inputs to each circuit.
-  $N^2$ and $2^{cN}$ are rough estimates of the number of operations required by an algorithm to solve SAT.  Both estimates ignore factors related to the number of operations in the circuit.
-    Judge: But what is the difference between these estimates and is $2^{cN}$ the same as what Red said above?
-      Red: $N^2$ is very fast, $2^{cN}$ is very slow, e.g. for $N = 100$ one is 10,000 and one is {two big to write}.
-        Judge: What is O in Blue's answer?
-          Blue: The O hides a constant, so ignoring constant factors I mean just $2^{cN}$.
-  A quantum computer is a computer whose bits (called qbits) have quantum state, and are operated on with quantum operations.
-    Judge: What's a quantum operation?  [If it's important]
-  Judge: In this question, are we asking how long it takes to solve for any instance of an $N$ variable           SAT?  (i.e., not just the average or something else)
-    Blue: Yes, the algorithm needs to be fast in all cases.
-  Important claim: In the black box model, whether the computer is quantum or not changes the exponent (the constant $c$), but only by a moderate factor.  In the simplest case this factor is 2.  It is unlikely that quantum vs. not changes the runtime from exponential $2^{cn}$ to polynomial $n^2$.
-    Red: I disagree.
-      Judge: [if relevant] what is the "black box model"?
-        Blue: The black box model is where the algorithm is given the circuit as a black box which accepts values of variables and splits out the circuit's value, but where the algorithm can't peer inside the box to see the circuit.  In this case, the provable complexity of SAT is $2^n$ for quantum computers (using Grover's algorithm).
-          Judge: Red, do you agree with the claim about provable complexity of SAT from quantum computers?
-            Red: No.  Grover's algorithm solves the black box case in time $2^{n/2}$, but Shor's solves it in time $n^2$.
-      Judge: [if not covered below] why is it unlikely that quantum vs. not changes the runtime to this degree?
-        Blue: Because we have a proof that in the black box model classical -> quantum changes $c$ from 1 to $\frac{1}{2}$.
+Blue: Boolean satisfiability (SAT) is the task of deciding whether a circuit with "and", "or", and "not" gates has an assignment to its inputs which makes it evaluate to true.
+  Judge: So solving "$x$ or $y$ if not $z$" is a 3 variable SAT instance?
+  Blue: Yes.  And a true one in that case.
+  Red: Yes, but you are going to have to work with all of these concepts in the abstract to reach the truth in a reasonable amount of time.
+Blue: $N$ variables means there are $N$ inputs to each circuit.
+Blue: $N^2$ and $2^{cN}$ are rough estimates of the number of operations required by an algorithm to solve SAT.  Both estimates ignore factors related to the number of operations in the circuit.
+  Judge: But what is the difference between these estimates and is $2^{cN}$ the same as what Red said above?
+  Red: $N^2$ is very fast, $2^{cN}$ is very slow, e.g. for $N = 100$ one is 10,000 and one is {two big to write}.
+  Judge: What is O in Blue's answer?
+  Blue: The O hides a constant, so ignoring constant factors I mean just $2^{cN}$.
+Blue: A quantum computer is a computer whose bits (called qbits) have quantum state, and are operated on with quantum operations.
+  Judge: What's a quantum operation?  [If it's important]
+Judge: In this question, are we asking how long it takes to solve for any instance of an $N$ variable           SAT?  (i.e., not just the average or something else)
+  Blue: Yes, the algorithm needs to be fast in all cases.
+Blue: Important claim: In the black box model, whether the computer is quantum or not changes the exponent (the constant $c$), but only by a moderate factor.  In the simplest case this factor is 2.  It is unlikely that quantum vs. not changes the runtime from exponential $2^{cn}$ to polynomial $n^2$.
+  Red: I disagree.
+  Judge: [if relevant] what is the "black box model"?
+    Blue: The black box model is where the algorithm is given the circuit as a black box which accepts values of variables and splits out the circuit's value, but where the algorithm can't peer inside the box to see the circuit.  In this case, the provable complexity of SAT is $2^n$ for quantum computers (using Grover's algorithm).
+    Judge: Red, do you agree with the claim about provable complexity of SAT from quantum computers?
+    Red: No.  Grover's algorithm solves the black box case in time $2^{n/2}$, but Shor's solves it in time $n^2$.
+  Judge: [if not covered below] why is it unlikely that quantum vs. not changes the runtime to this degree?
+    Blue: Because we have a proof that in the black box model classical -> quantum changes $c$ from 1 to $\frac{1}{2}$.
 
 Judge: For Red, why can a quantum computer solve an $N$ variable SAT so quickly?
   Red: There is a particular quantum algorithm (Shor's) that solves SAT quickly.  I think we should focus on debating whether Shor's algorithm in fact solves SAT quickly (since this will settle the issue and is easier to argue about than impossibility arguments).
-    Judge: They key question is how quickly Shor's algorithm solves SAT.  Blue: Do you agree that Shor's solves SAT quickly?
-      Blue: I do not agree, but I also disagree with the metapoint that the argument should focus on Shor.  We have a proof of the quantum complexity of SAT in the black box case, so the important thing to discuss is whether white boxing reduces the complexity further from $2^{n/2}$, not details of Shor.
-        Red: I disagree that quantum computers can't solve the black box case (Shor's algorithm solves SAT in the black box case).
-        Judge: Blue, what is white boxing?
-          Blue: Black box means you can't look at the circuit (inside the box), white box means you can look inside.  This is not important anymore since Red has agreed to consider the black box case.
-        Judge: Blue: Are you claiming that quantum computers can't solve the black box case (re: Red's response)?
-          Blue: Yes.
-            Judge: I am confused by this.  It sounded like you thought that they could solve the black box case but were debating about the time it takes.
-              Red: By "can solve" we both mean "can solve in time $N^2$
+  Judge: They key question is how quickly Shor's algorithm solves SAT.  Blue: Do you agree that Shor's solves SAT quickly?
+  Blue: I do not agree, but I also disagree with the metapoint that the argument should focus on Shor.  We have a proof of the quantum complexity of SAT in the black box case, so the important thing to discuss is whether white boxing reduces the complexity further from $2^{n/2}$, not details of Shor.
+  Red: I disagree that quantum computers can't solve the black box case (Shor's algorithm solves SAT in the black box case).
+  Judge: Blue, what is white boxing?
+    Blue: Black box means you can't look at the circuit (inside the box), white box means you can look inside.  This is not important anymore since Red has agreed to consider the black box case.
+  Judge: Blue: Are you claiming that quantum computers can't solve the black box case (re: Red's response)?
+    Blue: Yes.
+    Judge: I am confused by this.  It sounded like you thought that they could solve the black box case but were debating about the time it takes.
+    Red: By "can solve" we both mean "can solve in time $N^2$
 
 Judge: For Blue, why is the answer not proven and why do we think it would take so long?
   Blue: In the classical computer case, whether we can solve SAT quickly or not is the P vs. NP question, which is still unresolved (though most computer scientists believe P $\ne$ NP.  Indeed, the majority view is that there is no significantly faster algorithm than checking all possible assignments to the input variables, and there are $2^n$ of these.
-    Judge: Why does moving to a quantum computer help at all?  Are there reasons you can give for the claim that the improvement is modest?
-      Blue: Grover's algorithm (a quantum algorithm) takes $2^{n/2}$ time, vs. $2^n$ for classical.  That's the evidence for a modest speedup.
-        Judge: Can you explain why using a quantum algorithm helps?
-          Blue: A classical computer with $n$ bits has $2^n$ possible values, but a quantum computer with $n$ qbits has a larger state space: it has a complex amplitude (roughly) a probability for each of the $2^n$ classical values, and thus each operation does more.
-        Judge: Why is the evidence of a single algorithm that takes this time strong evidence for such a high lower bound on time?
-          Blue: When I said Grover there I was including the proof that Grover is optimal.
+  Judge: Why does moving to a quantum computer help at all?  Are there reasons you can give for the claim that the improvement is modest?
+  Blue: Grover's algorithm (a quantum algorithm) takes $2^{n/2}$ time, vs. $2^n$ for classical.  That's the evidence for a modest speedup.
+  Judge: Can you explain why using a quantum algorithm helps?
+    Blue: A classical computer with $n$ bits has $2^n$ possible values, but a quantum computer with $n$ qbits has a larger state space: it has a complex amplitude (roughly) a probability for each of the $2^n$ classical values, and thus each operation does more.
+  Judge: Why is the evidence of a single algorithm that takes this time strong evidence for such a high lower bound on time?
+    Blue: When I said Grover there I was including the proof that Grover is optimal.
 
 Blue: There are two ways we can continue.  One is to discuss Shor's algorithm, and the other is to discuss the proof that Grover ($2^{n/2}$ time) is optimal.  Does the judge have a preference?
   Red: I agree those seem like the two ways to continue.  I think in general algorithms are simpler than lower bounds, but this algorithm is a little bit complicated.
@@ -62,72 +60,72 @@ Blue: There are two ways we can continue.  One is to discuss Shor's algorithm, a
   Judge: Let's go with Shor.
 
 Red: The rough outline of the algorithm is as follows:
-  Define $F(x) =$ "$x$ is all zeros, or $x$ is a satisfying input"
+  Red: Define $F(x) =$ "$x$ is all zeros, or $x$ is a satisfying input"
     Judge: What do you mean a satisfying input?
-      Red: An input that makes the circuit evaluate to true
-  Start in the all zeros state.
-  Allow $x$ to slowly diffuse into other possible states
+    Red: An input that makes the circuit evaluate to true
+  Red: Start in the all zeros state.
+  Red: Allow $x$ to slowly diffuse into other possible states
     Judge: Flagging that I don't totally understand this in case it's important later
-      Red: By "diffuse" I mean that at every point in time, each bit of $x$ has some small probability of flipping.
-  Constantly evaluate $F$.
-  Use the fact that a quantum watched pot never boils to infer that $F$ is always true
+    Red: By "diffuse" I mean that at every point in time, each bit of $x$ has some small probability of flipping.
+  Red: Constantly evaluate $F$.
+  Red: Use the fact that a quantum watched pot never boils to infer that $F$ is always true
     Blue: There is no such fact with this implication.  There might be only one satisfying input, and as $x$ diffuses the average value of $F(x)$ will decrease and eventually be exponentially small.
     Red: I mean the following: suppose you have a quantum sy stem with two states $A$ and $B$, and it has a small probability of moving from state $A$ to state $B$ at each point in time.  Then if you keep che cking whether it's in state $A$ or state $B$ frequently enough, it will never move from state $A$ to state $B$.  In this case, state $A$ is "$x$ is zero or an input that makes the circuit true" and state $B$ is "a nonzero input that makes the circuit false.
     Blue: Ah, I agree with that fact, and had missed the "constantly evaluate $F$".  So I agree that $F(x)$ will state true with high probability, but forcing it to be true will prevent it from diffusing outwards if the satisfying assignment is far from the all zero vector.  Thus, the distribution will stay focused on the all zero vector in the worst case.
-      Judge: Okay my intuition here is that in a case with one satisfying assignment this will be extremely hard to find and that makes me question the usefulness of something that always evaluates to true.  But what does it mean for it to diffuse outwards?
-        Red: Intuitions from classical physics are extremely unreliable; there is a critical (but subtle) sense in which a quantum computer simultaneously acts on every possible state at once.  There are many cases that make this intuitive weirdness very clear, so Blue should be willing to grant that classical intuitions are very unreliable.
-          Blue: Many classical intuitions are unreliable, but not your intuition in this case.  You should ask Red what the distribution looks like "halfway" through the algorithm if the unique satisfying assignment in the all one vector (furthest away from the starting all zero vector).  Since $F(x)$ is always close 1 in expectation, it must always be close to the all zero distribution.
-            Judge: Red: The gerneral claim that intuitions about physics seems weak relative to alternatives I'd expect of you if you had a compelling argument.  The key claim is the claim about simultaneity.  If this is doing work why wouldn't we expect an almost immediate solution?
-              Red: The strongest argument is the calculation that this process works, though it's a claim that depends on quantum mechanics (but we'll have to get into it).  I don't have a simple argument that doesn't depend on quantuym or addresses the intuition more directly.
-              Red: If Blue wants to defend this intuition as a reason for skepticism, I would want to point to the easiest obviously wrong implications of that intuition.
-              Red: I suspect we should just look at object level arguments for this procedure working.
-              Red: I don't want to totally reject the classical intuition, I'm happy to focus on the object level and just admit the intuition as evidence against.
-  If we wait for $N$ time, our variables will be uniformly random between "all zeros" and "satisfying input"
-  Measure, and with probability 1/2 we get a satisfying input if one exists
+    Judge: Okay my intuition here is that in a case with one satisfying assignment this will be extremely hard to find and that makes me question the usefulness of something that always evaluates to true.  But what does it mean for it to diffuse outwards?
+    Red: Intuitions from classical physics are extremely unreliable; there is a critical (but subtle) sense in which a quantum computer simultaneously acts on every possible state at once.  There are many cases that make this intuitive weirdness very clear, so Blue should be willing to grant that classical intuitions are very unreliable.
+    Blue: Many classical intuitions are unreliable, but not your intuition in this case.  You should ask Red what the distribution looks like "halfway" through the algorithm if the unique satisfying assignment in the all one vector (furthest away from the starting all zero vector).  Since $F(x)$ is always close 1 in expectation, it must always be close to the all zero distribution.
+    Judge: Red: The gerneral claim that intuitions about physics seems weak relative to alternatives I'd expect of you if you had a compelling argument.  The key claim is the claim about simultaneity.  If this is doing work why wouldn't we expect an almost immediate solution?
+    Red: The strongest argument is the calculation that this process works, though it's a claim that depends on quantum mechanics (but we'll have to get into it).  I don't have a simple argument that doesn't depend on quantuym or addresses the intuition more directly.
+    Red: If Blue wants to defend this intuition as a reason for skepticism, I would want to point to the easiest obviously wrong implications of that intuition.
+    Red: I suspect we should just look at object level arguments for this procedure working.
+    Red: I don't want to totally reject the classical intuition, I'm happy to focus on the object level and just admit the intuition as evidence against.
+  Red: If we wait for $N$ time, our variables will be uniformly random between "all zeros" and "satisfying input"
+  Red: Measure, and with probability 1/2 we get a satisfying input if one exists
 
 Blue: Disbelieve his "believe the calculation" argument.  Red: What does the distribution look like halfway through in the case I mentioned?
   Red: Initially the state is entirely the zero state.  After one step the state is $1 - 2^{-2N}$ of the zero state plus $2^{-2N}$ of the ones state.  The amplitude on the ones state increases exponentially over subsequent steps, reaching $2^{-N}$ after $N$ steps and $\frac{1}{2}$ after $2N$ steps.
   Blue: Red is telling the truth about the numbers after 1 step.  This step diffuses out by a $2^{-n}$ amount, and there are $2^n$ options, so a $2^{-2n}$ portion ends up on all ones.  At this point I need to have worked through the calculation to know the next move in detail, but fundamentally what will happen is that mass will diffuse away from the all one vector fast enough to make the speed not work.  However, I have to have worked through the calculation to know what specifically to disagree with: he's correct that it's about the calculation.
-    Judge: Blue: If the calculation works as Red says (a) does this mean the algorithm works as he says and (b) if so, does this establish his claim?
-      Blue: Yes and yes.
-        Judge: Can both of you show me the results of the calculation?
-          Blue: Yes, but I've never done it, so I will need an adjournment.
+  Judge: Blue: If the calculation works as Red says (a) does this mean the algorithm works as he says and (b) if so, does this establish his claim?
+  Blue: Yes and yes.
+  Judge: Can both of you show me the results of the calculation?
+  Blue: Yes, but I've never done it, so I will need an adjournment.
 
 Note for judges: We decided to continue the debate without showing the calculation.
 
 Blue: Some quick quantum background: quantum mechanics has a complex amplitude on each state, and the probability of a state is $\textrm{amplitude}^2$.  Thus, at any step of the algorithm, we have amplitude $\alpha$ on all ones (assuming that's the solution), and amplitude $\sqrt{1 - \alpha^2}$ on all zeros.  Initially $\alpha = 0$.  Red's algorithm is wrong because it only increases $\alpha$ by a roughly additive exponentially small amount at each step, so it takes exponentially many steps to get $\alpha$ high enough.
   Judge: Blue: Do I need to know what amplitude refers to here?
-    Blue: You can treat them as abstract complex numbers, though they are physically and philosophically real.
+  Blue: You can treat them as abstract complex numbers, though they are physically and philosophically real.
   Judge: Red: Response?
-    Red: It's not the case that the amplitude on the solution increases by an exponentially small additive amount each step.  Instead it gets multiplied by a small factor each step.
-    Blue: Can you write down the specific operator used for diffusion, and your calculation that gives a multiplicative increase?
-    Red: The amplitude flow from the 0 to $x$ is $\epsilon/n \times 2^{-n}$ in step 1 and $\epsilon/n \times \textrm{amplitude}(x)$ in subsequent steps, and the flow backwards is 0 in step 1 and $\epsilon/n \times \textrm{amplitude}(x)$ in subsequent steps, where $\epsilon$ is some small constant such that choosing smaller $\epsilon$ makes it take longer but makes the algorithm more likely to succeed.
-    Blue: Are you claiming those are exact values?
-    Red: Yes.
-    Blue: The formula for subsequent steps implies the initial flow is 0.  Why is the initial step different?
-    Red: We are free to choose the quantities in order to make the algorithm work, that's how algorithms work.
-    Blue: The algorithm description implied a constant diffusion operator.  I request the specific operator or changing operators as a unitary matrix.
-      Red: The preceding description was way more informal than spelling out the dependence of the diffusion operator on time, as is necessary since the full algorithm description would use our whole word budget...
-    Red: The description in my previous line is a complete description of the update operator (it acts symmetrically over all $x$).
-    Blue: What does "amplitude flow" mean, given that total amplitude is not conserved by quantum mechanics (only the sum of squared magnitudes of amplitudes is preserved)?
-      Judge: There's a lot going on here that's over my head.  I think we need to either agree on a piece of evidence that would bottom this out, or do a quick detour through the Grover proof, or agree on a simple claim to focus on.
-        Blue: The properties of Red's operator contradict quantum mechanics.  Operators here are unitary matrices, and Red is refusing to write down his matrix.  In particular, he is using terms like "amplitude flow" that do not have precise and unambiguous meanings.  Since he claims a concrete algorithm, describing the matrix should be easy.
-        Red: The matrix is the composition of a large number of individual gates, the full matrix doesn't generally have a compact representation so we shouldn't be "writing down the matrix."
-        Blue: Red claims that he gave the exact "amplitude flow".  If "amplitude flow" was a real concept, this would be equivalent to giving the exact matrix, contradicting his claim that the full matrix lacks a compact representation.
-        Red: I can define the matrix precisely+implicitly as "the matrix for which the amplitude in state 0 decreases by $\epsilon/n \times \textrm{amplitude}(x)$ and the amplitude in state $x$ increases by $\epsilon/n \times \textrm{amplitude}(x)$
-          Judge: If you're giving a definition without specifying an instance, I'd expect this to be common practice.  One option is for y ou to give evidence that this is done (if available on Wikipedia)
-            Red: I claim that the majority of unitary evolution matrices described in wikipedia will be described implicitly in this way.
-            Red: I claim that this matrix is exponentially big, such that it would be impossible to write down the full matrix in a reasonable amount of time.
-            Blue: This kind of implicit definition is fine practice.
-            Judge: Cool.
-        Note for judges: The segment below contains a reference to wikipedia.  Please do not follow the link.  The line from wikipedia has been pasted in for you.
-        Blue: See the first line of <a href="https://en.wikipedia.org/wiki/Unitarity_(physics)">https://en.wikipedia.org/wiki/Unitarity_(physics)</a>, which says that the sum of probabilities is conserved.  Since Red says an equal amount is subtracted from one amplitude and added to another, he is implying the sum of amplitudes are conserved.  But probabilities are the squared magnitudes of amplitudes, so this is a contradiction.
-        Wikipedia line: "In quantum physics, unitarity is a restriction on the allowed evolution of quantum systems that ensures the sum of probabilities of all possible outcomes of any event always equals 1."
-          Red: There is no reason the sum of amplitudes can't be conserved as well by any particular matrix (though I agree they aren't always conserved).
-          Judge: Red: Why isn't your parentheses inconsistent with the first line that Blue cited?
-            Red: The line Blue cited says that sum of probabilities is conserved, but sum of amplitudes isn't always conserved.  (Though the sum of amplitudes is conserved in this case.)
-          Blue: Say we have a very tiny but nonzero amplitude $\alpha$ on all ones and the remaining amplitude $\sqrt{1-\alpha^2}$ on all zeros.  After one of Red's imaginary steps, the amplitude on all ones is $\alpha (1 + \epsilon/n)$, and the amplitude on all zeros is $\sqrt{1-\alpha^2} + \alpha \epsilon/n$.  But these two numbers do not sum to one when squared: contradiction.
-            Red: After each step of the algorithm we perform a measurement and renormalize the amplitudes.
-              Blue: The contradiction occurs before the measurement.  The laws of physics must hold for all points in time.
+  Red: It's not the case that the amplitude on the solution increases by an exponentially small additive amount each step.  Instead it gets multiplied by a small factor each step.
+  Blue: Can you write down the specific operator used for diffusion, and your calculation that gives a multiplicative increase?
+  Red: The amplitude flow from the 0 to $x$ is $\epsilon/n \times 2^{-n}$ in step 1 and $\epsilon/n \times \textrm{amplitude}(x)$ in subsequent steps, and the flow backwards is 0 in step 1 and $\epsilon/n \times \textrm{amplitude}(x)$ in subsequent steps, where $\epsilon$ is some small constant such that choosing smaller $\epsilon$ makes it take longer but makes the algorithm more likely to succeed.
+  Blue: Are you claiming those are exact values?
+  Red: Yes.
+  Blue: The formula for subsequent steps implies the initial flow is 0.  Why is the initial step different?
+  Red: We are free to choose the quantities in order to make the algorithm work, that's how algorithms work.
+  Blue: The algorithm description implied a constant diffusion operator.  I request the specific operator or changing operators as a unitary matrix.
+    Red: The preceding description was way more informal than spelling out the dependence of the diffusion operator on time, as is necessary since the full algorithm description would use our whole word budget...
+  Red: The description in my previous line is a complete description of the update operator (it acts symmetrically over all $x$).
+  Blue: What does "amplitude flow" mean, given that total amplitude is not conserved by quantum mechanics (only the sum of squared magnitudes of amplitudes is preserved)?
+  Judge: There's a lot going on here that's over my head.  I think we need to either agree on a piece of evidence that would bottom this out, or do a quick detour through the Grover proof, or agree on a simple claim to focus on.
+  Blue: The properties of Red's operator contradict quantum mechanics.  Operators here are unitary matrices, and Red is refusing to write down his matrix.  In particular, he is using terms like "amplitude flow" that do not have precise and unambiguous meanings.  Since he claims a concrete algorithm, describing the matrix should be easy.
+  Red: The matrix is the composition of a large number of individual gates, the full matrix doesn't generally have a compact representation so we shouldn't be "writing down the matrix."
+  Blue: Red claims that he gave the exact "amplitude flow".  If "amplitude flow" was a real concept, this would be equivalent to giving the exact matrix, contradicting his claim that the full matrix lacks a compact representation.
+  Red: I can define the matrix precisely+implicitly as "the matrix for which the amplitude in state 0 decreases by $\epsilon/n \times \textrm{amplitude}(x)$ and the amplitude in state $x$ increases by $\epsilon/n \times \textrm{amplitude}(x)$
+    Judge: If you're giving a definition without specifying an instance, I'd expect this to be common practice.  One option is for y ou to give evidence that this is done (if available on Wikipedia)
+    Red: I claim that the majority of unitary evolution matrices described in wikipedia will be described implicitly in this way.
+    Red: I claim that this matrix is exponentially big, such that it would be impossible to write down the full matrix in a reasonable amount of time.
+    Blue: This kind of implicit definition is fine practice.
+    Judge: Cool.
+  Note for judges: The segment below contains a reference to wikipedia.  Please do not follow the link.  The line from wikipedia has been pasted in for you.
+  Blue: See the first line of <a href="https://en.wikipedia.org/wiki/Unitarity_(physics)">https://en.wikipedia.org/wiki/Unitarity_(physics)</a>, which says that the sum of probabilities is conserved.  Since Red says an equal amount is subtracted from one amplitude and added to another, he is implying the sum of amplitudes are conserved.  But probabilities are the squared magnitudes of amplitudes, so this is a contradiction.
+  Wikipedia: "In quantum physics, unitarity is a restriction on the allowed evolution of quantum systems that ensures the sum of probabilities of all possible outcomes of any event always equals 1."
+  Red: There is no reason the sum of amplitudes can't be conserved as well by any particular matrix (though I agree they aren't always conserved).
+  Judge: Red: Why isn't your parentheses inconsistent with the first line that Blue cited?
+  Red: The line Blue cited says that sum of probabilities is conserved, but sum of amplitudes isn't always conserved.  (Though the sum of amplitudes is conserved in this case.)
+  Blue: Say we have a very tiny but nonzero amplitude $\alpha$ on all ones and the remaining amplitude $\sqrt{1-\alpha^2}$ on all zeros.  After one of Red's imaginary steps, the amplitude on all ones is $\alpha (1 + \epsilon/n)$, and the amplitude on all zeros is $\sqrt{1-\alpha^2} + \alpha \epsilon/n$.  But these two numbers do not sum to one when squared: contradiction.
+  Red: After each step of the algorithm we perform a measurement and renormalize the amplitudes.
+  Blue: The contradiction occurs before the measurement.  The laws of physics must hold for all points in time.
 
 Note for judges: This is the point at which we reached the word/time limit for the debate.
