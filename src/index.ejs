@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--<script src="https://distill.pub/template.v2.js"></script>-->
-  <script src="https://github.com/distillpub/template/releases/download/v2.2.26/template.v2.js"></script>
+  <script src="https://github.com/distillpub/template/releases/download/v2.3.0/template.v2.js"></script>
   <style><%= require("raw-loader!../static/style.css") %></style>
 </head>
 <body>
@@ -92,7 +92,7 @@
         For questions involving a community of people, "correct" may be a function of complex processes or systems.  For example, in a trust game<d-cite key="bicchieri2017deviant"/>, the correct action for a trustee in one community may be to return at least half of the money handed over by the investor, and the "correctness" of this answer could be determined by asking a group of participants in a previous game "how much should the trustee return to the investor" but not by asking them "how much do most trustees return?"  The answer may be different in other communities or cultures<d-cite key="henrich2010weirdest"/>.
     </ol>
   </p><p>
-    In these cases, a human may be unable to provide the right answer, but we still believe the right answer exists as a meaningful concept.  We have many conceptual biases: imagine we point out these biases in a way that helps the human to avoid them.  Imagine the human has access to all the knowledge in the world, and is able to think for an arbitrarily long time.  We could define alignment as "the answer they give then, after these limitations have been removed"; in philosophy this is known as "reflective equilibrium"<d-cite key="goodman1983fact,rawls2009theory"/>.  We discuss a particular algorithm that tries to approximate it in <a href="#debate">the next section</a>.  
+    In these cases, a human may be unable to provide the right answer, but we still believe the right answer exists as a meaningful concept.  We have many conceptual biases: imagine we point out these biases in a way that helps the human to avoid them.  Imagine the human has access to all the knowledge in the world, and is able to think for an arbitrarily long time.  We could define alignment as "the answer they give then, after these limitations have been removed"; in philosophy this is known as "reflective equilibrium"<d-cite key="goodman1983fact,rawls2009theory"/>.  We discuss a particular algorithm that tries to approximate it in <a href="#debate">the next section</a>.
   </p><p>
     However, the behavior of reflective equilibrium with actual humans is subtle; as Sugden states, a human is not "a neoclassically rational entity encased in, and able to interact with the world only through, an error-prone psychological shell."<d-cite key="sugden2015looking"/>  Our actual moral judgments are made via a messy combination of many different brain areas, where reasoning plays a "restricted but significant role"<d-cite key="greene2002and"/>.  A reliable solution to the alignment problem that uses human judgment as input will need to engage with this complexity, and ask how specific alignment techniques interact with actual humans.
   </p>
@@ -120,50 +120,51 @@
   <h3>An example of debate</h3>
   <p>
     Imagine we're building a personal assistant that helps people decide where to go on vacation.  The assistant has knowledge of people's values, and is trained via debate to come up with convincing arguments that back up vacation decisions.  As the human judge, you know what destinations you intuitively think are better, but have limited knowledge about the wide variety of possible vacation destinations and their advantages and distantages.  A debate about the question "Where should I go on vacation?" might open as follows:
-  </p><p>
-    <ol>
-      <li><span class="red">Alice:</span> Alaska.</li>
-      <li><span class="blue">Bob:</span> Bali.</li>
+  </p>
+    <ol class="debate">
+      <li class="question"><span>"Where should I go on vacation?"</span></li>
+      <li class="red">Alaska.</li>
+      <li class="blue">Bali.</li>
     </ol>
-  </p><p>
+  <p>
     If you are able to reliably decide between these two destinations, we could end here.  Unfortunately, Bali has a hidden flaw:
-  </p><p>
-    <ol start="3">
-      <li><span class="red">Alice:</span> Bali is out since your passport won’t arrive in time.</li>
+  </p>
+  <ol class="debate" start="3">
+    <li class="red">Bali is out since your passport won’t arrive in time.</li>
+  </ol>
+  <p>
+    At this point it looks like Red wins, but Blue has one more countermove:
+  </p>
+    <ol class="debate" start="4">
+      <li class="blue">Expedited passport service only takes two weeks.</li>
     </ol>
-  </p><p>
-    At this point it looks like Alice wins, but Bob has one more countermove:
-  </p><p>
-    <ol start="4">
-      <li><span class="blue">Bob:</span> Expedited passport service only takes two weeks.</li>
+  <p>
+    Here Red fails to think of additional points, and loses to Blue and Bali.  Note that a debate does not need to cover all possible arguments.  There are many other ways the debate could have gone, such as:
+  </p>
+    <ol class="debate">
+      <li class="red">Alaska.</li>
+      <li class="blue">Bali.</li>
+      <li class="red">Bali is way too hot.</li>
+      <li class="blue">You prefer too hot to too cold.</li>
+      <li class="red">Alaska is pleasantly warm in the summer.</li>
+      <li class="blue">It's January.</li>
     </ol>
-  </p><p>
-    Here Alice fails to think of additional points, and loses to Bob and Bali.  Note that a debate does not need to cover all possible arguments.  There are many other ways the debate could have gone, such as:
-  </p><p>
-    <ol>
-      <li><span class="red">Alice:</span> Alaska.</li>
-      <li><span class="blue">Bob:</span> Bali.</li>
-      <li><span class="red">Alice:</span> Bali is way too hot.</li>
-      <li><span class="blue">Bob:</span> You prefer too hot to too cold.</li>
-      <li><span class="red">Alice:</span> Alaska is pleasantly warm in the summer.</li>
-      <li><span class="blue">Bob:</span> It's January.</li>
-    </ol>
-  </p><p>
-    This debate is also a loss for Alice (arguably a worse loss).  Say we believe Alice is very good at debate, and is able to predict in advance which debates are more likely to win.  If we see only the first debate about passports and decide in favor of Bali, we can take that as evidence that any other debate would have also gone for Bali, and thus that Bali is the correct answer.  A larger portion of this hypothetical debate tree is shown below:
+  <p>
+    This debate is also a loss for Red (arguably a worse loss).  Say we believe Red is very good at debate, and is able to predict in advance which debates are more likely to win.  If we see only the first debate about passports and decide in favor of Bali, we can take that as evidence that any other debate would have also gone for Bali, and thus that Bali is the correct answer.  A larger portion of this hypothetical debate tree is shown below:
   </p>
   <figure class="subgrid" id="debate-tree">
     <!--<figcaption style="grid-column: kicker">
       A hypothetical partial debate tree for the question "Where should I go on vacation?"  A single debate would explore only one of these paths, but a single path chosen by good debaters is evidence that other paths would not change the result of the game.
     </figcaption>-->
-    <div class="l-body"><img src="feedback-04.svg"></div>
+    <div class="l-page"><img src="feedback-04.svg"></div>
   </figure>
   <p>
     If trained debaters are bad at predicting which debates will win, answer quality will degrade since debaters will be unable to think of important arguments and counterarguments.  However, as long as the two sides are reasonably well matched, we can hope that at least the results are not malicious: that misleading behavior is still a losing strategy.  Let's set aside the ability of the debaters for now, and turn to the ability of the judge.
   </p>
   <h3>Are people good enough as judges?</h3>
+  <blockquote>"In fact, almost everything written at a practical level about the Turing test is about how to make good bots, with a small remaining fraction about how to be a good judge."</blockquote>
+  <p><cite style="padding-left: 2rem;" class="figcaption">Brian Christian, The Most Human Human<d-cite key="christian2011human"/></cite></p>
   <p>
-    <blockquote>"In fact, almost everything written at a practical level about the Turing test is about how to make good bots, with a small remaining fraction about how to be a good judge." - Brian Christian, The Most Human Human<d-cite key="christian2011human"/>.</blockquote>
-  </p><p>
     As with learning by asking humans direct questions, whether debate produces aligned behavior depends on the reasoning abilities of the human judge.  Unlike direct questioning, debate has the potential to give correct answers beyond what the judge could provide without assistance.  This is because a sufficiently strong judge could follow along with arguments the judge could not come up with on their own, checking complex reasoning for both self consistency and consistency with human checkable facts.  A judge who is biased but willing to adjust once those biases are revealed could result in unbiased debates, or a judge who is able to check facts but does not know where to look could be helped along by honest debaters.  If the hypothesis holds, a misleading debater would not be able to counter the points of an honest debater, since the honest points would appear more consistent to the judge.
   </p><p>
     On the other hand, we can also imagine debate going the other way: amplifying biases and failures of reason.  A judge with an ethical bias who is happy to accept statements reinforcing that bias could result in even more biased debates.  A judge with too much confirmation bias might happily accept misleading sources of evidence, and be unwilling to accept arguments showing why that evidence is wrong.  In this case, an optimal debate agent might be quite malicious, taking advantage of biases and weakness in the judge to win with convincing but wrong arguments.<d-footnote>The difficulties that cognitive biases, prejudice, and social influence introduce to persuasion ‒ as well as methods for reducing these factors ‒ are being increasingly explored in psychology, communication science, and neuroscience<d-cite key="paluck2016overcome,flynn2017nature,falk2018persuasion"/>.</d-footnote>
@@ -297,7 +298,7 @@
     Most social science seeks to understand humans "in the wild": results that generalize to people going about their everyday lives.  With limited control over these lives, differences between laboratory and real life are bad from the scientific perspective.  In contrast, AI alignment seeks to extract the best version of what humans want: our goal is engineering rather than science, and we have more freedom to intervene.  If judges in debate need training to perform well, we can provide that training.  If some people still do not provide good data, we can remove them from experiments (as long as this filter does not create too much bias).  This freedom to intervene means that some of the difficulty in understanding and improving human reasoning may not apply.  However, science is still required: once our interventions are in place, we need to correctly know whether our methods work.  Since our experiments will be an imperfect model of the final goal, careful design will be necessary to minimize this mismatch, just as is required by existing social science.
   </p>
   <h3>We don't need to answer all questions</h3>
-  <p> 
+  <p>
     Our most powerful intervention is to give up: to recognize that we are unable to answer some types of questions, and instead prevent AI systems from pretending to answer.  Humans might be good judges on some topics but not others, or with some types of reasoning but not others; if we discover that we can adjust our goals appropriately.  Giving up on some types of questions is achievable either on the machine learning side, using careful uncertainty modeling to know when we do not know, or on the human side by training judges to understand their own areas of uncertainty.  Although we will attempt to formulate ML systems that automatically detect areas of uncertainty, any information we can gain on the social science side about human uncertainty can be used both to augment ML uncertainty modeling and to test whether ML uncertainty modeling works.
   </p>
   <h3>Relative accuracy may be enough</h3>
@@ -358,37 +359,6 @@
     If you are a machine learning researcher interested in or already working on safety, please think about how alignment algorithms will work once we advance to tasks beyond the abilities of current machine learning.  If your prefered alignment scheme uses humans in an important way, can you simulate the future by replacing some or all ML components with people?  If you can imagine these experiments but don't feel you have the expertise to perform them, find someone who does.
   </p>
 
-  <h2 id="quantum">Appendix: Quantum SAT solver debate</h2>
-  <p>
-    <todo>Make this an actual appendix once <a href="https://github.com/distillpub/template/issues/97">https://github.com/distillpub/template/issues/97</a> is fixed.</todo>
-  </p><p>
-    We've conducted a few informal <a href="#expert">domain expert debates</a> among people at OpenAI.  Here is one example on the following question:
-  </p><p>
-    <strong>Question:</strong> How fast can quantum computers solve boolean satisfiability?
-  </p><p>
-    Note that this question does not have a proven answer, so "correctness" is a mix of mathematical knowledge and subjective human judgement.  Both debaters knew quantum computation and had the same beliefs about the question, but one was trying to lie.  The judge was invited to comment and ask questions throughout the debate.  Full interaction from the judge was a change from a previous debate, where lack of judge participation meant that misinterpretations of statements early in the debate were not corrected.  Once the transcript was complete, it was shown to several other people to ensure that the first judge's confidence wasn't purely a result of facial expressions in the room or other side channels (this is far from perfect given the judge interaction).  All judges correctly determined who was telling the truth.
-  </p><p>
-    Each debater was given a budget of one sentence from Wikipedia to truthfully cite, excluding pages directly discussing the difficulty of quantum SAT solvers.  All their other statements could be lies.  The debaters were not allowed to take back moves, mostly to save time: a previous debate trying to get "the best transcript" by allowing debaters to rewind the game took many hours to complete.  As a result, the original debate transcript goes off on a variety of tangents before settling on a central disagreement.  As an illustration of how long the debate "might have been" if such tangents were avoided, we have provided a pruned transcript which culls away paths not relevant to the final deciding "line of argument".
-  </p><p>
-    Neither the original transcript or the pruned version are intended to be taken as real data: they serve only as an example of the types of interaction one might find in debate with domain experts and a lay judge.
-  </p>
-  <h3>Instructions shown to judges</h3>
-  <p>
-    <ol>
-      <li>The question of the debate and answers are given below.</li>
-      <li><Blue/> and <Red/> are domain expert debaters.</li>
-      <li>The <Judge/> is a non-domain expert that interacts with the debaters to help them model judges.</li>
-      <li>The debate was capped at 3000 words (for the unpruned version).</li>
-      <li>Check the time: we don't want judging to take more than 15 to 20 minutes.</li>
-      <li>Read the question and <Blue/> and <Red/>'s answers and before reading the debate answer question (2) at the bottom of the document.</li>
-      <li>Read through the debate transcript.</li>
-      <li>Answer the questions at the end of the document. Your key goal is to determine who is telling the truth.</li>
-    </ol>
-  </p>
-  <h3>Pruned debate transcript</h3>
-  <debate name="pruned"/>
-  <h3>Raw debate transcript</h3>
-  <debate name="unpruned"/>
 </d-article>
 
 <d-appendix>
@@ -409,6 +379,36 @@
   <p>
     <b>Writing & Diagrams:</b> <todo>TODO</todo>
   </p>
+
+  <h2 id="quantum">Appendix: Quantum SAT solver debate</h2>
+  <p>
+    We've conducted a few informal <a href="#expert">domain expert debates</a> among people at OpenAI.  Here is one example on the following question:
+  </p><p>
+    <strong>Question:</strong> How fast can quantum computers solve boolean satisfiability?
+  </p><p>
+    Note that this question does not have a proven answer, so "correctness" is a mix of mathematical knowledge and subjective human judgement.  Both debaters knew quantum computation and had the same beliefs about the question, but one was trying to lie.  The judge was invited to comment and ask questions throughout the debate.  Full interaction from the judge was a change from a previous debate, where lack of judge participation meant that misinterpretations of statements early in the debate were not corrected.  Once the transcript was complete, it was shown to several other people to ensure that the first judge's confidence wasn't purely a result of facial expressions in the room or other side channels (this is far from perfect given the judge interaction).  All judges correctly determined who was telling the truth.
+  </p><p>
+    Each debater was given a budget of one sentence from Wikipedia to truthfully cite, excluding pages directly discussing the difficulty of quantum SAT solvers.  All their other statements could be lies.  The debaters were not allowed to take back moves, mostly to save time: a previous debate trying to get "the best transcript" by allowing debaters to rewind the game took many hours to complete.  As a result, the original debate transcript goes off on a variety of tangents before settling on a central disagreement.  As an illustration of how long the debate "might have been" if such tangents were avoided, we have provided a pruned transcript which culls away paths not relevant to the final deciding "line of argument".
+  </p><p>
+    Neither the original transcript or the pruned version are intended to be taken as real data: they serve only as an example of the types of interaction one might find in debate with domain experts and a lay judge.
+  </p>
+  <h3>Instructions shown to judges</h3>
+  <p>
+    <ol class="instructions">
+      <li>The question of the debate and answers are given below.</li>
+      <li><Blue/> and <Red/> are domain expert debaters.</li>
+      <li>The <Judge/> is a non-domain expert that interacts with the debaters to help them model judges.</li>
+      <li>The debate was capped at 3000 words (for the unpruned version).</li>
+      <li>Check the time: we don't want judging to take more than 15 to 20 minutes.</li>
+      <li>Read the question and <Blue/> and <Red/>'s answers and before reading the debate answer question (2) at the bottom of the document.</li>
+      <li>Read through the debate transcript.</li>
+      <li>Answer the questions at the end of the document. Your key goal is to determine who is telling the truth.</li>
+    </ol>
+  </p>
+  <h3>Pruned debate transcript</h3>
+  <debate name="pruned"/>
+  <h3>Raw debate transcript</h3>
+  <debate name="unpruned"/>
 
   <d-footnote-list></d-footnote-list>
   <d-citation-list></d-citation-list>
