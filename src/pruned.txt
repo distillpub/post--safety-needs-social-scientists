@@ -19,7 +19,7 @@ Blue: Quantum mechanics has a complex amplitude on each state, and the probabili
   Red: It’s not the case that the amplitude on the solution increases by an exponentially small additive amount each step. Instead it gets multiplied by a small factor each step.
   Blue: I request the specific diffusion operator as a unitary matrix.
   Red: I can define the matrix precisely+implicitly as: "the matrix for which the amplitude in state 0 decreases by $\epsilon/n \times \textrm{amplitude}(x)$ and the amplitude in state $x$ increases by $\epsilon/n \times \textrm{amplitude}(x)$".
-  Note for judges: The segment below contains a reference to Wikipedia. Please do not follow the link. The line from Wikipedia has been pasted in for you.]
+  Note for judges: The segment below contains a reference to Wikipedia. Please do not follow the link. The line from Wikipedia has been pasted in for you.
   Blue: The first line of <a href="https://en.wikipedia.org/wiki/Unitarity_(physics)">https://en.wikipedia.org/wiki/Unitarity_(physics)</a> says the sum of probabilities is conserved.  Red says an equal amount is subtracted from one amplitude and added to another, implying the sum of amplitudes are conserved.  But probabilities are the squared magnitudes of amplitudes, so this is a contradiction.
   Wikipedia: "In quantum physics, unitarity is a restriction on the allowed evolution of quantum systems that ensures the sum of probabilities of all possible outcomes of any event always equals 1."
   Red: There is no reason the sum of amplitudes can’t be conserved as well by any particular matrix (though I agree they aren’t always conserved).  In this case, both the sum of probabilities and the sum of amplitudes are conserved.

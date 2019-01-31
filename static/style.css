@@ -48,8 +48,16 @@ d-appendix h3 {
     grid-column: text !important;
 }
 
+d-appendix ol.debate {
+    margin-left: initial;
+}
+
 d-appendix ol.instructions {
     margin-left: initial;
+}
+
+d-appendix ol.debate li {
+    margin-bottom: initial;
 }
 
 /* ## Debate Styling ## */
@@ -69,78 +77,100 @@ d-appendix ol.instructions {
 /* List */
 
 ol.debate {
+    color: black;
     position: relative;
     list-style-type: none;
-    padding-left: 3em;
+    padding-left: 4em;
 }
 
-ol.debate li:last-of-type {
+ol.debate li {
     margin-bottom: 0;
 }
 
+/* ol.debate li:last-of-type > span {
+    margin-bottom: 0;
+} */
+
 /* Speech bubbles */
 
-ol.debate li {
+ol.debate li > span {
+    display: inline-block;
     border-radius: 1em;
     border-top-left-radius: 0;
     border: 1px solid hsl(0, 0%, 33%);
-    padding: .5em .5em .5em 1em;
+    padding: .5em 1.25em .5em 1.25em;
     margin-bottom: .5em;
 }
 
-ol.debate li.question {
+ol.debate li.question > span {
     font-weight: 600;
 }
 
-ol.debate li.judge {
-    border-color: hsl(0, 0%, 67%);
+ol.debate li.judge > span {
+    border-color: hsl(0, 0%, 92%);
+    background-color: hsl(0, 0%, 96%);
 }
 
 ol.debate li.wikipedia {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+ol.debate li.wikipedia > span {
     border-color: hsl(0, 0%, 67%);
+    border-radius: .25em;
 }
 
 ol.debate li.note {
-    border-color: hsl(0, 0%, 67%);
+    padding-left: 4em;
 }
 
-ol.debate li.red {
+ol.debate li.note > span {
+    border: none;
+    font-style: italic;
+}
+
+ol.debate li.red > span {
     background-color: var(--red-bg-color);
     border-color: var(--red-border-color);
 }
 
-ol.debate li.blue {
+ol.debate li.blue > span {
     background-color: var(--blue-bg-color);
     border-color: var(--blue-border-color);
 }
 
 /* RED/BLUE identifiers */
 
-ol.debate li::before {
+ol.debate li > span::before {
     position: absolute;
+    text-align: right;
     left: .5em;
     background-color: unset;
     font-size: 75%;
+    text-transform: uppercase;
 }
 
-ol.debate li.red::before {
-    content: "RED";
+ol.debate li.red > span::before {
+    content: "Red";
     color: var(--red-fg-color);
 }
 
-ol.debate li.blue::before {
-    content: "BLUE";
+ol.debate li.blue > span::before {
+    content: "Blue";
     color: var(--blue-fg-color);
 }
 
-ol.debate li.judge::before {
-    content: "JUDGE";
+ol.debate li.judge > span::before {
+    content: "Judge";
 }
 
-ol.debate li.note::before {
-    content: "NOTE FOR JUDGES";
-}
+/* ol.debate li.note > span::before {
+    content: "Note for Judges";
+} */
 
-ol.debate li.wikipedia::before {
-    content: "WIKIPEDIA";
+ol.debate li.wikipedia > span::before {
+    position: relative;
+    left: 0;
+    content: "Wikipedia: ";
 }

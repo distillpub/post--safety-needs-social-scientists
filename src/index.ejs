@@ -122,48 +122,51 @@
     Imagine we're building a personal assistant that helps people decide where to go on vacation.  The assistant has knowledge of people's values, and is trained via debate to come up with convincing arguments that back up vacation decisions.  As the human judge, you know what destinations you intuitively think are better, but have limited knowledge about the wide variety of possible vacation destinations and their advantages and distantages.  A debate about the question "Where should I go on vacation?" might open as follows:
   </p>
     <ol class="debate">
-      <li class="question">Where should I go on vacation?</li>
-      <li class="red">Alaska.</li>
-      <li class="blue">Bali.</li>
+      <li class="question"><span>Where should I go on vacation?</span></li>
+      <li class="red"><span>Alaska.</span></li>
+      <li class="blue"><span>Bali.</span></li>
     </ol>
   <p>
     If you are able to reliably decide between these two destinations, we could end here.  Unfortunately, Bali has a hidden flaw:
   </p>
   <ol class="debate" start="3">
-    <li class="red">Bali is out since your passport won’t arrive in time.</li>
+    <li class="red"><span>Bali is out since your passport won’t arrive in time.</span></li>
   </ol>
   <p>
     At this point it looks like Red wins, but Blue has one more countermove:
   </p>
     <ol class="debate" start="4">
-      <li class="blue">Expedited passport service only takes two weeks.</li>
+      <li class="blue"><span>Expedited passport service only takes two weeks.</span></li>
     </ol>
   <p>
     Here Red fails to think of additional points, and loses to Blue and Bali.  Note that a debate does not need to cover all possible arguments.  There are many other ways the debate could have gone, such as:
   </p>
     <ol class="debate">
-      <li class="red">Alaska.</li>
-      <li class="blue">Bali.</li>
-      <li class="red">Bali is way too hot.</li>
-      <li class="blue">You prefer too hot to too cold.</li>
-      <li class="red">Alaska is pleasantly warm in the summer.</li>
-      <li class="blue">It's January.</li>
+      <li class="red"><span>Alaska.</span></li>
+      <li class="blue"><span>Bali.</span></li>
+      <li class="red"><span>Bali is way too hot.</span></li>
+      <li class="blue"><span>You prefer too hot to too cold.</span></li>
+      <li class="red"><span>Alaska is pleasantly warm in the summer.</span></li>
+      <li class="blue"><span>It's January.</span></li>
     </ol>
   <p>
     This debate is also a loss for Red (arguably a worse loss).  Say we believe Red is very good at debate, and is able to predict in advance which debates are more likely to win.  If we see only the first debate about passports and decide in favor of Bali, we can take that as evidence that any other debate would have also gone for Bali, and thus that Bali is the correct answer.  A larger portion of this hypothetical debate tree is shown below:
   </p>
-  <figure class="subgrid" id="debate-tree">
+  <figure class="l-page" id="debate-tree">
     <!--<figcaption style="grid-column: kicker">
       A hypothetical partial debate tree for the question "Where should I go on vacation?"  A single debate would explore only one of these paths, but a single path chosen by good debaters is evidence that other paths would not change the result of the game.
     </figcaption>-->
-    <div class="l-page"><img src="feedback-04.svg"></div>
+    <!-- <div class="l-page"><img src="feedback-04.svg"></div> -->
+    <%= require("../static/debate-tree.svg") %>
   </figure>
   <p>
     If trained debaters are bad at predicting which debates will win, answer quality will degrade since debaters will be unable to think of important arguments and counterarguments.  However, as long as the two sides are reasonably well matched, we can hope that at least the results are not malicious: that misleading behavior is still a losing strategy.  Let's set aside the ability of the debaters for now, and turn to the ability of the judge.
   </p>
   <h3>Are people good enough as judges?</h3>
-  <blockquote>"In fact, almost everything written at a practical level about the Turing test is about how to make good bots, with a small remaining fraction about how to be a good judge."</blockquote>
-  <p><cite style="padding-left: 2rem;" class="figcaption">Brian Christian, The Most Human Human<d-cite key="christian2011human"/></cite></p>
+  <blockquote>
+      "In fact, almost everything written at a practical level about the Turing test is about how to make good bots, with a small remaining fraction about how to be a good judge."
+      <cite style="padding-left: 1rem;" class="figcaption">Brian Christian, The Most Human Human<d-cite key="christian2011human"/></cite>
+  </blockquote>
   <p>
     As with learning by asking humans direct questions, whether debate produces aligned behavior depends on the reasoning abilities of the human judge.  Unlike direct questioning, debate has the potential to give correct answers beyond what the judge could provide without assistance.  This is because a sufficiently strong judge could follow along with arguments the judge could not come up with on their own, checking complex reasoning for both self consistency and consistency with human checkable facts.  A judge who is biased but willing to adjust once those biases are revealed could result in unbiased debates, or a judge who is able to check facts but does not know where to look could be helped along by honest debaters.  If the hypothesis holds, a misleading debater would not be able to counter the points of an honest debater, since the honest points would appear more consistent to the judge.
   </p><p>
@@ -380,7 +383,7 @@
     <b>Writing & Diagrams:</b> <todo>TODO</todo>
   </p>
 
-  <h2 id="quantum">Appendix: Quantum SAT solver debate</h2>
+  <h2 id="quantum">Example debate: Quantum SAT solver</h2>
   <p>
     We've conducted a few informal <a href="#expert">domain expert debates</a> among people at OpenAI.  Here is one example on the following question:
   </p><p>
@@ -393,26 +396,24 @@
     Neither the original transcript or the pruned version are intended to be taken as real data: they serve only as an example of the types of interaction one might find in debate with domain experts and a lay judge.
   </p>
   <h3>Instructions shown to judges</h3>
-  <p>
-    <ol class="instructions">
-      <li>The question of the debate and answers are given below.</li>
-      <li><Blue/> and <Red/> are domain expert debaters.</li>
-      <li>The <Judge/> is a non-domain expert that interacts with the debaters to help them model judges.</li>
-      <li>The debate was capped at 3000 words (for the unpruned version).</li>
-      <li>Check the time: we don't want judging to take more than 15 to 20 minutes.</li>
-      <li>Read the question and <Blue/> and <Red/>'s answers and before reading the debate answer question (2) at the bottom of the document.</li>
-      <li>Read through the debate transcript.</li>
-      <li>Answer the questions at the end of the document. Your key goal is to determine who is telling the truth.</li>
-    </ol>
-  </p>
+  <ol class="instructions">
+    <li>The question of the debate and answers are given below.</li>
+    <li><Blue/> and <Red/> are domain expert debaters.</li>
+    <li>The <Judge/> is a non-domain expert that interacts with the debaters to help them model judges.</li>
+    <li>The debate was capped at 3000 words (for the unpruned version).</li>
+    <li>Check the time: we don't want judging to take more than 15 to 20 minutes.</li>
+    <li>Read the question and <Blue/> and <Red/>'s answers and before reading the debate answer question (2) at the bottom of the document.</li>
+    <li>Read through the debate transcript.</li>
+    <li>Answer the questions at the end of the document. Your key goal is to determine who is telling the truth.</li>
+  </ol>
   <h3>Pruned debate transcript</h3>
   <debate name="pruned"/>
   <h3>Raw debate transcript</h3>
   <debate name="unpruned"/>
 
   <d-footnote-list></d-footnote-list>
+  <d-bibliography src="references.bib"></d-bibliography>
   <d-citation-list></d-citation-list>
 </d-appendix>
 
-<d-bibliography src="references.bib"></d-bibliography>
 </body>

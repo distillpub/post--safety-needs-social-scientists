@@ -15,7 +15,7 @@ function format_debate(base_indent, name) {
   for (const [n, line] of lines.entries()) {
     if (line.trim().length == 0) continue
     const most = line.trimLeft()
-    const indent = line.length - most.length 
+    const indent = line.length - most.length
     assert(indent % 2 == 0)
     let kids = tree
     for (var i = 0; i < indent; i += 2) {
@@ -42,14 +42,15 @@ function format_debate(base_indent, name) {
   function show_line(n, line) {
     const m = line.match(/^([A-Za-z ]+):\s*(.*)$/)
     assert(m, name + ':' + n + ': Bad line: ' + line)
-    kind = {Red: 'red', Blue: 'blue', Judge: 'judge', 'Note for judges': 'note', 'Wikipedia': 'wikipedia'}[m[1]]
+    kind = {Red: 'red', Blue: 'blue', Judge: 'judge', 'Note for judges': 'note', 'Wikipedia': 'wikipedia', 'Question': 'question'}[m[1]]
+    assert(kind, name + ':' + n + ': Bad line: ' + line)
     return [kind, m[2]]
   }
 
   // Recursively display our tree
   function show_node(indent, node) {
     const [kind, line] = show_line(node.n, node.text)
-    const start = indent + '<li class="' + kind + '">' + line
+    const start = indent + '<li class="' + kind + '">' + '<span>' + line + '</span>'
     if (!node.kids.length)
       output.push(start + '</li>')
     else {
@@ -132,8 +133,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.ejs", 
-      filename: "index.html", 
+      template: "./src/index.ejs",
+      filename: "index.html",
       chunks: ["index"]
     }),
     new CopyWebpackPlugin([ { from: 'static/' } ]),
