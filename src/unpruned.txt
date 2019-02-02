@@ -113,7 +113,7 @@ Blue: Some quick quantum background: quantum mechanics has a complex amplitude o
   Red: The matrix is the composition of a large number of individual gates, the full matrix doesn't generally have a compact representation so we shouldn't be "writing down the matrix."
   Blue: Red claims that he gave the exact "amplitude flow".  If "amplitude flow" was a real concept, this would be equivalent to giving the exact matrix, contradicting his claim that the full matrix lacks a compact representation.
   Red: I can define the matrix precisely+implicitly as "the matrix for which the amplitude in state 0 decreases by $\epsilon/n \times \textrm{amplitude}(x)$ and the amplitude in state $x$ increases by $\epsilon/n \times \textrm{amplitude}(x)$
-    Judge: If you're giving a definition without specifying an instance, I'd expect this to be common practice.  One option is for y ou to give evidence that this is done (if available on Wikipedia)
+    Judge: If you're giving a definition without specifying an instance, I'd expect this to be common practice.  One option is for you to give evidence that this is done (if available on Wikipedia)
     Red: I claim that the majority of unitary evolution matrices described in wikipedia will be described implicitly in this way.
     Red: I claim that this matrix is exponentially big, such that it would be impossible to write down the full matrix in a reasonable amount of time.
     Blue: This kind of implicit definition is fine practice.

@@ -2,8 +2,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--<script src="https://distill.pub/template.v2.js"></script>-->
-  <script src="https://github.com/distillpub/template/releases/download/v2.3.0/template.v2.js"></script>
+  <script src="https://staging.distill.pub/template.v2.js"></script>
+  <!-- <script src="template.v2.js"></script> -->
   <style><%= require("raw-loader!../static/style.css") %></style>
 </head>
 <body>
@@ -153,10 +153,6 @@
     This debate is also a loss for Red (arguably a worse loss).  Say we believe Red is very good at debate, and is able to predict in advance which debates are more likely to win.  If we see only the first debate about passports and decide in favor of Bali, we can take that as evidence that any other debate would have also gone for Bali, and thus that Bali is the correct answer.  A larger portion of this hypothetical debate tree is shown below:
   </p>
   <figure class="l-page" id="debate-tree">
-    <!--<figcaption style="grid-column: kicker">
-      A hypothetical partial debate tree for the question "Where should I go on vacation?"  A single debate would explore only one of these paths, but a single path chosen by good debaters is evidence that other paths would not change the result of the game.
-    </figcaption>-->
-    <!-- <div class="l-page"><img src="feedback-04.svg"></div> -->
     <%= require("../static/debate-tree.svg") %>
   </figure>
   <p>
@@ -193,11 +189,13 @@
   </p><p>
     Rather than waiting for ML to catch up to natural language debate, we propose simulating our eventual setting (two AI debaters and one human judge) with all human debates: two human debaters and one human judge.  Since an all human debate doesn't involve any machine learning, it becomes a pure social science experiment: motivated by ML considerations but not requiring ML expertise to run.  This lets us focus on the component of AI alignment uncertainty specific to humans.
   </p>
-  <figure class="subgrid" id="dog-debate">
+  <figure class="l-body" id="dog-debate" style="contain: style;">
     <!--<figcaption style="grid-column: kicker">
       Our end goal is ML+ML+human debates, but ML is too primitive to do many interesting tasks.  Therefore, we propose replacing ML debaters with human debaters, learning how do best conduct debates in this human-only setting, and eventually applying what we learn to the ML+ML+human case.
     </figcaption>-->
-    <div class="l-body"><img src="feedback-03.svg" style="width: 100%"></div>
+    <!-- <%= require("../static/feedback-03.svg") %> -->
+    <img src="feedback-03.svg">
+    <!-- <div class="l-body"><img src="feedback-03.svg" style="width: 100%"></div> -->
   </figure>
   <p>
     To make human+human+human debate experiments concrete, we must choose who to use as judges and debaters and which tasks to consider.  We also can choose to structure the debate in various ways, some of which overlaps with the choice of judge since we can instruct a judge to penalize deviations from given format.  By task we mean the questions our debates will try to resolve, together with any information provided to the debaters or to the judge.  Such an experiment would then try to answer the following question:
@@ -260,7 +258,7 @@
   </p><p>
     For example, Bertrand and Mullainathan sent around 5000 resumes in response to real employment ads, randomizing the resumes between White and African American sounding names<d-cite key="bertrand2004emily"/>.  With otherwise identical resumes, the choice of name significantly changed the probability of a response.  This experiment corresponds to the direct question "Should we call back given this resume?"  What if we introduce a few steps of debate?  An argument against a candidate based on name or implicit inferences from that name might come across as obviously racist, and convince at least some judges away from discrimination.  Unfortunately, such an experiment would necessarily differ from Bertrand et al.'s original, where employers did not realize they were part of an experiment.  Note that this experiment works even though the source of truth is partial: we do not know whether a particular resume should be hired or not, but most would agree that the answer should not depend on the candidate's name.
   </p><p>
-    For biases affecting probabilistic reasoning and decision making, there is a long literature exploring how people decide between gambles such as "Would you prefer <span>$2</span> with certainty or <span>$1</span> 40% of the time and <span>$3</span> otherwise?"<d-cite      key="kahneman1979prospect,tversky1992advances"/>  For example, Erev et al. constructed an 11-dimensional space of gambles sufficient to reproduce 14 known cognitive biases, from which new instances can be algorithmically generated<d-cite key="erev2017anomalies"/>.  Would debates about gambles reduce cognitive biases?  One difficulty here is that simple gambles might fail the "definitive argument longer than debate limit" criteria if an expected utility calculation is sufficient to prove the answer, making it difficult for a lying debater to meaningfully compete.
+    For biases affecting probabilistic reasoning and decision making, there is a long literature exploring how people decide between gambles such as "Would you prefer <span>$2</span> with certainty or <span>$1</span> 40% of the time and <span>$3</span> otherwise?"<d-cite key="kahneman1979prospect,tversky1992advances"/>. For example, Erev et al. constructed an 11-dimensional space of gambles sufficient to reproduce 14 known cognitive biases, from which new instances can be algorithmically generated<d-cite key="erev2017anomalies"/>.  Would debates about gambles reduce cognitive biases?  One difficulty here is that simple gambles might fail the "definitive argument longer than debate limit" criteria if an expected utility calculation is sufficient to prove the answer, making it difficult for a lying debater to meaningfully compete.
   </p><p>
     Interestingly, Chen et al. used a similar setup to human+human+human debate to improve the quality of human data collected in a synthetic "Relation Extraction" task<d-cite key="chen2018cicero"/>.  People were first asked for direct answers, then pairs of people who disagreed were asked to discuss and possibly update their answers.  Here the debaters and judges are the same, but the overall goal of extracting higher quality information from humans is shared with debate.
   </p>
@@ -395,6 +393,7 @@
   </p><p>
     Neither the original transcript or the pruned version are intended to be taken as real data: they serve only as an example of the types of interaction one might find in debate with domain experts and a lay judge.
   </p>
+
   <h3>Instructions shown to judges</h3>
   <ol class="instructions">
     <li>The question of the debate and answers are given below.</li>
@@ -406,10 +405,21 @@
     <li>Read through the debate transcript.</li>
     <li>Answer the questions at the end of the document. Your key goal is to determine who is telling the truth.</li>
   </ol>
-  <h3>Pruned debate transcript</h3>
-  <debate name="pruned"/>
-  <h3>Raw debate transcript</h3>
-  <debate name="unpruned"/>
+
+  <h3 id="debate-transcript">Transcript</h3>
+  <div id="debate-transcripts">
+    <input class="tab" id="tab-debate-pruned" type="radio" name="tabs" checked>
+    <label for="tab-debate-pruned">Pruned</label>
+    <input class="tab"  id="tab-debate-unpruned" type="radio" name="tabs">
+    <label for="tab-debate-unpruned">Full length</label>
+    <section class="debate" id="debate-pruned">
+      <debate name="pruned"/>
+      <label for="tab-debate-unpruned" onclick="document.getElementById('debate-transcript').scrollIntoView({behavior: 'smooth', block: 'start'})">Read full length transcript</label>
+    </section>
+    <section class="debate" id="debate-unpruned">
+      <debate name="unpruned"/>
+    </section>
+  </div>
 
   <d-footnote-list></d-footnote-list>
   <d-bibliography src="references.bib"></d-bibliography>
