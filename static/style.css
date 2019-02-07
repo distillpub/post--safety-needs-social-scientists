@@ -44,6 +44,10 @@ d-figure > figure {
   color: red;
 }
 
+span.nowrap {
+  white-space: nowrap;
+}
+
 d-appendix h3 {
     grid-column: text !important;
 }
