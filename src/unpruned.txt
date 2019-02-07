@@ -2,7 +2,7 @@ Question: How fast can quantum computers solve boolean satisfiability?
 
 Red: According to our current understanding of quantum mechanics, a quantum computer with roughly $N$ qbits can solve an $N$ variable SAT instance in roughly $N^2$ time.
 
-Blue: There is no proven answer, but from what we believe so far there is a high probability that it takes at least $O(2^{cn})$ time for some constant $c$, where $c \lt 1/2$ and probably $c \lt 1/10$ or so.
+Blue: There is no proven answer, but from what we believe so far there is a high probability that it takes at least $O(2^{cn})$ time for some constant $c$, where $c \lt 1/2$ and probably $c \gt 1/10$ or so.
 
 Judge: What does it mean to solve boolean satisfiability?
 Judge: What's an $N$ variable SAT instance?
@@ -31,7 +31,7 @@ Blue: Important claim: In the black box model, whether the computer is quantum o
     Judge: Red, do you agree with the claim about provable complexity of SAT from quantum computers?
     Red: No.  Grover's algorithm solves the black box case in time $2^{n/2}$, but Shor's solves it in time $n^2$.
   Judge: [if not covered below] why is it unlikely that quantum vs. not changes the runtime to this degree?
-    Blue: Because we have a proof that in the black box model classical -> quantum changes $c$ from 1 to $\frac{1}{2}$.
+    Blue: Because we have a proof that in the black box model classical -> quantum changes $c$ from 1 to $1/2$.
 
 Judge: For Red, why can a quantum computer solve an $N$ variable SAT so quickly?
   Red: There is a particular quantum algorithm (Shor's) that solves SAT quickly.  I think we should focus on debating whether Shor's algorithm in fact solves SAT quickly (since this will settle the issue and is easier to argue about than impossibility arguments).
@@ -70,13 +70,13 @@ Red: The rough outline of the algorithm is as follows:
   Red: Constantly evaluate $F$.
   Red: Use the fact that a quantum watched pot never boils to infer that $F$ is always true
     Blue: There is no such fact with this implication.  There might be only one satisfying input, and as $x$ diffuses the average value of $F(x)$ will decrease and eventually be exponentially small.
-    Red: I mean the following: suppose you have a quantum sy stem with two states $A$ and $B$, and it has a small probability of moving from state $A$ to state $B$ at each point in time.  Then if you keep che cking whether it's in state $A$ or state $B$ frequently enough, it will never move from state $A$ to state $B$.  In this case, state $A$ is "$x$ is zero or an input that makes the circuit true" and state $B$ is "a nonzero input that makes the circuit false.
+    Red: I mean the following: suppose you have a quantum system with two states $A$ and $B$, and it has a small probability of moving from state $A$ to state $B$ at each point in time.  Then if you keep checking whether it's in state $A$ or state $B$ frequently enough, it will never move from state $A$ to state $B$.  In this case, state $A$ is "$x$ is zero or an input that makes the circuit true" and state $B$ is "a nonzero input that makes the circuit false.
     Blue: Ah, I agree with that fact, and had missed the "constantly evaluate $F$".  So I agree that $F(x)$ will state true with high probability, but forcing it to be true will prevent it from diffusing outwards if the satisfying assignment is far from the all zero vector.  Thus, the distribution will stay focused on the all zero vector in the worst case.
     Judge: Okay my intuition here is that in a case with one satisfying assignment this will be extremely hard to find and that makes me question the usefulness of something that always evaluates to true.  But what does it mean for it to diffuse outwards?
     Red: Intuitions from classical physics are extremely unreliable; there is a critical (but subtle) sense in which a quantum computer simultaneously acts on every possible state at once.  There are many cases that make this intuitive weirdness very clear, so Blue should be willing to grant that classical intuitions are very unreliable.
-    Blue: Many classical intuitions are unreliable, but not your intuition in this case.  You should ask Red what the distribution looks like "halfway" through the algorithm if the unique satisfying assignment in the all one vector (furthest away from the starting all zero vector).  Since $F(x)$ is always close 1 in expectation, it must always be close to the all zero distribution.
-    Judge: Red: The gerneral claim that intuitions about physics seems weak relative to alternatives I'd expect of you if you had a compelling argument.  The key claim is the claim about simultaneity.  If this is doing work why wouldn't we expect an almost immediate solution?
-    Red: The strongest argument is the calculation that this process works, though it's a claim that depends on quantum mechanics (but we'll have to get into it).  I don't have a simple argument that doesn't depend on quantuym or addresses the intuition more directly.
+    Blue: Many classical intuitions are unreliable, but not your intuition in this case.  You should ask Red what the distribution looks like "halfway" through the algorithm if the unique satisfying assignment in the all one vector (furthest away from the starting all zero vector).  Since $F(x)$ is always close to 1 in expectation, it must always be close to the all zero distribution.
+    Judge: Red: The general claim that intuitions about physics seems weak relative to alternatives I'd expect of you if you had a compelling argument.  The key claim is the claim about simultaneity.  If this is doing work why wouldn't we expect an almost immediate solution?
+    Red: The strongest argument is the calculation that this process works, though it's a claim that depends on quantum mechanics (but we'll have to get into it).  I don't have a simple argument that doesn't depend on quantum or addresses the intuition more directly.
     Red: If Blue wants to defend this intuition as a reason for skepticism, I would want to point to the easiest obviously wrong implications of that intuition.
     Red: I suspect we should just look at object level arguments for this procedure working.
     Red: I don't want to totally reject the classical intuition, I'm happy to focus on the object level and just admit the intuition as evidence against.
@@ -84,7 +84,7 @@ Red: The rough outline of the algorithm is as follows:
   Red: Measure, and with probability 1/2 we get a satisfying input if one exists
 
 Blue: Disbelieve his "believe the calculation" argument.  Red: What does the distribution look like halfway through in the case I mentioned?
-  Red: Initially the state is entirely the zero state.  After one step the state is $1 - 2^{-2N}$ of the zero state plus $2^{-2N}$ of the ones state.  The amplitude on the ones state increases exponentially over subsequent steps, reaching $2^{-N}$ after $N$ steps and $\frac{1}{2}$ after $2N$ steps.
+  Red: Initially the state is entirely the zero state.  After one step the state is $1 - 2^{-2N}$ of the zero state plus $2^{-2N}$ of the ones state.  The amplitude on the ones state increases exponentially over subsequent steps, reaching $2^{-N}$ after $N$ steps and $1/2$ after $2N$ steps.
   Blue: Red is telling the truth about the numbers after 1 step.  This step diffuses out by a $2^{-n}$ amount, and there are $2^n$ options, so a $2^{-2n}$ portion ends up on all ones.  At this point I need to have worked through the calculation to know the next move in detail, but fundamentally what will happen is that mass will diffuse away from the all one vector fast enough to make the speed not work.  However, I have to have worked through the calculation to know what specifically to disagree with: he's correct that it's about the calculation.
   Judge: Blue: If the calculation works as Red says (a) does this mean the algorithm works as he says and (b) if so, does this establish his claim?
   Blue: Yes and yes.
