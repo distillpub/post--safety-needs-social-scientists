@@ -1,0 +1,45 @@
+<!--
+    <nav id="autotoc"></nav>
+    <script>
+        const target = document.getElementById("autotoc");
+
+        const article = document.querySelector("d-article");
+
+        const skipIDs = ["contents"];
+        const headings = article.querySelectorAll("h2, h3");
+
+        let currentList = undefined;
+        for (const heading of headings) {
+            if (skipIDs.includes(heading.id)) continue;
+            if (heading.id == "") console.error(heading);
+            switch (heading.nodeName) {
+                case "H2":
+                    const details = document.createElement("details");
+                    const summary = document.createElement("summary");
+                    const h2TOCEntry = document.createElement("a");
+                    h2TOCEntry.href = "#" + heading.id;
+                    h2TOCEntry.innerText = heading.innerText;
+                    summary.appendChild(h2TOCEntry);
+                    details.appendChild(summary);
+                    target.appendChild(details);
+
+                    const ul = document.createElement("ul");
+                    details.appendChild(ul);
+                    currentList = ul;
+                    break;
+
+                case "H3":
+                    const li = document.createElement("li");
+                    const h3TOCEntry = document.createElement("a");
+                    h3TOCEntry.href = "#" + heading.id;
+                    h3TOCEntry.innerText = heading.innerText;
+                    li.appendChild(h3TOCEntry);
+                    currentList.appendChild(li);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    </script>
+-->

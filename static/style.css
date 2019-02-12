@@ -1,51 +1,51 @@
 .subgrid {
-  grid-column: screen;
-  display: grid;
-  grid-template-columns: inherit;
-  grid-template-rows: inherit;
-  grid-column-gap: inherit;
-  grid-row-gap: inherit;
+    grid-column: screen;
+    display: grid;
+    grid-template-columns: inherit;
+    grid-template-rows: inherit;
+    grid-column-gap: inherit;
+    grid-row-gap: inherit;
 }
 
 d-figure.base-grid {
-  grid-column: screen;
-  background: hsl(0, 0%, 97%);
-  padding: 20px 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    grid-column: screen;
+    background: hsl(0, 0%, 97%);
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 d-figure {
-  margin-bottom: 1em;
-  position: relative;
+    margin-bottom: 1em;
+    position: relative;
 }
 
-d-figure > figure {
-  margin-top: 0;
-  margin-bottom: 0;
+d-figure>figure {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .shaded-figure {
-  background-color: hsl(0, 0%, 97%);
-  border-top: 1px solid hsla(0, 0%, 0%, 0.1);
-  border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
-  padding: 30px 0;
+    background-color: hsl(0, 0%, 97%);
+    border-top: 1px solid hsla(0, 0%, 0%, 0.1);
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+    padding: 30px 0;
 }
 
 .pointer {
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  top: 26px;
-  left: -48px;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    top: 26px;
+    left: -48px;
 }
 
 .todo {
-  color: red;
+    color: red;
 }
 
 span.nowrap {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 d-appendix h3 {
@@ -71,13 +71,12 @@ d-appendix ol.debate li {
 /* Color Definitions, from Shan's SVGs */
 
 :root {
-  --red-fg-color: hsl(18, 100%, 50%);
-  --red-bg-color: hsl(18, 95%, 92%);
-  --red-border-color: hsl(18, 100%, 92%);
-
-  --blue-fg-color: hsl(205, 100%, 50%);
-  --blue-bg-color: hsl(205, 95%, 92%);
-  --blue-border-color: hsl(205, 100%, 92%);
+    --red-fg-color: hsl(18, 100%, 50%);
+    --red-bg-color: hsl(18, 95%, 92%);
+    --red-border-color: hsl(18, 100%, 92%);
+    --blue-fg-color: hsl(205, 100%, 50%);
+    --blue-bg-color: hsl(205, 95%, 92%);
+    --blue-border-color: hsl(205, 100%, 92%);
 }
 
 /* List */
@@ -94,13 +93,13 @@ ol.debate li {
     margin-bottom: 0.5em;
 }
 
-ol.debate li:last-of-type > span {
+ol.debate li:last-of-type>span {
     margin-bottom: 0;
 }
 
 /* Speech bubbles */
 
-ol.debate li > span {
+ol.debate li>span {
     display: inline-block;
     border-radius: 1em;
     border-top-left-radius: 0;
@@ -108,11 +107,11 @@ ol.debate li > span {
     padding: .5em 1.25em .5em 1.25em;
 }
 
-ol.debate li.question > span {
+ol.debate li.question>span {
     font-weight: 600;
 }
 
-ol.debate li.judge > span {
+ol.debate li.judge>span {
     border-color: hsl(0, 0%, 92%);
     background-color: hsl(0, 0%, 96%);
 }
@@ -122,32 +121,33 @@ ol.debate li.wikipedia {
     padding-right: 1em;
 }
 
-ol.debate li.wikipedia > span {
+ol.debate li.wikipedia>span {
     border-color: hsl(0, 0%, 67%);
     border-radius: .25em;
 }
 
-ol.debate li.note > span {
+ol.debate li.note>span {
     border: none;
     font-style: italic;
 }
 
-ol.debate li.red > span {
+ol.debate li.red>span {
     background-color: var(--red-bg-color);
     border-color: var(--red-border-color);
 }
 
-ol.debate li.blue > span {
+ol.debate li.blue>span {
     background-color: var(--blue-bg-color);
     border-color: var(--blue-border-color);
 }
 
 /* RED/BLUE identifiers */
 
-ol.debate li > span::before {
+ol.debate li>span::before {
     position: absolute;
     display: inline-block;
-    width: 4.5em; /* out of 5em left padding on ol */
+    width: 4.5em;
+    /* out of 5em left padding on ol */
     left: 0;
     background-color: unset;
     text-align: right;
@@ -155,17 +155,17 @@ ol.debate li > span::before {
     text-transform: uppercase;
 }
 
-ol.debate li.red > span::before {
+ol.debate li.red>span::before {
     content: "Red";
     color: var(--red-fg-color);
 }
 
-ol.debate li.blue > span::before {
+ol.debate li.blue>span::before {
     content: "Blue";
     color: var(--blue-fg-color);
 }
 
-ol.debate li.judge > span::before {
+ol.debate li.judge>span::before {
     content: "Judge";
 }
 
@@ -173,7 +173,7 @@ ol.debate li.judge > span::before {
     content: "Note for Judges";
 } */
 
-ol.debate li.wikipedia > span::before {
+ol.debate li.wikipedia>span::before {
     position: relative;
     display: inline;
     content: "Wikipedia: ";
@@ -197,25 +197,87 @@ ol.debate li.wikipedia > span::before {
 }
 
 #debate-transcripts label {
-  display: inline-block;
-  font-weight: 500;
-  margin: 0 0 -1px;
-  padding: .5em 2em;
-  border: 1px solid transparent;
-
+    display: inline-block;
+    font-weight: 500;
+    margin: 0 0 -1px;
+    padding: .5em 2em;
+    border: 1px solid transparent;
 }
 
 #debate-transcripts label:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-#debate-transcripts input.tab:checked + label {
-  color: rgba(0,0,0,0.65);
-  border-radius: .25em .25em 0 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom-color: white;
+#debate-transcripts input.tab:checked+label {
+    color: rgba(0, 0, 0, 0.65);
+    border-radius: .25em .25em 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom-color: white;
 }
-#debate-transcripts #tab-debate-pruned:checked ~ #debate-pruned,
-#debate-transcripts #tab-debate-unpruned:checked ~ #debate-unpruned {
-  display: block;
+
+#debate-transcripts #tab-debate-pruned:checked~#debate-pruned, #debate-transcripts #tab-debate-unpruned:checked~#debate-unpruned {
+    display: block;
+}
+
+/* TOC */
+
+/* @media (min-width: 1180px) {
+    body {
+        display: flex;
+        height: 100vh;
+    }
+    main {
+        order: 2;
+        overflow-y: scroll;
+    }
+    aside {
+        padding: 2em;
+        max-width: 24em;
+        order: 1;
+        position: sticky;
+        top: 0;
+        border-right: 1px solid #eee;
+        overflow-y: scroll;
+    }
+} */
+
+nav a {
+    color: rgba(0, 0, 0, 0.8);
+    border-bottom: none;
+    text-decoration: none;
+    /* text-decoration: underline solid rgba(0, 0, 0, 0.2); */
+}
+
+nav ul li {
+    margin-bottom: .25em;
+}
+
+nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6);
+}
+
+nav details ul {
+    margin-top: 0;
+}
+
+nav details > a {
+    margin-left: 1.06em;
+}
+
+nav summary,
+nav > div,
+nav details > a {
+    display: block;
+    outline: none;
+    margin-bottom: 0.5em;
+}
+
+nav > div {
+    margin-left: 1.06em;
+}
+
+nav summary,
+nav > div > a {
+    font-size: 13px;
+    font-weight: 600;
 }
