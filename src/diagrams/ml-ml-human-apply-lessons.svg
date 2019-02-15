@@ -1,8 +1,6 @@
 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="240 0 460 200">
 	<defs>
-		<style>
-			.al-cls-1{fill:#dbdbdb;}.al-cls-2{fill:#eed5ca;}.al-cls-3{fill:#cadfee;}.al-cls-4{clip-path:url(#clip-path);}.al-cls-5{clip-path:url(#clip-path-2);}.al-cls-6{clip-path:url(#clip-path-3);}.al-cls-7{clip-path:url(#clip-path-4);}.al-cls-14,.al-cls-8{fill:none;stroke-miterlimit:10;}.al-cls-8{stroke:#8a8a8a;}.al-cls-9{font-size:13px;}.al-cls-12,.al-cls-15,.al-cls-9{font-family:HelveticaNeue, Helvetica Neue;}.al-cls-10{letter-spacing:-0.02em;}.al-cls-11{letter-spacing:0.02em;}.al-cls-12{font-size:10px;}.al-cls-13{letter-spacing:-0.09em;}.al-cls-14{stroke:#000;}.al-cls-15{font-size:11px;fill:#6b6b6b;}.al-cls-16{fill:#f2d5ca;}.al-cls-17{fill:#c6e0ed;}
-		</style>
+		<style>.al-cls-1{fill:#dbdbdb;}.al-cls-2{fill:#eed5ca;}.al-cls-3{fill:#cadfee;}.al-cls-4{clip-path:url(#clip-path);}.al-cls-5{clip-path:url(#clip-path-2);}.al-cls-6{clip-path:url(#clip-path-3);}.al-cls-7{clip-path:url(#clip-path-4);}.al-cls-14,.al-cls-8{fill:none;stroke-miterlimit:10;}.al-cls-8{stroke:#8a8a8a;}.al-cls-9{font-size:13px;}.al-cls-12,.al-cls-15,.al-cls-9{font-family:HelveticaNeue, Helvetica Neue;}.al-cls-10{letter-spacing:-0.02em;}.al-cls-11{letter-spacing:0.02em;}.al-cls-12{font-size:10px;}.al-cls-13{letter-spacing:-0.09em;}.al-cls-14{stroke:#000;}.al-cls-15{font-size:11px;fill:#6b6b6b;}.al-cls-16{fill:#f2d5ca;}.al-cls-17{fill:#c6e0ed;}</style>
 		<clipPath id="clip-path">
 			<circle class="al-cls-1" cx="337.74" cy="144.93" r="28.07" />
 		</clipPath>
