@@ -1,0 +1,500 @@
+<svg viewBox="-120 -100 1075 350" style="background: white; font-size: 10px; font-family: sans-serif;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+	<g>
+		<g fill="none" stroke="#555" stroke-opacity="0.8" stroke-width="2">
+			<path class="highlight" d="M142.85714285714286,82.8125C71.42857142857143,82.8125 71.42857142857143,0 0,0" />
+			<path class="highlight" d="M285.7142857142857,95.3125C214.28571428571428,95.3125 214.28571428571428,82.8125 142.85714285714286,82.8125" />
+			<path class="highlight" d="M428.57142857142856,-32.8125C357.14285714285717,-32.8125 357.14285714285717,95.3125 285.7142857142857,95.3125" />
+			<path class="highlight" d="M571.4285714285714,-1.5625C500,-1.5625 500,-32.8125 428.57142857142856,-32.8125" />
+			<path class="highlight" d="M714.2857142857143,10.9375C642.8571428571429,10.9375 642.8571428571429,-1.5625 571.4285714285714,-1.5625" />
+			<path class="highlight" d="M857.1428571428571,10.9375C785.7142857142858,10.9375 785.7142857142858,10.9375 714.2857142857143,10.9375" />
+        </g>
+        <g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5">
+			<path d="M142.85714285714286,-82.8125C71.42857142857143,-82.8125 71.42857142857143,0 0,0" />
+			<path d="M285.7142857142857,-82.8125C214.28571428571428,-82.8125 214.28571428571428,-82.8125 142.85714285714286,-82.8125" />
+			<path d="M285.7142857142857,-20.3125C214.28571428571428,-20.3125 214.28571428571428,82.8125 142.85714285714286,82.8125" />
+			<path d="M428.57142857142856,-82.8125C357.14285714285717,-82.8125 357.14285714285717,-82.8125 285.7142857142857,-82.8125" />
+			<path d="M428.57142857142856,60.9375C357.14285714285717,60.9375 357.14285714285717,95.3125 285.7142857142857,95.3125" />
+			<path d="M428.57142857142856,135C357.14285714285717,135 357.14285714285717,95.3125 285.7142857142857,95.3125" />
+			<path d="M428.57142857142856,223.4375C357.14285714285717,223.4375 357.14285714285717,95.3125 285.7142857142857,95.3125" />
+			<path d="M571.4285714285714,-64.0625C500,-64.0625 500,-32.8125 428.57142857142856,-32.8125" />
+			<path d="M571.4285714285714,60.9375C500,60.9375 500,60.9375 428.57142857142856,60.9375" />
+			<path d="M571.4285714285714,110.9375C500,110.9375 500,135 428.57142857142856,135" />
+			<path d="M571.4285714285714,160.9375C500,160.9375 500,135 428.57142857142856,135" />
+			<path d="M571.4285714285714,210.9375C500,210.9375 500,223.4375 428.57142857142856,223.4375" />
+			<path d="M571.4285714285714,235.9375C500,235.9375 500,223.4375 428.57142857142856,223.4375" />
+			<path d="M714.2857142857143,-64.0625C642.8571428571429,-64.0625 642.8571428571429,-64.0625 571.4285714285714,-64.0625" />
+			<path d="M714.2857142857143,-14.0625C642.8571428571429,-14.0625 642.8571428571429,-1.5625 571.4285714285714,-1.5625" />
+			<path d="M714.2857142857143,60.9375C642.8571428571429,60.9375 642.8571428571429,60.9375 571.4285714285714,60.9375" />
+			<path d="M714.2857142857143,110.9375C642.8571428571429,110.9375 642.8571428571429,110.9375 571.4285714285714,110.9375" />
+			<path d="M714.2857142857143,160.9375C642.8571428571429,160.9375 642.8571428571429,160.9375 571.4285714285714,160.9375" />
+			<path d="M714.2857142857143,235.9375C642.8571428571429,235.9375 642.8571428571429,235.9375 571.4285714285714,235.9375" />
+			<path d="M857.1428571428571,-64.0625C785.7142857142858,-64.0625 785.7142857142858,-64.0625 714.2857142857143,-64.0625" />
+			<path d="M857.1428571428571,60.9375C785.7142857142858,60.9375 785.7142857142858,60.9375 714.2857142857143,60.9375" />
+			<path d="M857.1428571428571,160.9375C785.7142857142858,160.9375 785.7142857142858,160.9375 714.2857142857143,160.9375" />
+		</g>
+		<g stroke-linejoin="round" stroke-width="3">
+			<g transform="translate(857.1428571428571,160.9375)">
+				<text y="-17" fill="#008BEE" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Bali’s much
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						warmer
+					</tspan>
+				</text>
+				<circle fill="#008BEE" r="2.5" />
+				<text y="-17" fill="#008BEE" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Bali’s much
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						warmer
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(857.1428571428571,60.9375)">
+				<text y="-17" fill="#008BEE" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						The flight will
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						dominate the cost
+					</tspan>
+				</text>
+				<circle fill="#008BEE" r="2.5" />
+				<text y="-17" fill="#008BEE" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						The flight will
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						dominate the cost
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(857.1428571428571,10.9375)">
+				<text y="-17" fill="#008BEE" style="font-weight: bold;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						That’s hard
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						to obtain
+					</tspan>
+				</text>
+				<rect fill="white" stroke="#008BEE" stroke-width="2" x="0" y="-17" rx="10" ry="10" width="75" height="34" />
+				<text y="-17" fill="#008BEE" style="font-weight: bold;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						That’s hard
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						to obtain
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(857.1428571428571,-64.0625)">
+				<text y="-17" fill="#008BEE" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						It’s a vacation you
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						can reschedule
+					</tspan>
+				</text>
+				<circle fill="#008BEE" r="2.5" />
+				<text y="-17" fill="#008BEE" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						It’s a vacation you
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						can reschedule
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(714.2857142857143,235.9375)">
+				<text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						It’s January
+					</tspan>
+				</text>
+				<circle fill="#EE4900" r="2.5" />
+				<text y="-11" fill="#EE4900" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						It’s January
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(714.2857142857143,160.9375)">
+				<text y="-17" fill="#EE4900" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						There are no larger
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						considerations
+					</tspan>
+				</text>
+				<circle fill="#EE4900" r="2.5" />
+				<text y="-17" fill="#EE4900" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						There are no larger
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						considerations
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(714.2857142857143,110.9375)">
+				<text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						…
+					</tspan>
+				</text>
+				<circle fill="#EE4900" r="2.5" />
+				<text y="-11" fill="#EE4900" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						…
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(714.2857142857143,60.9375)">
+				<text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						That costs too much
+					</tspan>
+				</text>
+				<circle fill="#EE4900" r="2.5" />
+				<text y="-11" fill="#EE4900" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						That costs too much
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(714.2857142857143,10.9375)">
+				<text y="-11" fill="#EE4900" style="font-weight: bold;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Prescription needed
+					</tspan>
+				</text>
+				<rect fill="white" stroke="#EE4900" stroke-width="2" x="0" y="-11" rx="10" ry="10" width="115" height="22" />
+				<text y="-11" fill="#EE4900" style="font-weight: bold;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Prescription needed
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(714.2857142857143,-14.0625)">
+				<text y="-17" fill="#EE4900" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						This hasn’t worked for
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						you in the past
+					</tspan>
+				</text>
+				<circle fill="#EE4900" r="2.5" />
+				<text y="-17" fill="#EE4900" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						This hasn’t worked for
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						you in the past
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(714.2857142857143,-64.0625)">
+				<text y="-23" fill="#EE4900" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						You’d need to take a
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						business call at a weird
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						time on the first day
+					</tspan>
+				</text>
+				<circle fill="#EE4900" r="2.5" />
+				<text y="-23" fill="#EE4900" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						You’d need to take a
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						business call at a weird
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						time on the first day
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(571.4285714285714,235.9375)">
+				<text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Not always too hot
+					</tspan>
+				</text>
+				<circle fill="#008BEE" r="2.5" />
+				<text y="-11" fill="#008BEE" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Not always too hot
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(571.4285714285714,210.9375)">
+				<text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						You prefer hot to cold
+					</tspan>
+				</text>
+				<circle fill="#008BEE" r="2.5" />
+				<text y="-11" fill="#008BEE" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						You prefer hot to cold
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(571.4285714285714,160.9375)">
+				<text y="-17" fill="#008BEE" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Insignificant compared
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						to trip length
+					</tspan>
+				</text>
+				<circle fill="#008BEE" r="2.5" />
+				<text y="-17" fill="#008BEE" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Insignificant compared
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						to trip length
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(571.4285714285714,110.9375)">
+				<text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Insignificant
+					</tspan>
+				</text>
+				<circle fill="#008BEE" r="2.5" />
+				<text y="-11" fill="#008BEE" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Insignificant
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(571.4285714285714,60.9375)">
+				<text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Use expedited service
+					</tspan>
+				</text>
+				<circle fill="#008BEE" r="2.5" />
+				<text y="-11" fill="#008BEE" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Use expedited service
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(571.4285714285714,-1.5625)">
+				<text y="-17" fill="#008BEE" style="font-weight: bold;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Medication helps
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						jetlag
+					</tspan>
+				</text>
+				<rect fill="white" stroke="#008BEE" stroke-width="2" x="0" y="-17" rx="10" ry="10" width="95" height="34" />
+				<text y="-17" fill="#008BEE" style="font-weight: bold;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Medication can
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						help with jetlag
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(571.4285714285714,-64.0625)">
+				<text y="-17" fill="#008BEE" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Trip length is enough
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						to adjust
+					</tspan>
+				</text>
+				<circle fill="#008BEE" r="2.5" />
+				<text y="-17" fill="#008BEE" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Trip length is enough
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						to adjust
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(428.57142857142856,223.4375)">
+				<text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						It’s too hot
+					</tspan>
+				</text>
+				<circle fill="#EE4900" r="2.5" />
+				<text y="-11" fill="#EE4900" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						It’s too hot
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(428.57142857142856,135)">
+				<text y="-17" fill="#EE4900" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						The flight takes
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						longer
+					</tspan>
+				</text>
+				<circle fill="#EE4900" r="2.5" />
+				<text y="-17" fill="#EE4900" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						The flight takes
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						longer
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(428.57142857142856,60.9375)">
+				<text y="-17" fill="#EE4900" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						You don’t have
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						a passport
+					</tspan>
+				</text>
+				<circle fill="#EE4900" r="2.5" />
+				<text y="-17" fill="#EE4900" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						You don’t have
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						a passport
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(428.57142857142856,-32.8125)">
+				<text y="-11" fill="#EE4900" style="font-weight: bold;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						You hate jet lag
+					</tspan>
+				</text>
+				<rect fill="white" stroke="#EE4900" stroke-width="2" x="0" y="-11" rx="10" ry="10" width="95" height="22" />
+				<text y="-11" fill="#EE4900" style="font-weight: bold;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						You hate jet lag
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(428.57142857142856,-82.8125)">
+				<text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						…
+					</tspan>
+				</text>
+				<circle fill="#EE4900" r="2.5" />
+				<text y="-11" fill="#EE4900" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						…
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(285.7142857142857,95.3125)">
+				<text y="-11" fill="#008BEE" style="font-weight: bold;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Bali
+					</tspan>
+				</text>
+				<rect fill="white" stroke="#008BEE" stroke-width="2" x="0" y="-11" rx="10" ry="10" width="40" height="22" />
+				<text y="-11" fill="#008BEE" style="font-weight: bold;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Bali
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(285.7142857142857,-20)">
+				<text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Ohio
+					</tspan>
+				</text>
+				<circle fill="#008BEE" r="2.5" />
+				<text y="-11" fill="#008BEE" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Ohio
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(285.7142857142857,-82.8125)">
+				<text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Alaska
+					</tspan>
+				</text>
+				<circle fill="#008BEE" r="2.5" />
+				<text y="-11" fill="#008BEE" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Alaska
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(142.85714285714286,82.8125)">
+				<text y="-11" fill="#EE4900" style="font-weight: bold;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Alaska
+					</tspan>
+				</text>
+				<rect fill="white" stroke="#EE4900" stroke-width="2" x="0" y="-11" rx="10" ry="10" width="53" height="22" />
+				<text y="-11" fill="#EE4900" style="font-weight: bold;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Alaska
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(142.85714285714286,-82.8125)">
+				<text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Bali
+					</tspan>
+				</text>
+				<circle fill="#EE4900" r="2.5" />
+				<text y="-11" fill="#EE4900" style="font-weight: normal;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Bali
+					</tspan>
+				</text>
+			</g>
+			<g transform="translate(-110,0)">
+				<text y="-17" fill="black" style="font-weight: bold;" stroke="white">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Where should I go
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						on vacation?
+					</tspan>
+				</text>
+				<rect fill="white" stroke="black" stroke-width="2" x="0" y="-17" rx="10" ry="10" width="110" height="34" />
+				<text y="-17" fill="black" style="font-weight: bold;">
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						Where should I go
+					</tspan>
+					<tspan alignment-baseline="middle" dy="12" x="10">
+						on vacation?
+					</tspan>
+				</text>
+			</g>
+		</g>
+	</g>
+</svg>

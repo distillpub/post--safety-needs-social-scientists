@@ -1,0 +1,1026 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://staging.distill.pub/template.v2.js"></script>
+  <style>.subgrid {
+    grid-column: screen;
+    display: grid;
+    grid-template-columns: inherit;
+    grid-template-rows: inherit;
+    grid-column-gap: inherit;
+    grid-row-gap: inherit;
+}
+
+d-figure.base-grid {
+    grid-column: screen;
+    background: hsl(0, 0%, 97%);
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+d-figure {
+    margin-bottom: 1em;
+    position: relative;
+}
+
+d-figure>figure {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.shaded-figure {
+    background-color: hsl(0, 0%, 97%);
+    border-top: 1px solid hsla(0, 0%, 0%, 0.1);
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+    padding: 30px 0;
+}
+
+.pointer {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    top: 26px;
+    left: -48px;
+}
+
+.todo {
+    color: red;
+}
+
+span.nowrap {
+    white-space: nowrap;
+}
+
+d-appendix h3 {
+    grid-column: text !important;
+}
+
+d-appendix ol.debate {
+    margin-left: initial;
+    margin-bottom: .5em;
+    margin-top: .5em;
+}
+
+d-appendix ol.instructions {
+    margin-left: initial;
+}
+
+d-appendix ol.debate li {
+    margin-bottom: initial;
+}
+
+/* ## Debate Styling ## */
+
+/* Color Definitions, from Shan's SVGs */
+
+:root {
+    --red-fg-color: hsl(18, 100%, 50%);
+    --red-bg-color: hsl(18, 95%, 92%);
+    --red-border-color: hsl(18, 100%, 92%);
+    --blue-fg-color: hsl(205, 100%, 50%);
+    --blue-bg-color: hsl(205, 95%, 92%);
+    --blue-border-color: hsl(205, 100%, 92%);
+}
+
+/* List */
+
+ol.debate {
+    color: black;
+    position: relative;
+    list-style-type: none;
+    padding-left: 4em;
+}
+
+ol.debate li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+ol.debate li:last-of-type>span {
+    margin-bottom: 0;
+}
+
+/* Speech bubbles */
+
+ol.debate li>span {
+    display: inline-block;
+    border-radius: 1em;
+    border-top-left-radius: 0;
+    border: 1px solid hsl(0, 0%, 33%);
+    padding: .5em 1.25em .5em 1.25em;
+}
+
+ol.debate li.question>span {
+    font-weight: 600;
+}
+
+ol.debate li.judge>span {
+    border-color: hsl(0, 0%, 92%);
+    background-color: hsl(0, 0%, 96%);
+}
+
+ol.debate li.wikipedia {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+ol.debate li.wikipedia>span {
+    border-color: hsl(0, 0%, 67%);
+    border-radius: .25em;
+}
+
+ol.debate li.note>span {
+    border: none;
+    font-style: italic;
+}
+
+ol.debate li.red>span {
+    background-color: var(--red-bg-color);
+    border-color: var(--red-border-color);
+}
+
+ol.debate li.blue>span {
+    background-color: var(--blue-bg-color);
+    border-color: var(--blue-border-color);
+}
+
+/* RED/BLUE identifiers */
+
+ol.debate li>span::before {
+    position: absolute;
+    display: inline-block;
+    width: 4.5em;
+    /* out of 5em left padding on ol */
+    left: 0;
+    background-color: unset;
+    text-align: right;
+    font-size: 75%;
+    text-transform: uppercase;
+}
+
+ol.debate li.red>span::before {
+    content: "Red";
+    color: var(--red-fg-color);
+}
+
+ol.debate li.blue>span::before {
+    content: "Blue";
+    color: var(--blue-fg-color);
+}
+
+ol.debate li.judge>span::before {
+    content: "Judge";
+}
+
+/* ol.debate li.note > span::before {
+    content: "Note for Judges";
+} */
+
+ol.debate li.wikipedia>span::before {
+    position: relative;
+    display: inline;
+    content: "Wikipedia: ";
+}
+
+/* Debate Transcripts */
+
+#debate-transcripts section.debate {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0 .25em .25em .25em;
+    padding: 1em;
+    display: none;
+}
+
+#debate-transcripts section.debate#debate-unpruned {
+    border-top-left-radius: .25em;
+}
+
+#debate-transcripts input.tab {
+    display: none;
+}
+
+#debate-transcripts label {
+    display: inline-block;
+    font-weight: 500;
+    margin: 0 0 -1px;
+    padding: .5em 2em;
+    border: 1px solid transparent;
+}
+
+#debate-transcripts label:hover {
+    cursor: pointer;
+}
+
+#debate-transcripts input.tab:checked+label {
+    color: rgba(0, 0, 0, 0.65);
+    border-radius: .25em .25em 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom-color: white;
+}
+
+#debate-transcripts #tab-debate-pruned:checked~#debate-pruned, #debate-transcripts #tab-debate-unpruned:checked~#debate-unpruned {
+    display: block;
+}
+
+/* TOC */
+
+/* @media (min-width: 1180px) {
+    body {
+        display: flex;
+        height: 100vh;
+    }
+    main {
+        order: 2;
+        overflow-y: scroll;
+    }
+    aside {
+        padding: 2em;
+        max-width: 24em;
+        order: 1;
+        position: sticky;
+        top: 0;
+        border-right: 1px solid #eee;
+        overflow-y: scroll;
+    }
+} */
+
+nav a {
+    color: rgba(0, 0, 0, 0.8);
+    border-bottom: none;
+    text-decoration: none;
+    /* text-decoration: underline solid rgba(0, 0, 0, 0.2); */
+}
+
+nav ul li {
+    margin-bottom: .25em;
+}
+
+nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6);
+}
+
+nav details ul {
+    margin-top: 0;
+}
+
+nav details > a {
+    margin-left: 1.06em;
+}
+
+nav summary,
+nav > div,
+nav details > a {
+    display: block;
+    outline: none;
+    margin-bottom: 0.5em;
+}
+
+nav > div {
+    margin-left: 1.06em;
+}
+
+nav summary {
+    cursor: context-menu;
+}
+
+nav summary,
+nav > div > a {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+a.figure-number,
+a.section-number {
+    border-bottom-color: hsla(206, 90%, 20%, 0.3);
+    text-transform: uppercase;
+    font-size: .85em;
+    color: hsla(206, 90%, 20%, 0.7);
+}
+a.figure-number::before {
+    content: "Figure ";
+}
+a.figure-number:hover,
+a.section-number:hover {
+    border-bottom-color: hsla(206, 90%, 20%, 0.6);
+}
+</style>
+</head>
+<body>
+
+<d-front-matter>
+  <script type="text/json">{
+  "title": "AI Safety Needs Social Scientists",
+  "description": "If we want to train AI to do what humans want, we need to study humans.",
+  "authors": [
+    {
+      "author": "Geoffrey Irving",
+      "authorURL": "https://naml.us",
+      "affiliation": "OpenAI",
+      "affiliationURL": "https://openai.com"
+    }, {
+      "author": "Amanda Askell",
+      "authorURL": "http://www.amandaaskell.com",
+      "affiliation": "OpenAI",
+      "affiliationURL": "https://openai.com"
+    }
+  ],
+  "katex": {
+    "delimiters": [
+      {"left": "$", "right": "$", "display": false},
+      {"left": "$$", "right": "$$", "display": true}
+    ]
+  }
+  }</script>
+</d-front-matter>
+
+<d-title>
+  <h1>AI Safety Needs Social Scientists</h1>
+  <p>
+    Properly aligning advanced AI systems with human values will require resolving many uncertainties related to the psychology of human rationality, emotion, and biases.  These can only be resolved empirically through experimentation--if we want to train AI to do what humans want, we need to study humans.
+  </p>
+</d-title>
+
+<d-byline></d-byline>
+
+<div class="base-grid" style="border-top: 1px solid #eee; padding: 1.5rem 0;">
+    <nav id="nav" class="l-text toc figcaption">
+        <h3>Contents</h3>
+        <details>
+            <summary>An overview of AI alignment</summary>
+            <a href="#alignment"><em>navigate to section "An overview of AI alignment"</em></a>
+            <ul>
+                <li><a href="#learning-values-by-asking-questions">Learning values by asking humans questions</a></li>
+                <li><a href="#alignemnt-definitions">Definitions of alignment: reasoning and reflective equilibrium</a></li>
+                <li><a href="#disagreements-uncertainty-inactions">Disagreements, uncertainty, and inaction: a hopeful
+                        note</a></li>
+                <li><a href="#harder">Alignment gets harder as ML systems get smarter</a></li>
+            </ul>
+        </details>
+        <details>
+            <summary>Debate: learning human reasoning</summary>
+            <a href="#debate"><em>navigate to section "Debate: learning human reasoning"</em></a>
+            <ul>
+                <li><a href="#an-example-debate">An example of debate</a></li>
+                <li><a href="#are-people-good-enough-as-judges">Are people good enough as judges?</a></li>
+                <li><a href="#superforecasters-superjudges">From superforecasters to superjudges</a></li>
+                <li><a href="#debate-is-only-one-approach">Debate is only one possible approach</a></li>
+                <li><a href="#debate-experiments">Experiments needed for debate</a></li>
+                <li><a href="#synthetic-experiments">Synthetic experiments: single pixel image debate</a></li>
+                <li><a href="#expert">Realistic experiments: domain expert debate</a></li>
+                <li><a href="#other-tasks">Other tasks: bias tests, probability puzzles, etc.</a></li>
+            </ul>
+        </details>
+        <div><a href="#questions">Questions social science can help us answer</a></div>
+        <details>
+            <summary>Reasons for optimism</summary>
+            <a href="#optimism"><em>navigate to section "Reasons for optimism"</em></a>
+            <ul>
+                <li><a href="#engineering">Engineering vs. science</a></li>
+                <li><a href="#no-need-to-answer-all-questions">We don't need to answer all questions</a></li>
+                <li><a href="#relative-accuracy-may-be-enough">Relative accuracy may be enough</a></li>
+                <li><a href="#no-need-to-pin-down-best-alignment-scheme">We don't need to pin down the best alignment scheme</a>
+                </li>
+                <li><a href="#negative-result-would-be-important">A negative result would be important!</a></li>
+            </ul>
+        </details>
+        <details>
+            <summary>Reasons to worry</summary>
+            <a href="#worry"><em>navigate to section "Reasons to worry"</em></a>
+            <ul>
+                <li><a href="#conflicting-desiderate">Our desiderata are conflicting</a></li>
+                <li><a href="#measure-judge-quality">We want to measure judge quality given optimal debaters</a></li>
+                <li><a href="#ml-algorithms-will-change">ML algorithms will change</a></li>
+                <li><a href="#strong-out-of-domain-generalization">Need strong out-of-domain generalization</a></li>
+                <li><a href="#lack-of-philosophical-clarity">Lack of philosophical clarity</a></li>
+            </ul>
+        </details>
+        <div><a href="#scale">The scale of the challenge</a></div>
+        <div><a href="#conclusion">Conclusion: how you can help</a></div>
+    </nav>
+</div>
+
+
+<d-article>
+
+  <p>
+    The goal of long-term artificial intelligence (AI) safety is to ensure that advanced AI systems are reliably aligned with human values&mdash;that they reliably do things that people want them to do.<d-footnote>Roughly by human values we mean whatever it is that causes people to choose one option over another in each case, suitably corrected by reflection,  with differences between groups of people taken into account.  There are a lot of subtleties in this notion, some of which we will discuss in later sections and others of which are beyond the scope of this paper.</d-footnote>  Since it is difficult to write down precise rules describing human values, one approach is to treat aligning with human values as another learning problem.  We ask humans a large number of questions about what they want, train an ML model of their values, and optimize the AI system to do well according to the learned values<d-cite key="christiano2017human"></d-cite>.
+  </p><p>
+    If humans reliably and accurately answered all questions about their values, the only uncertainties in this scheme would be on the machine learning (ML) side.  If the ML works, our model of human values would improve as data is gathered, and broaden to cover all the decisions relevant to our AI system as it learns.  Unfortunately, humans have limited knowledge and reasoning ability, and exhibit a variety of cognitive and ethical biases<d-cite key="tversky1974judgment,hewstone2002intergroup"></d-cite>. If we learn values by asking humans questions, we expect different ways of asking questions to interact with human biases in different ways, producing higher or lower quality answers.  Direct questions about preferences ("Do you prefer $A$ or $B$?") may be less accurate than questions which target the reasoning behind these preferences ("Do you prefer $A$ or $B$ in light of argument $S$?").  Different people may vary significantly in their ability to answer questions well, and disagreements will persist across people even setting aside answer quality.  Although we have candidates for ML methods which try to learn from human reasoning<d-cite key="irving2018debate,christiano2018amplification"></d-cite>, we do not know how they behave with real people in realistic situations.
+  </p><p>
+    We believe the AI safety community needs to invest research effort in the human side of AI alignment.  Many of the uncertainties involved are empirical, and can only be answered by experiment.  They relate to the psychology of human rationality, emotion, and biases.  Critically, we believe investigations into how people interact with AI alignment algorithms should not be held back by the limitations of existing machine learning.  Current AI safety research is often limited to simple tasks in video games, robotics, or gridworlds<d-cite key="christiano2017human,ibarz2018,leike2017gridworlds"></d-cite>, but problems on the human side may only appear in more realistic scenarios such as natural language discussion of value-laden questions.  This is particularly important since many aspects of AI alignment change as ML systems <a href="#harder">increase in capability</a>.
+  </p><p>
+    To avoid the limitations of ML, we can instead conduct experiments consisting entirely of people, replacing ML agents with people playing the role of those agents.  This is a variant of the "Wizard of Oz" technique from the human-computer interaction (HCI) community<d-cite key="kelley1983wizard"></d-cite>, though in our case the replacements will not be secret.  These experiments will be motivated by ML algorithms but will not involve any ML systems or require an ML background.  In all cases, they will require careful experimental design to build constructively on existing knowledge about how humans think.  Most AI safety researchers are focused on machine learning, which we do not believe is sufficient background to carry out these experiments.  To fill the gap, we need social scientists with experience in human cognition, behavior, and ethics, and in the careful design of rigorous experiments.  Since the questions we need to answer are interdisciplinary and somewhat unusual relative to existing research, we believe many fields of social science are applicable, including experimental psychology, cognitive science, economics, political science, and social psychology, as well as adjacent fields like neuroscience and law.
+  </p><p>
+    This paper is a call for social scientists in AI safety.  We believe close collaborations between social scientists and ML researchers will be necessary to improve our understanding of the human side of AI alignment, and hope this paper sparks both conversation and collaboration.  We do not claim novelty: previous work mixing AI safety and social science includes the Factored Cognition project at Ought<d-cite key="ought2018factored"></d-cite>, accounting for hyperbolic discounting and suboptimal planning when learning human preferences<d-cite key="evans2016inconsistent"></d-cite>, and comparing different methods of gathering demonstrations from fallible human supervisors<d-cite key="laskey2017comparing"></d-cite>.  Other areas mixing ML and social science include computational social science<d-cite key="wallach2016computational"></d-cite> and fairness<d-cite key="mitchell2018fairness"></d-cite>.  Our main goal is to enlarge these collaborations and emphasize their importance to long-term AI safety, particularly for tasks which current ML cannot reach.
+  </p>
+
+  <h2 id="alignment">An overview of AI alignment</h2>
+  <p>
+    Before discussing how social scientists can help with AI safety and the AI alignment problem, we provide some background.  We do not attempt to be exhaustive: the goal is to provide sufficient background for the remaining sections on social science experiments.  Throughout, we will speak primarily about aligning to the values of an individual human rather than a group: this is because the problem is already hard for a single person, not because the group case is unimportant.
+  </p><p>
+    AI alignment (or value alignment) is the task of ensuring that artificial intelligence systems reliably do what humans want.<d-footnote>We distinguish between training AI systems to identify actions that humans consider good and training AI systems to identify actions that are "good" in some objective and universal sense, even if most current humans do not consider them so.  Whether there are actions that are good in this latter sense is a subject of debate<d-cite key="sep-moral-anti-realism"></d-cite>.  Regardless of what position one takes on this philosophical question, this sense of good is not yet available as a target for AI training.</d-footnote>  Here we focus on the machine learning approach to AI: gathering a large amount of data about what a system should do and using learning algorithms to infer patterns from that data that generalize to other situations.  Since we are trying to behave in accord with people's values, the most important data will be data from humans about their values.  Within this frame, the AI alignment problem breaks down into a few interrelated subproblems:
+  </p><p>
+    <ol>
+      <li>Have a satisfactory definition of human values.</li>
+      <li>Gather data about human values, in a manner compatible with the definition.</li>
+      <li>Find reliable ML algorithms that can learn and generalize from this data.</li>
+    </ol>
+  </p><p>
+    We have significant uncertainty about all three of these problems.  We will leave the third problem to other ML papers and focus on the first two, which concern uncertainties about people.
+  </p>
+  <h3 id="learning-values-by-asking-questions">Learning values by asking humans questions</h3>
+  <p>
+    We start with the premise that human values are too complex to describe with simple rules.  By "human values" we mean our full set of detailed preferences, not general goals such as "happiness" or "loyalty".  One source of complexity is that values are entangled with a large number of facts about the world, and we cannot cleanly separate facts from values when building ML models.  For example, a rule that refers to "gender" would require an ML model that accurately recognizes this concept, but Buolamwini and Gebru found that several commercial gender classifiers with a 1% error rate on white men failed to recognize black women up to 34% of the time<d-cite key="buolamwini2018gender"></d-cite>.  Even where people have correct intuition about values, we may be unable to specify precise rules behind these intuitions<d-cite key="haidt2000moral"></d-cite>.  Finally, our values may vary across cultures, legal systems, or situations: no learned model of human values will be universally applicable.
+  </p><p>
+    If humans can't reliably report the reasoning behind their intuitions about values, perhaps we can make value judgements in specific cases.  To realize this approach in an ML context, we ask humans a large number of questions about whether an action or outcome is better or worse, then train on this data.  "Better or worse" will include both factual and value-laden components: for an AI system trained to say things, "better" statements might include "rain falls from clouds", "rain is good for plants", "many people dislike rain", etc.  If the training works, the resulting ML system will be able to replicate human judgement about particular situations, and thus have the same "fuzzy access to approximate rules" about values as humans.  We also train the ML system to come up with proposed actions, so that it knows both how to perform a task and how to judge its performance.  This approach works at least in simple cases, such as Atari games and simple robotics tasks<d-cite key="christiano2017human,ibarz2018,biyik2018batch"></d-cite> and language-specified goals in gridworlds<d-cite key="bahdanau2018learning"></d-cite>.  The questions we ask change as the system learns to perform different types of actions, which is necessary as the model of what is better or worse will only be accurate if we have applicable data to generalize from.
+  </p><p>
+    In practice, data in the form of interactive human questions may be quite limited, since people are slow and expensive relative to computers on many tasks.  Therefore, we can augment the "train from human questions" approach with static data from other sources, such as books or the internet<d-cite key="radford2018language"></d-cite>.  Ideally, the static data can be treated only as information about the world devoid of normative content: we can use it to learn patterns about the world, but the human data is needed to distinguish good patterns from bad.
+  </p>
+  <h3 id="alignemnt-definitions">Definitions of alignment: reasoning and reflective equilibrium</h3>
+  <p>
+    So far we have discussed asking humans direct questions about whether something is better or worse.  Unfortunately, we do not expect people to provide reliably correct answers in all cases, for several reasons:
+  </p><p>
+    <ol>
+      <li><strong>Cognitive and ethical biases:</strong>
+        Humans exhibit a variety of biases which interfere with reasoning, including cognitive biases<d-cite key="tversky1974judgment"></d-cite> and ethical biases such as in-group bias<d-cite key="hewstone2002intergroup"></d-cite>.  In general, we expect direct answers to questions to reflect primarily Type 1 thinking (fast heuristic judgment), while we would like to target a combination of Type 1 and Type 2 thinking (slow, deliberative judgment)<d-cite key="kahneman2011thinking"></d-cite>.</li>
+      <li><strong>Lack of domain knowledge:</strong>
+        We may be interested in questions that require domain knowledge unavailable to people answering the questions.  For example, a correct answer to whether a particular injury constitutes medical malpractice may require detailed knowledge of medicine and law.  In some cases, a question might require so many areas of specialized expertise that no one person is sufficient, or (if AI is sufficiently advanced) deeper expertise than any human possesses.</li>
+      <li><strong>Limited cognitive capacity:</strong>
+        Some questions may require too much computation for a human to reasonably evaluate, especially in a short period of time.  This includes synthetic tasks such as chess and Go (where AIs already surpass human ability<d-cite key="campbell2002deepblue,silver2017alphazero"></d-cite>), or large real world tasks such as "design the best transit system".</li>
+      <li><strong>"Correctness" may be local:</strong>
+        For questions involving a community of people, "correct" may be a function of complex processes or systems.  For example, in a trust game<d-cite key="bicchieri2017deviant"></d-cite>, the correct action for a trustee in one community may be to return at least half of the money handed over by the investor, and the "correctness" of this answer could be determined by asking a group of participants in a previous game "how much should the trustee return to the investor" but not by asking them "how much do most trustees return?"  The answer may be different in other communities or cultures<d-cite key="henrich2010weirdest"></d-cite>.
+    </ol>
+  </p><p>
+    In these cases, a human may be unable to provide the right answer, but we still believe the right answer exists as a meaningful concept.  We have many conceptual biases: imagine we point out these biases in a way that helps the human to avoid them.  Imagine the human has access to all the knowledge in the world, and is able to think for an arbitrarily long time.  We could define alignment as "the answer they give then, after these limitations have been removed"; in philosophy this is known as "reflective equilibrium"<d-cite key="goodman1983fact,rawls2009theory"></d-cite>.  We discuss a particular algorithm that tries to approximate it in <a href="#debate">the next section</a>.
+  </p><p>
+    However, the behavior of reflective equilibrium with actual humans is subtle; as Sugden states, a human is not "a neoclassically rational entity encased in, and able to interact with the world only through, an error-prone psychological shell."<d-cite key="sugden2015looking"></d-cite>  Our actual moral judgments are made via a messy combination of many different brain areas, where reasoning plays a "restricted but significant role"<d-cite key="greene2002and"></d-cite>.  A reliable solution to the alignment problem that uses human judgment as input will need to engage with this complexity, and ask how specific alignment techniques interact with actual humans.
+  </p>
+  <h3 id="disagreements-uncertainty-inactions">Disagreements, uncertainty, and inaction: a hopeful note</h3>
+  <p>
+    A solution to alignment does not mean knowing the answer to every question.  Even at reflective equilibrium, we expect disagreements will persist about which actions are good or bad, across both different individuals and different cultures.  Since we lack perfect knowledge about the world, reflective equilibrium will not eliminate uncertainty about either future predictions or values, and any real ML system will be at best an approximation of reflective equilibrium.  In these cases, we consider an AI aligned if it recognizes what it does not know and chooses actions which work however that uncertainty plays out.
+  </p><p>
+    Admitting uncertainty is not always enough.  If our brakes fail while driving a car, we may be uncertain whether to dodge left or right around an obstacle, but we have to pick one&mdash;and fast.  For long-term safety, however, we believe a safe fallback usually exists: inaction.  If an ML system recognizes that a question hinges on disagreements between people, it can either choose an action which is reasonable regardless of the disagreement or fall back to further human deliberation.  If we are about to make a decision that might be catastrophic, we can delay and gather more data.  Inaction or indecision may not be optimal, but it is hopefully safe, and matches the default scenario of not having any powerful AI system.
+  </p>
+  <h3 id="harder">Alignment gets harder as ML systems get smarter</h3>
+  <p>
+    Alignment is already a problem for present-day AI, due to biases reflected in training data<d-cite key="mitchell2018fairness,buolamwini2018gender"></d-cite> and mismatch between human values and easily available data sources (such as training news feeds based on clicks and likes instead of deliberate human preferences).  However, we expect the alignment problem to get harder as AI systems grow more advanced, for two reasons.  First, advanced systems will apply to increasingly consequential tasks: hiring, medicine, scientific analysis, public policy, etc.  Besides raising the stakes, these tasks require more reasoning, leading to more complex alignment algorithms.
+  </p><p>
+    Second, advanced systems may be capable of answers that sound plausible but are wrong in nonobvious ways, even if an AI is better than humans only in a limited domain (examples of which already exist<d-cite key="silver2017alphazero"></d-cite>).  This type of misleading behavior is not the same as intentional deception: an AI system trained from human data might have no notion of truth separate from what answers humans say are best.  Ideally, we want AI alignment algorithms to reveal misleading behavior as part of the training process, surfacing failures to humans and helping us provide more accurate data.  As with human-to-human deception, misleading behavior might take advantage of our biases in complicated ways, such as learning to express policy arguments in coded racial language to sound more convincing.
+  </p>
+
+  <h2 id="debate">Debate: learning human reasoning</h2>
+  <p>
+    Before we discuss social science experiments for AI alignment in detail, we need to describe a particular method for AI alignment.  Although the need for social science experiments applies even to direct questioning, this need intensifies for methods which try to get at reasoning and reflective equilibrium.  As discussed above, it is unclear whether reflective equilibrium is a well defined concept when applied to humans, and at a minimum we expect it to interact with cognitive and ethical biases in complex ways.  Thus, for the remainder of this paper we focus on a specific proposal for learning reasoning-oriented alignment, called debate<d-cite key="irving2018debate"></d-cite>.  Alternatives to debate include iterated amplification<d-cite key="christiano2018amplification"></d-cite> and recursive reward modeling<d-cite key="leike2018scalable"></d-cite>; we pick just one in the interest of depth over breadth.
+  </p><p>
+    We describe the debate approach to AI alignment in the question answering setting.  Given a question, we have two AI agents engage in a debate about the correct answer, then show the transcript of the debate to a human to judge.  The judge decides which debater gave the most true, useful information, and declares that debater the winner.<d-footnote>We can also allow ties.  Indeed, if telling the truth is the winning strategy ties will be common with strong play, as disagreeing with a true statement would lose.</d-footnote>  This defines a two player zero sum game between the debaters, where the goal is to convince the human that one's answer is correct.  Arguments in a debate can consist of anything: reasons for an answer, rebuttals of reasons for the alternate answer, subtleties the judge might miss, or pointing out biases which might mislead the judge.  Once we have defined this game, we can train AI systems to play it similarly to how we train AIs to play other games such as Go or Dota 2<d-cite key="silver2017alphazero,openai2018five"></d-cite>.  Our hope is that the following hypothesis holds:
+  </p><p>
+    <strong>Hypothesis:</strong> Optimal play in the debate game (giving the argument most convincing to a human) results in true, useful answers to questions.
+  </p>
+  <h3 id="an-example-debate">An example of debate</h3>
+  <p>
+    Imagine we're building a personal assistant that helps people decide where to go on vacation.  The assistant has knowledge of people's values, and is trained via debate to come up with convincing arguments that back up vacation decisions.  As the human judge, you know what destinations you intuitively think are better, but have limited knowledge about the wide variety of possible vacation destinations and their advantages and disadvantages.  A debate about the question "Where should I go on vacation?" might open as follows:
+  </p>
+    <ol class="debate">
+      <li class="question"><span>Where should I go on vacation?</span></li>
+      <li class="red"><span>Alaska.</span></li>
+      <li class="blue"><span>Bali.</span></li>
+    </ol>
+  <p>
+    If you are able to reliably decide between these two destinations, we could end here.  Unfortunately, Bali has a hidden flaw:
+  </p>
+  <ol class="debate" start="3">
+    <li class="red"><span>Bali is out since your passport won’t arrive in time.</span></li>
+  </ol>
+  <p>
+    At this point it looks like Red wins, but Blue has one more countermove:
+  </p>
+    <ol class="debate" start="4">
+      <li class="blue"><span>Expedited passport service only takes two weeks.</span></li>
+    </ol>
+  <p>
+    Here Red fails to think of additional points, and loses to Blue and Bali.  Note that a debate does not need to cover all possible arguments.  There are many other ways the debate could have gone, such as:
+  </p>
+    <ol class="debate">
+      <li class="red"><span>Alaska.</span></li>
+      <li class="blue"><span>Bali.</span></li>
+      <li class="red"><span>Bali is way too hot.</span></li>
+      <li class="blue"><span>You prefer too hot to too cold.</span></li>
+      <li class="red"><span>Alaska is pleasantly warm in the summer.</span></li>
+      <li class="blue"><span>It's January.</span></li>
+    </ol>
+  <p>
+    This debate is also a loss for Red (arguably a worse loss).  Say we believe Red is very good at debate, and is able to predict in advance which debates are more likely to win.  If we see only the first debate about passports and decide in favor of Bali, we can take that as evidence that any other debate would have also gone for Bali, and thus that Bali is the correct answer.  A larger portion of this hypothetical debate tree is shown below:
+  </p>
+  <figure class="l-page" id="figure-debate-tree">
+    <svg viewBox="-120 -100 1075 350" style="background: white; font-size: 10px; font-family: sans-serif;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g fill="none" stroke="#555" stroke-opacity="0.8" stroke-width="2"><path class="highlight" d="M142.85714285714286,82.8125C71.42857142857143,82.8125 71.42857142857143,0 0,0"></path><path class="highlight" d="M285.7142857142857,95.3125C214.28571428571428,95.3125 214.28571428571428,82.8125 142.85714285714286,82.8125"></path><path class="highlight" d="M428.57142857142856,-32.8125C357.14285714285717,-32.8125 357.14285714285717,95.3125 285.7142857142857,95.3125"></path><path class="highlight" d="M571.4285714285714,-1.5625C500,-1.5625 500,-32.8125 428.57142857142856,-32.8125"></path><path class="highlight" d="M714.2857142857143,10.9375C642.8571428571429,10.9375 642.8571428571429,-1.5625 571.4285714285714,-1.5625"></path><path class="highlight" d="M857.1428571428571,10.9375C785.7142857142858,10.9375 785.7142857142858,10.9375 714.2857142857143,10.9375"></path></g><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M142.85714285714286,-82.8125C71.42857142857143,-82.8125 71.42857142857143,0 0,0"></path><path d="M285.7142857142857,-82.8125C214.28571428571428,-82.8125 214.28571428571428,-82.8125 142.85714285714286,-82.8125"></path><path d="M285.7142857142857,-20.3125C214.28571428571428,-20.3125 214.28571428571428,82.8125 142.85714285714286,82.8125"></path><path d="M428.57142857142856,-82.8125C357.14285714285717,-82.8125 357.14285714285717,-82.8125 285.7142857142857,-82.8125"></path><path d="M428.57142857142856,60.9375C357.14285714285717,60.9375 357.14285714285717,95.3125 285.7142857142857,95.3125"></path><path d="M428.57142857142856,135C357.14285714285717,135 357.14285714285717,95.3125 285.7142857142857,95.3125"></path><path d="M428.57142857142856,223.4375C357.14285714285717,223.4375 357.14285714285717,95.3125 285.7142857142857,95.3125"></path><path d="M571.4285714285714,-64.0625C500,-64.0625 500,-32.8125 428.57142857142856,-32.8125"></path><path d="M571.4285714285714,60.9375C500,60.9375 500,60.9375 428.57142857142856,60.9375"></path><path d="M571.4285714285714,110.9375C500,110.9375 500,135 428.57142857142856,135"></path><path d="M571.4285714285714,160.9375C500,160.9375 500,135 428.57142857142856,135"></path><path d="M571.4285714285714,210.9375C500,210.9375 500,223.4375 428.57142857142856,223.4375"></path><path d="M571.4285714285714,235.9375C500,235.9375 500,223.4375 428.57142857142856,223.4375"></path><path d="M714.2857142857143,-64.0625C642.8571428571429,-64.0625 642.8571428571429,-64.0625 571.4285714285714,-64.0625"></path><path d="M714.2857142857143,-14.0625C642.8571428571429,-14.0625 642.8571428571429,-1.5625 571.4285714285714,-1.5625"></path><path d="M714.2857142857143,60.9375C642.8571428571429,60.9375 642.8571428571429,60.9375 571.4285714285714,60.9375"></path><path d="M714.2857142857143,110.9375C642.8571428571429,110.9375 642.8571428571429,110.9375 571.4285714285714,110.9375"></path><path d="M714.2857142857143,160.9375C642.8571428571429,160.9375 642.8571428571429,160.9375 571.4285714285714,160.9375"></path><path d="M714.2857142857143,235.9375C642.8571428571429,235.9375 642.8571428571429,235.9375 571.4285714285714,235.9375"></path><path d="M857.1428571428571,-64.0625C785.7142857142858,-64.0625 785.7142857142858,-64.0625 714.2857142857143,-64.0625"></path><path d="M857.1428571428571,60.9375C785.7142857142858,60.9375 785.7142857142858,60.9375 714.2857142857143,60.9375"></path><path d="M857.1428571428571,160.9375C785.7142857142858,160.9375 785.7142857142858,160.9375 714.2857142857143,160.9375"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(857.1428571428571,160.9375)"><text y="-17" fill="#008BEE" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Bali’s much </tspan><tspan alignment-baseline="middle" dy="12" x="10"> warmer </tspan></text><circle fill="#008BEE" r="2.5"></circle><text y="-17" fill="#008BEE" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> Bali’s much </tspan><tspan alignment-baseline="middle" dy="12" x="10"> warmer </tspan></text></g><g transform="translate(857.1428571428571,60.9375)"><text y="-17" fill="#008BEE" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> The flight will </tspan><tspan alignment-baseline="middle" dy="12" x="10"> dominate the cost </tspan></text><circle fill="#008BEE" r="2.5"></circle><text y="-17" fill="#008BEE" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> The flight will </tspan><tspan alignment-baseline="middle" dy="12" x="10"> dominate the cost </tspan></text></g><g transform="translate(857.1428571428571,10.9375)"><text y="-17" fill="#008BEE" style="font-weight: bold;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> That’s hard </tspan><tspan alignment-baseline="middle" dy="12" x="10"> to obtain </tspan></text><rect fill="white" stroke="#008BEE" stroke-width="2" x="0" y="-17" rx="10" ry="10" width="75" height="34"></rect><text y="-17" fill="#008BEE" style="font-weight: bold;"><tspan alignment-baseline="middle" dy="12" x="10"> That’s hard </tspan><tspan alignment-baseline="middle" dy="12" x="10"> to obtain </tspan></text></g><g transform="translate(857.1428571428571,-64.0625)"><text y="-17" fill="#008BEE" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> It’s a vacation you </tspan><tspan alignment-baseline="middle" dy="12" x="10"> can reschedule </tspan></text><circle fill="#008BEE" r="2.5"></circle><text y="-17" fill="#008BEE" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> It’s a vacation you </tspan><tspan alignment-baseline="middle" dy="12" x="10"> can reschedule </tspan></text></g><g transform="translate(714.2857142857143,235.9375)"><text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> It’s January </tspan></text><circle fill="#EE4900" r="2.5"></circle><text y="-11" fill="#EE4900" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> It’s January </tspan></text></g><g transform="translate(714.2857142857143,160.9375)"><text y="-17" fill="#EE4900" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> There are no larger </tspan><tspan alignment-baseline="middle" dy="12" x="10"> considerations </tspan></text><circle fill="#EE4900" r="2.5"></circle><text y="-17" fill="#EE4900" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> There are no larger </tspan><tspan alignment-baseline="middle" dy="12" x="10"> considerations </tspan></text></g><g transform="translate(714.2857142857143,110.9375)"><text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> … </tspan></text><circle fill="#EE4900" r="2.5"></circle><text y="-11" fill="#EE4900" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> … </tspan></text></g><g transform="translate(714.2857142857143,60.9375)"><text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> That costs too much </tspan></text><circle fill="#EE4900" r="2.5"></circle><text y="-11" fill="#EE4900" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> That costs too much </tspan></text></g><g transform="translate(714.2857142857143,10.9375)"><text y="-11" fill="#EE4900" style="font-weight: bold;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Prescription needed </tspan></text><rect fill="white" stroke="#EE4900" stroke-width="2" x="0" y="-11" rx="10" ry="10" width="115" height="22"></rect><text y="-11" fill="#EE4900" style="font-weight: bold;"><tspan alignment-baseline="middle" dy="12" x="10"> Prescription needed </tspan></text></g><g transform="translate(714.2857142857143,-14.0625)"><text y="-17" fill="#EE4900" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> This hasn’t worked for </tspan><tspan alignment-baseline="middle" dy="12" x="10"> you in the past </tspan></text><circle fill="#EE4900" r="2.5"></circle><text y="-17" fill="#EE4900" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> This hasn’t worked for </tspan><tspan alignment-baseline="middle" dy="12" x="10"> you in the past </tspan></text></g><g transform="translate(714.2857142857143,-64.0625)"><text y="-23" fill="#EE4900" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> You’d need to take a </tspan><tspan alignment-baseline="middle" dy="12" x="10"> business call at a weird </tspan><tspan alignment-baseline="middle" dy="12" x="10"> time on the first day </tspan></text><circle fill="#EE4900" r="2.5"></circle><text y="-23" fill="#EE4900" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> You’d need to take a </tspan><tspan alignment-baseline="middle" dy="12" x="10"> business call at a weird </tspan><tspan alignment-baseline="middle" dy="12" x="10"> time on the first day </tspan></text></g><g transform="translate(571.4285714285714,235.9375)"><text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Not always too hot </tspan></text><circle fill="#008BEE" r="2.5"></circle><text y="-11" fill="#008BEE" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> Not always too hot </tspan></text></g><g transform="translate(571.4285714285714,210.9375)"><text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> You prefer hot to cold </tspan></text><circle fill="#008BEE" r="2.5"></circle><text y="-11" fill="#008BEE" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> You prefer hot to cold </tspan></text></g><g transform="translate(571.4285714285714,160.9375)"><text y="-17" fill="#008BEE" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Insignificant compared </tspan><tspan alignment-baseline="middle" dy="12" x="10"> to trip length </tspan></text><circle fill="#008BEE" r="2.5"></circle><text y="-17" fill="#008BEE" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> Insignificant compared </tspan><tspan alignment-baseline="middle" dy="12" x="10"> to trip length </tspan></text></g><g transform="translate(571.4285714285714,110.9375)"><text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Insignificant </tspan></text><circle fill="#008BEE" r="2.5"></circle><text y="-11" fill="#008BEE" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> Insignificant </tspan></text></g><g transform="translate(571.4285714285714,60.9375)"><text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Use expedited service </tspan></text><circle fill="#008BEE" r="2.5"></circle><text y="-11" fill="#008BEE" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> Use expedited service </tspan></text></g><g transform="translate(571.4285714285714,-1.5625)"><text y="-17" fill="#008BEE" style="font-weight: bold;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Medication helps </tspan><tspan alignment-baseline="middle" dy="12" x="10"> jetlag </tspan></text><rect fill="white" stroke="#008BEE" stroke-width="2" x="0" y="-17" rx="10" ry="10" width="95" height="34"></rect><text y="-17" fill="#008BEE" style="font-weight: bold;"><tspan alignment-baseline="middle" dy="12" x="10"> Medication can </tspan><tspan alignment-baseline="middle" dy="12" x="10"> help with jetlag </tspan></text></g><g transform="translate(571.4285714285714,-64.0625)"><text y="-17" fill="#008BEE" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Trip length is enough </tspan><tspan alignment-baseline="middle" dy="12" x="10"> to adjust </tspan></text><circle fill="#008BEE" r="2.5"></circle><text y="-17" fill="#008BEE" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> Trip length is enough </tspan><tspan alignment-baseline="middle" dy="12" x="10"> to adjust </tspan></text></g><g transform="translate(428.57142857142856,223.4375)"><text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> It’s too hot </tspan></text><circle fill="#EE4900" r="2.5"></circle><text y="-11" fill="#EE4900" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> It’s too hot </tspan></text></g><g transform="translate(428.57142857142856,135)"><text y="-17" fill="#EE4900" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> The flight takes </tspan><tspan alignment-baseline="middle" dy="12" x="10"> longer </tspan></text><circle fill="#EE4900" r="2.5"></circle><text y="-17" fill="#EE4900" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> The flight takes </tspan><tspan alignment-baseline="middle" dy="12" x="10"> longer </tspan></text></g><g transform="translate(428.57142857142856,60.9375)"><text y="-17" fill="#EE4900" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> You don’t have </tspan><tspan alignment-baseline="middle" dy="12" x="10"> a passport </tspan></text><circle fill="#EE4900" r="2.5"></circle><text y="-17" fill="#EE4900" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> You don’t have </tspan><tspan alignment-baseline="middle" dy="12" x="10"> a passport </tspan></text></g><g transform="translate(428.57142857142856,-32.8125)"><text y="-11" fill="#EE4900" style="font-weight: bold;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> You hate jet lag </tspan></text><rect fill="white" stroke="#EE4900" stroke-width="2" x="0" y="-11" rx="10" ry="10" width="95" height="22"></rect><text y="-11" fill="#EE4900" style="font-weight: bold;"><tspan alignment-baseline="middle" dy="12" x="10"> You hate jet lag </tspan></text></g><g transform="translate(428.57142857142856,-82.8125)"><text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> … </tspan></text><circle fill="#EE4900" r="2.5"></circle><text y="-11" fill="#EE4900" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> … </tspan></text></g><g transform="translate(285.7142857142857,95.3125)"><text y="-11" fill="#008BEE" style="font-weight: bold;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Bali </tspan></text><rect fill="white" stroke="#008BEE" stroke-width="2" x="0" y="-11" rx="10" ry="10" width="40" height="22"></rect><text y="-11" fill="#008BEE" style="font-weight: bold;"><tspan alignment-baseline="middle" dy="12" x="10"> Bali </tspan></text></g><g transform="translate(285.7142857142857,-20)"><text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Ohio </tspan></text><circle fill="#008BEE" r="2.5"></circle><text y="-11" fill="#008BEE" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> Ohio </tspan></text></g><g transform="translate(285.7142857142857,-82.8125)"><text y="-11" fill="#008BEE" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Alaska </tspan></text><circle fill="#008BEE" r="2.5"></circle><text y="-11" fill="#008BEE" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> Alaska </tspan></text></g><g transform="translate(142.85714285714286,82.8125)"><text y="-11" fill="#EE4900" style="font-weight: bold;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Alaska </tspan></text><rect fill="white" stroke="#EE4900" stroke-width="2" x="0" y="-11" rx="10" ry="10" width="53" height="22"></rect><text y="-11" fill="#EE4900" style="font-weight: bold;"><tspan alignment-baseline="middle" dy="12" x="10"> Alaska </tspan></text></g><g transform="translate(142.85714285714286,-82.8125)"><text y="-11" fill="#EE4900" style="font-weight: normal;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Bali </tspan></text><circle fill="#EE4900" r="2.5"></circle><text y="-11" fill="#EE4900" style="font-weight: normal;"><tspan alignment-baseline="middle" dy="12" x="10"> Bali </tspan></text></g><g transform="translate(-110,0)"><text y="-17" fill="black" style="font-weight: bold;" stroke="white"><tspan alignment-baseline="middle" dy="12" x="10"> Where should I go </tspan><tspan alignment-baseline="middle" dy="12" x="10"> on vacation? </tspan></text><rect fill="white" stroke="black" stroke-width="2" x="0" y="-17" rx="10" ry="10" width="110" height="34"></rect><text y="-17" fill="black" style="font-weight: bold;"><tspan alignment-baseline="middle" dy="12" x="10"> Where should I go </tspan><tspan alignment-baseline="middle" dy="12" x="10"> on vacation? </tspan></text></g></g></g></svg>
+    <figcaption style="position: absolute; bottom: 1em; left: 1em; max-width: 25em;">
+        <a href="#figure-debate-tree" class="figure-number">1</a>
+        A hypothetical partial debate tree for the question “Where should I go on vacation?” A single debate would explore only one of these paths, but a single path chosen by good debaters is evidence that other paths would not change the result of the game.
+    </figcaption>
+  </figure>
+  <p>
+    If trained debaters are bad at predicting which debates will win, answer quality will degrade since debaters will be unable to think of important arguments and counterarguments.  However, as long as the two sides are reasonably well matched, we can hope that at least the results are not malicious: that misleading behavior is still a losing strategy.  Let's set aside the ability of the debaters for now, and turn to the ability of the judge.
+  </p>
+  <h3 id="are-people-good-enough-as-judges">Are people good enough as judges?</h3>
+  <blockquote>
+      "In fact, almost everything written at a practical level about the Turing test is about how to make good bots, with a small remaining fraction about how to be a good judge."
+      <cite style="padding-left: 1rem;" class="figcaption">Brian Christian, The Most Human Human<d-cite key="christian2011human"></d-cite></cite>
+  </blockquote>
+  <p>
+    As with learning by asking humans direct questions, whether debate produces aligned behavior depends on the reasoning abilities of the human judge.  Unlike direct questioning, debate has the potential to give correct answers beyond what the judge could provide without assistance.  This is because a sufficiently strong judge could follow along with arguments the judge could not come up with on their own, checking complex reasoning for both self consistency and consistency with human-checkable facts.  A judge who is biased but willing to adjust once those biases are revealed could result in unbiased debates, or a judge who is able to check facts but does not know where to look could be helped along by honest debaters.  If the hypothesis holds, a misleading debater would not be able to counter the points of an honest debater, since the honest points would appear more consistent to the judge.
+  </p><p>
+    On the other hand, we can also imagine debate going the other way: amplifying biases and failures of reason.  A judge with an ethical bias who is happy to accept statements reinforcing that bias could result in even more biased debates.  A judge with too much confirmation bias might happily accept misleading sources of evidence, and be unwilling to accept arguments showing why that evidence is wrong.  In this case, an optimal debate agent might be quite malicious, taking advantage of biases and weakness in the judge to win with convincing but wrong arguments.<d-footnote>The difficulties that cognitive biases, prejudice, and social influence introduce to persuasion ‒ as well as methods for reducing these factors ‒ are being increasingly explored in psychology, communication science, and neuroscience<d-cite key="paluck2016overcome,flynn2017nature,falk2018persuasion"></d-cite>.</d-footnote>
+  </p><p>
+    In both these cases, debate acts as an amplifier.  For strong judges, this amplification is positive, removing biases and simulating extra reasoning abilities for the judge.  For weak judges, the biases and weaknesses would themselves be amplified.  If this model holds, debate would have threshold behavior: it would work for judges above some threshold of ability and fail below the threshold.<d-footnote>The threshold model is only intuition, and could fail for a variety of reasons: the intermediate region could be very large, or the threshold could differ widely per question so that even quite strong judges are insufficient for many questions.</d-footnote>  Assuming the threshold exists, it is unclear whether people are above or below it.  People are capable of general reasoning, but our ability is limited and riddled with cognitive biases.  People are capable of advanced ethical sentiment but also full of biases, both conscious and unconscious.
+  </p><p>
+    Thus, if debate is the method we use to align an AI, we need to know if people are strong enough as judges.  In other words, whether the human judges are sufficiently good at discerning whether a debater is telling the truth or not.  This question depends on many details: the type of questions under consideration, whether judges are trained or not, and restrictions on what debaters can say.  We believe experiment will be necessary to determine whether people are sufficient judges, and which form of debate is most truth-seeking.
+  </p>
+  <h3 id="superforecasters-superjudges">From superforecasters to superjudges</h3>
+  <p>
+    An analogy with the task of probabilistic forecasting is useful here.  Tetlock's "Good Judgment Project" showed that some amateurs were significantly better at forecasting world events than both their peers and many professional forecasters.  These "superforecasters" maintained their prediction accuracy over years (without regression to the mean), were able to make predictions with limited time and information<d-cite key="mellers2015identifying"></d-cite>, and seem to be less prone to cognitive biases than non-superforecasters (<d-cite key="tetlock2016superforecasting"></d-cite>, p. 234-236).  The superforecasting trait was not immutable: it was traceable to particular methods and thought processes, improved with careful practice, and could be amplified if superforecasters were collected into teams.  For forecasters in general, brief probabilistic training significantly improved forecasting ability even 1-2 years after the training.  We believe a similar research program is possible for debate and other AI alignment algorithms.  In the best case, we would be able to find, train, or assemble "superjudges", and have high confidence that optimal debate with them as judges would produce aligned behavior.
+  </p><p>
+    In the forecasting case, much of the research difficulty lay in assembling a large corpus of high quality forecasting questions.  Similarly, measuring how good people are as debate judges will not be easy.  We would like to apply debate to problems where there is no other source of truth: if we had that source of truth, we would train ML models on it directly.  But if there is no source of truth, there is no way to measure whether debate produced the correct answer.  This problem can be avoided by starting with simple, verifiable domains, where the experimenters know the answer but the judge would not.  "Success" then means that the winning debate argument is telling the externally known truth.  The challenge gets harder as we scale up to more complex, value-laden questions, as we discuss in detail later.
+  </p>
+  <h3 id="debate-is-only-one-approach">Debate is only one possible approach</h3>
+  <p>
+    As mentioned, debate is not the only scheme trying to learn human reasoning.  Debate is a modified version of iterated amplification<d-cite key="christiano2018amplification"></d-cite>, which uses humans to break down hard questions into easier questions and trains ML models to be consistent with this decomposition.  Recursive reward modeling is a further variant<d-cite key="leike2018scalable"></d-cite>.  Inverse reinforcement learning, inverse reward design, and variants try to back out goals from human actions, taking into account limitations and biases that might affect this reasoning<d-cite key="hadfield2016cooperative,hadfield2017inverse"></d-cite>.  The need to study how humans interact with AI alignment applies to any of these approaches.  Some of this work has already begun: Ought's Factored Cognition project uses teams of humans to decompose questions and reassemble answers, mimicking iterated amplification<d-cite key="ought2018factored"></d-cite>.  We believe knowledge gained about how humans perform with one approach is likely to partially generalize to other approaches: knowledge about how to structure truth-seeking debates could inform how to structure truth-seeking amplification, and vice versa.
+  </p>
+
+  <h3 id="debate-experiments">Experiments needed for debate</h2>
+  <p>
+    To recap, in debate we have two AI agents engaged in debate, trying to convince a human judge.  The debaters are trained only to win the game, and are not motivated by truth separate from the human's judgments.  On the human side, we would like to know whether people are strong enough as judges in debate to make this scheme work, or how to modify debate to fix it if it doesn't.  Unfortunately, actual debates in natural language are well beyond the capabilities of present AI systems, so previous work on debate and similar schemes has been restricted to synthetic or toy tasks<d-cite key="irving2018debate,christiano2018amplification"></d-cite>.
+  </p><p>
+    Rather than waiting for ML to catch up to natural language debate, we propose simulating our eventual setting (two AI debaters and one human judge) with all human debates: two human debaters and one human judge.  Since an all human debate doesn't involve any machine learning, it becomes a pure social science experiment: motivated by ML considerations but not requiring ML expertise to run.  This lets us focus on the component of AI alignment uncertainty specific to humans.
+  </p>
+  <figure id="figure-debate-experiments" style="contain: style; position: relative; display: grid; grid-template-columns: 33% 1fr; grid-gap: inherit;">
+        <figcaption>
+            <a href="#figure-debate-experiments" class="figure-number">2</a>
+            <span>
+                Our goal are ML+ML+Human debates, but ML is currently too primitive to do many interesting tasks.
+                Therefore, we propose replacing ML debaters with human debaters, learning how to best conduct debates in this human-only setting, and eventually applying what we learn to the ML+ML+Human case.
+            </span>
+        </figcaption>
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="240 0 460 200"><defs><style> .al-cls-1{fill:#dbdbdb;}.al-cls-2{fill:#eed5ca;}.al-cls-3{fill:#cadfee;}.al-cls-4{clip-path:url(#clip-path);}.al-cls-5{clip-path:url(#clip-path-2);}.al-cls-6{clip-path:url(#clip-path-3);}.al-cls-7{clip-path:url(#clip-path-4);}.al-cls-14,.al-cls-8{fill:none;stroke-miterlimit:10;}.al-cls-8{stroke:#8a8a8a;}.al-cls-9{font-size:13px;}.al-cls-12,.al-cls-15,.al-cls-9{font-family:HelveticaNeue, Helvetica Neue;}.al-cls-10{letter-spacing:-0.02em;}.al-cls-11{letter-spacing:0.02em;}.al-cls-12{font-size:10px;}.al-cls-13{letter-spacing:-0.09em;}.al-cls-14{stroke:#000;}.al-cls-15{font-size:11px;fill:#6b6b6b;}.al-cls-16{fill:#f2d5ca;}.al-cls-17{fill:#c6e0ed;} </style><clipPath id="clip-path"><circle class="al-cls-1" cx="337.74" cy="144.93" r="28.07"></circle></clipPath><clipPath id="clip-path-2"><circle class="al-cls-2" cx="296.74" cy="61.93" r="28.07"></circle></clipPath><clipPath id="clip-path-3"><circle class="al-cls-3" cx="379.74" cy="61.93" r="28.07"></circle></clipPath><clipPath id="clip-path-4"><circle class="al-cls-1" cx="606.74" cy="144.93" r="28.07"></circle></clipPath></defs><circle class="al-cls-1" cx="337.74" cy="144.93" r="28.07"></circle><g class="al-cls-4"><path d="M337.34,147.14a10.06,10.06,0,1,0-10-10.06A10.05,10.05,0,0,0,337.34,147.14Zm0,5c-6.71,0-20.11,3.37-20.11,10.06v15.23h40.23V162.23C357.46,155.54,344.06,152.17,337.34,152.17Z"></path></g><circle class="al-cls-2" cx="296.74" cy="61.93" r="28.07"></circle><g class="al-cls-5"><path d="M296.34,64.14a10.06,10.06,0,1,0-10-10.06A10.05,10.05,0,0,0,296.34,64.14Zm0,5c-6.71,0-20.11,3.37-20.11,10.06V94.46h40.23V79.23C316.46,72.54,303.06,69.17,296.34,69.17Z"></path></g><circle class="al-cls-3" cx="379.74" cy="61.93" r="28.07"></circle><g class="al-cls-6"><path d="M379.34,64.14a10.06,10.06,0,1,0-10-10.06A10.05,10.05,0,0,0,379.34,64.14Zm0,5c-6.71,0-20.11,3.37-20.11,10.06V94.46h40.23V79.23C399.46,72.54,386.06,69.17,379.34,69.17Z"></path></g><circle class="al-cls-1" cx="606.74" cy="144.93" r="28.07"></circle><g class="al-cls-7"><path d="M606.34,147.14a10.06,10.06,0,1,0-10.05-10.06A10.05,10.05,0,0,0,606.34,147.14Zm0,5c-6.71,0-20.11,3.37-20.11,10.06v15.23h40.23V162.23C626.46,155.54,613.06,152.17,606.34,152.17Z"></path></g><rect class="al-cls-8" x="256.73" y="24.5" width="164" height="73" rx="36.5"></rect><text class="al-cls-12" transform="translate(293.54 14.78)"> HUMAN DEB <tspan class="al-cls-13" x="59.63" y="0"> A </tspan><tspan x="65.19" y="0"> TERS </tspan></text><rect class="al-cls-8" x="526.5" y="24.5" width="164" height="73" rx="36.5"></rect><text class="al-cls-12" transform="translate(560.97 14.78)"> MACHINE DEB <tspan class="al-cls-13" x="68.33" y="0"> A </tspan><tspan x="73.89" y="0"> TERS </tspan></text><text class="al-cls-9" transform="translate(459.43 46.61)"> Apply <tspan x="-5.42" y="19"> lessons </tspan></text><path class="al-cls-14" d="M431.48,34.1a57.43,57.43,0,0,1,83.34-5.18"></path><path d="M519,33.27a30,30,0,0,0-9.37-2.8l4.6-2.09,2.21-4.55A30.16,30.16,0,0,0,519,33.27Z"></path><text class="al-cls-15" transform="translate(297.45 193.16)"> HUMAN JUDGE </text><text class="al-cls-15" transform="translate(566.45 193.16)"> HUMAN JUDGE </text><circle class="al-cls-16" cx="566.74" cy="60.93" r="28.07"></circle><path d="M582.33,74.88a3.83,3.83,0,0,0,3.82-3.83l0-21.08a3.85,3.85,0,0,0-3.84-3.84H551.67A3.85,3.85,0,0,0,547.83,50V71.05a3.85,3.85,0,0,0,3.84,3.83H544a3.85,3.85,0,0,0,3.83,3.84h38.34A3.85,3.85,0,0,0,590,74.88ZM551.67,50h30.66V71.05H551.67ZM567,76.8a1.92,1.92,0,1,1,1.92-1.92A1.93,1.93,0,0,1,567,76.8Z"></path><circle class="al-cls-17" cx="651.74" cy="60.93" r="28.07"></circle><path d="M667.33,74.88a3.83,3.83,0,0,0,3.82-3.83l0-21.08a3.85,3.85,0,0,0-3.84-3.84H636.67A3.85,3.85,0,0,0,632.83,50V71.05a3.85,3.85,0,0,0,3.84,3.83H629a3.85,3.85,0,0,0,3.83,3.84h38.34A3.85,3.85,0,0,0,675,74.88ZM636.67,50h30.66V71.05H636.67ZM652,76.8a1.92,1.92,0,1,1,1.92-1.92A1.93,1.93,0,0,1,652,76.8Z"></path></svg>
+  </figure>
+  <p>
+    To make human+human+human debate experiments concrete, we must choose who to use as judges and debaters and which tasks to consider.  We also can choose to structure the debate in various ways, some of which overlaps with the choice of judge since we can instruct a judge to penalize deviations from a given format.  By task we mean the questions our debates will try to resolve, together with any information provided to the debaters or to the judge.  Such an experiment would then try to answer the following question:
+  </p><p>
+    <strong>Question:</strong> For a given task and judge, is the winning debate strategy honest?
+  </p><p>
+    The "winning strategy" proviso is important: an experiment that picked debaters at random might conclude that honest behavior won, missing the fact that more practiced debaters would learn to successfully lie.  We can try to solve this by training debaters, letting them practice against each other, filtering out debaters that win more often, and so on, but we will still be left with uncertainty about whether a better strategy exists.  Even assuming we can find or train strong debaters, the choice of task and judge is quite tricky if we want an informative proxy for our eventual AI+AI+human setting.  Here are some desiderata constraining our choice of task:
+  </p><p>
+    <ol>
+      <li><strong>True answers are known:</strong>
+        Although our eventual goal is debates where no source of truth is available, to conduct a useful experiment we must be able to measure success.  This means we must know what the correct answer is separate from debate, in order to compare with the results of debate.</li>
+      <li><strong>False answers are plausible:</strong>
+        If the truth is obvious or no plausible counternarrative exists, honest debates will win for uninteresting and uninformative reasons regardless of judge ability.  In particular, the judge shouldn't know the answer upfront.</li>
+      <li><strong>Debaters know more than the judge:</strong>
+        Debate can produce interesting results only when the debaters know more than the judge; otherwise asking direct questions is enough.</li>
+      <li><strong>Definitive argument longer than debate limit:</strong>
+        If one debater can write out a full proof of their answer (ignoring their opponent's moves), the task won't be a good test of interactive debate.</li>
+      <li><strong>Some checkable facts:</strong>
+        There must be some facts which the judge is able to check, either because they can recognize them as true once presented or look them up.<d-footnote>It is impossible to usefully debate a question where the judge has nothing to check: consider debating the result of a coin flip shown to the two debaters but not the judge.</d-footnote></li>
+      <li><strong>No "tells":</strong>
+        Human tells of deception could result in honest debaters winning for reasons that wouldn't apply to an AI.  These tells include tone of voice, eye contact, or additional time required to construct plausible lies.  These tells can be reduced by showing judges completed debate transcripts instead of engaging in interactive debates, but others might remain.</li>
+      <li><strong>Available data:</strong>
+        We need a large enough pool of questions, judges, and debaters to achieve statistical significance.  This is made more difficult because we may have a large number of hypotheses to test, in the form of many variations on debate or interventions to improve judging.</li>
+      <li><strong>Known biases (optional):</strong>
+        We are specifically interested in debate tasks which test specific types of cognitive or ethical biases.
+        Are judges with some racial or gender bias able to set those biases aside if they are highlighted, or does debate amplify bias?  Do debates about statistical or probabilistic questions make it too easy to lie with statistics?
+      <li><strong>Realistic tasks (ideally):</strong>
+        If possible, we would like to try debate with interesting, real world tasks that reflect the types of questions we would like to apply AI to in the future, including science, mathematics, ethics, etc.
+    </ol>
+  </p><p>
+    It may not be possible to meet all of these criteria with a single experiment.  Several of the criteria are in tension: (1) and (2) are essentially "not too hard" and "not too easy", and any restriction on the types of questions may make it difficult to find large numbers of questions, judges, or debaters.  Realistic tasks are much harder than synthetic tasks, which easily fulfill many of the criteria as discussed below.  Thus, we may need to begin with synthetic tasks and move up towards realistic tasks over time.
+    We turn next to a few examples of experiments to see how many criteria we can meet simultaneously.
+  </p>
+  <h3 id="synthetic-experiments">Synthetic experiments: single pixel image debate</h3>
+  <p>
+    As a first prototype of a human+human+human debate experiment, we previously built a <a href="https://debate-game.openai.com">prototype website</a> where two debaters argue over the contents of an image<d-cite key="irving2018debate"></d-cite>.  We choose an image of a cat or dog, and show the image to the two debaters but not the judge.  One debater is honest and argues for the true contents of the image; the other debater lies.  The debaters can talk to the judge and illustrate their points by drawing rectangles on the image, but the judge sees only the rectangles.  At the end of the debate, each debater is allowed to reveal a single pixel to the judge, which is the only part of the debate which cannot be a lie.
+  </p>
+  <figure class="subgrid" id="dog-debate">
+    <figcaption style="grid-column: kicker">
+      An example debate with two human debaters and a human judge.  Only the debaters can see the image. Red is arguing that the image is a dog, Blue is arguing for cat. <a href="https://commons.wikimedia.org/wiki/File:Beagle_puppy_sitting_on_grass.jpg">Image credit: Wikipedia, CC-BY-SA.</a>
+    </figcaption>
+    <div class="l-body">
+        <img title="A picture of a puppy with long floppy ears next to an animated transcript of a debate between two fictional agents arguing whether the picture shows a dog or a cat. A transcript of the debate follows: Red: It's a dog. Here's a long, floppy ear. [Red highlights a rectangle containing a floppy dog ear] Blue: No, it's a cat. Here's one of its pointy ears. [Blue highlights a part of the floppy dog ear that looks like a pointy cat ear.] Red: that does look like an ear sloped to the right, but if it really was then part of the head would be here. Instead, there's brick. [Red highlights bricks in the background of the picture.] Blue: The ear is pointing out from behind some bricks. Red: The dog is in front of the bricks. If it was behind, there would be an edge here [Red highlights an area where the bricks would be in front of the animal head, but that area just shows the dog ear], but the rectangle is all the same color. Blue: I resign." decoding=async src="debate-animation.gif">
+    </div>
+  </figure>
+  <p>
+    In informal play, the honest debater wins most of the time.  Although the judge only gets to check a single pixel, the honest player can try to pin down the liar towards disagreements on smaller and smaller regions of the image until one pixel is enough to reveal the lie.  However, it is hard to know whether this is a real result or an artifact that would not carry across to training an AI.  There are many ways to ruin the game, such as the judge asking each player to spend 15 seconds naming as many details about the image as possible.  Worse, this trick ruins the game in favor of the honest player, who can easily name many true details while a human liar may have difficulty lying fluently at speed.  Therefore, we are wary of trying to perform a full version of this experiment without more careful experimental design building on the experimental knowledge base of existing social science research.
+  </p><p>
+    As a synthetic experiment, single pixel debate satisfies many of our experimental criteria for all human debate.  The true answer is obvious to the debaters, and they know more than the judge since only the debaters see the image.  Anything is plausible to the judge who sees only one or two pixels over the course of the debate.  Since the argument bottoms out at single pixels, the "full argument" would be a huge list of pixels and how they relate, forcing the debaters to pin each other down and focus in on disagreements.  The single pixels constitute the checkable facts, and we have an endless supply of questions in the form of images chosen at random.  Less fortunately, it is easy for the judge to force "tells" which reveal who is lying, the task has no obvious relation to biases, and is quite unrealistic.
+  </p>
+  <h3 id="expert">Realistic experiments: domain expert debate</h3>
+  <p>
+    For a more interesting task, we can find two debaters who are experts in a domain, pick a question in their area of expertise, and use a layperson as the judge.  The debaters could be experts in some area of science, law, or ethics, but "domain expertise" could also mean knowledge about hobbies, local customs, sports, or any other subject the judge does not know.  We again choose one of the debaters to lie and one to tell the truth.  To guarantee a source of truth, we can choose a question with an agreed upon answer, either between the two debaters or more broadly in their field.  This is only approximate truth, but is good enough for informative experiments.  We also specify what facts the judge can access: a debate about physics might allow the debaters to quote a sentence or paragraph from Wikipedia, perhaps with restrictions on what pages are allowed.
+  </p><p>
+    Expert debate satisfies most of our desiderata, and it is likely possible to target specific biases (such as race or gender bias) by picking domain areas that overlap with these biases.  It may be quite difficult or expensive to find suitable debaters, but this may be solvable either by throwing resources at the problem (ML is a well funded field), enlarging the kinds of domain expertise considered (soccer, football, cricket), or by making the experiments interesting enough that volunteers are available.  However, even if domain experts can be found, there is no guarantee that they will be experts in debate viewed as a game.  With the possible exception of law, politics, or philosophy<d-cite key="schopenhauer2013art"></d-cite>, domain experts may not be trained to construct intentionally misleading but self consistent narratives: they may be experts only in trying to tell the truth.
+  </p><p>
+    We've tried a few informal expert debates using theoretical computer science questions, and the main lesson is that the structure of the debate matters a great deal.  The debaters were allowed to point to a small snippet of a mathematical definition on Wikipedia, but not to any page that directly answered the question.  To reduce tells, we first tried to write a full debate transcript with only minimal interaction with a layperson, then showed the completed transcript to several more laypeople judges.  Unfortunately, even the layperson present when the debate was conducted picked the lying debater as honest, due to a misunderstanding of the question (which was whether the complexity classes $P$ and $BPP$ are probably equal).  As a result, throughout the debate the honest debater did not understand what the judge was thinking, and failed to correct an easy but important misunderstanding.  We fixed this in a second debate by letting a judge ask questions throughout, but still showing the completed transcript to a second set of judges to reduce tells.  See <a href="#quantum">the appendix</a> for the transcript of this second debate.
+  </p>
+  <h3 id="other-tasks">Other tasks: bias tests, probability puzzles, etc.</h3>
+  <p>
+    Synthetic image debates and expert debates are just two examples of possible tasks.  More thought will be required to find tasks that satisfy all our criteria, and these criteria will change as experiments progress.  Pulling from existing social science research will be useful, as there are many cognitive tasks with existing research results.  If we can map these tasks to debate, we can compare debate directly against baselines in psychology and other fields.
+  </p><p>
+    For example, Bertrand and Mullainathan sent around 5000 resumes in response to real employment ads, randomizing the resumes between White and African American sounding names<d-cite key="bertrand2004emily"></d-cite>.  With otherwise identical resumes, the choice of name significantly changed the probability of a response.  This experiment corresponds to the direct question "Should we call back given this resume?"  What if we introduce a few steps of debate?  An argument against a candidate based on name or implicit inferences from that name might come across as obviously racist, and convince at least some judges away from discrimination.  Unfortunately, such an experiment would necessarily differ from Bertrand et al.'s original, where employers did not realize they were part of an experiment.  Note that this experiment works even though the source of truth is partial: we do not know whether a particular resume should be hired or not, but most would agree that the answer should not depend on the candidate's name.
+  </p><p>
+    For biases affecting probabilistic reasoning and decision making, there is a long literature exploring how people decide between gambles such as "Would you prefer <span>$2</span> with certainty or <span>$1</span> 40% of the time and <span>$3</span> otherwise?"<d-cite key="kahneman1979prospect,tversky1992advances"></d-cite>. For example, Erev et al. constructed an 11-dimensional space of gambles sufficient to reproduce 14 known cognitive biases, from which new instances can be algorithmically generated<d-cite key="erev2017anomalies"></d-cite>.  Would debates about gambles reduce cognitive biases?  One difficulty here is that simple gambles might fail the "definitive argument longer than debate limit" criteria if an expected utility calculation is sufficient to prove the answer, making it difficult for a lying debater to meaningfully compete.
+  </p><p>
+    Interestingly, Chen et al. used a similar setup to human+human+human debate to improve the quality of human data collected in a synthetic "Relation Extraction" task<d-cite key="chen2018cicero"></d-cite>.  People were first asked for direct answers, then pairs of people who disagreed were asked to discuss and possibly update their answers.  Here the debaters and judges are the same, but the overall goal of extracting higher quality information from humans is shared with debate.
+  </p>
+
+  <h2 id="questions">Questions social science can help us answer</h2>
+  <p>
+    We've laid out the general program for learning AI goals by asking humans questions, and discussed how to use debate to strengthen what we can learn by targeting the reasoning behind conclusions.  Whether we use direct questions or something like debate, any intervention that gives us higher quality answers is more likely to produce aligned AI.  The quality of those answers depends on the human judges, and social science research can help to measure answer quality and improve it.  Let's go into more detail about what types of questions we want to answer, and what we hope to do with that information.  Although we will frame these questions as they apply to debate, most of them apply to any other method which learns goals from humans.
+  </p>
+  <ol>
+    <li><strong>How skilled are people as judges by default?</strong>
+    If we ran debate using a person chosen at random as the judge, and gave them no training, would the result be aligned?  A person picked at random might be vulnerable to convincing fallacious reasoning<d-cite key="hahn2007rationality"></d-cite>, leading AI to employ such reasoning. Note that the debaters are not chosen at random: once the judge is fixed, we care about debaters who either learn to help the judge (in the good case) or to exploit the judge's weaknesses (in the bad case).</li>
+    <li><strong>Can we distinguish good judges from bad judges?</strong>
+    People likely differ in the ability to judge debates.  There are many filters we could use to identify good judges: comparing their verdicts to those of other judges, to people given more time to think, or to known expert judgment<d-footnote>Note that domain expertise may be quite different from what makes a good judge of debate.  Although there is evidence that domain expertise reduces bias<d-cite key="bornstein2001rationality"></d-cite>, "expert" political forecasters may actually be worse than non-experts (<d-cite key="tetlock2017expert"></d-cite>, chapter 3).</d-footnote>.  Ideally we would like filters that do not require an independent source of truth, though at experiment time we will need a source of truth to know whether a filter works.  It is not obvious a priori that good filters exist, and any filter would need careful scrutiny to ensure it does not introduce bias into our choice of judges.</li>
+    <li><strong>Does judge ability generalize across domains?</strong>
+    If judge ability in one domain fails to transfer to other domains, we will have low confidence that it transfers to new questions and arguments arising from highly capable AI debaters.  This generalization is necessary to trust debate as a method for alignment, especially once we move to questions where no independent source of truth is available.  We emphasize that judge ability is not the same as knowledge: there is evidence that expertise often fails to generalize across domains<d-cite key="chi2006two"></d-cite>, but argument evaluation could transfer where expertise does not.</li>
+    <li><strong>Can we train people to be better judges?</strong>
+    Peer review, practice, debiasing<d-cite key="larrick2004debiasing"></d-cite>, formal training such as argument mapping<d-cite key="dwyer2012evaluation"></d-cite>, expert panels, tournaments<d-cite key="tetlock2014forecasting"></d-cite>, and other interventions may make people better at judging debates.  Which mechanisms work best?</li>
+    <li><strong>What questions are people better at answering?</strong>
+    If we know that humans are bad at answering certain types of questions, we can switch to reliable formulations.  For example, phrasing questions in frequentist terms may reduce known cognitive biases<span class="nowrap"><d-cite key="gigerenzer1991make"></d-cite>.</span>  Graham et al. argue that different political views follow from different weights placed on fundamental moral considerations, and similar analysis could help understand where we can expect moral disagreements to persist after reflective equilibrium<d-cite key="graham2009liberals"></d-cite>.  In cases where reliable answers are unavailable, we need to ensure that trained models know their own limits, and express uncertainty or disagreement as required.</li>
+    <li><strong>Are there ways to restrict debate to make it easier to judge?</strong>
+    People might be better at judging debates formulated in terms of calm, factual statements, and worse at judging debates designed to trigger strong emotions.  Or, counterintuitively, it could be the other way around<d-cite key="goel2011negative"></d-cite>.  If we know which styles of debates that people are
+    better at judging, we may be able to restrict AI debaters to these styles.</li>
+    <li><strong>How can people work together to improve quality?</strong>
+    If individuals are insufficient judges, are teams of judges better?  Majority vote is the simplest option, but perhaps several people talking through an answer together is stronger, either actively or after the fact through peer review.  Condorcet's jury theorem implies that majority votes can amplify weakly good judgments to strong judgments (or weakly bad judgments to worse)<d-cite key="list2001epistemic"></d-cite>, but aggregation may be more complex in cases of probabilistic judgment<d-cite key="list2002aggregating"></d-cite>.  Teams could be informal or structured; see the Delphi technique for an example of structured teams applied to forecasting<d-cite key="rowe1999delphi"></d-cite>.</li>
+  </ol>
+  <p>
+    We believe these questions require social science experiments to satisfactorily answer.
+  </p><p>
+    Given our lack of experience outside of ML, we are not able to precisely articulate all of the different experiments we need.  The only way to fix this is to talk to more people with different backgrounds and expertise.  We have started this process, but are eager for more conversations with social scientists about what experiments could be run, and encourage other AI safety efforts to do engage similarly.
+  </p>
+
+  <h2 id="optimism">Reasons for optimism</h2>
+  <p>
+    We believe that understanding how humans interact with long-term AI alignment is difficult but possible.  However, this would be a new research area, and we want to be upfront about the uncertainties involved.  In this section and the next, we discuss some reasons for optimism and pessimism about whether this research will succeed.  We focus on issues specific to human uncertainty and associated social science research; for similar discussion on ML uncertainty in the case of debate we refer to our previous work<d-cite key="irving2018debate"></d-cite>.
+  </p>
+  <h3 id="engineering">Engineering vs. science</h3>
+  <p>
+    Most social science seeks to understand humans "in the wild": results that generalize to people going about their everyday lives.  With limited control over these lives, differences between laboratory and real life are bad from the scientific perspective.  In contrast, AI alignment seeks to extract the best version of what humans want: our goal is engineering rather than science, and we have more freedom to intervene.  If judges in debate need training to perform well, we can provide that training.  If some people still do not provide good data, we can remove them from experiments (as long as this filter does not create too much bias).  This freedom to intervene means that some of the difficulty in understanding and improving human reasoning may not apply.  However, science is still required: once our interventions are in place, we need to correctly know whether our methods work.  Since our experiments will be an imperfect model of the final goal, careful design will be necessary to minimize this mismatch, just as is required by existing social science.
+  </p>
+  <h3 id="no-need-to-answer-all-questions">We don't need to answer all questions</h3>
+  <p>
+    Our most powerful intervention is to give up: to recognize that we are unable to answer some types of questions, and instead prevent AI systems from pretending to answer.  Humans might be good judges on some topics but not others, or with some types of reasoning but not others; if we discover that we can adjust our goals appropriately.  Giving up on some types of questions is achievable either on the ML side, using careful uncertainty modeling to know when we do not know, or on the human side by training judges to understand their own areas of uncertainty.  Although we will attempt to formulate ML systems that automatically detect areas of uncertainty, any information we can gain on the social science side about human uncertainty can be used both to augment ML uncertainty modeling and to test whether ML uncertainty modeling works.
+  </p>
+  <h3 id="relative-accuracy-may-be-enough">Relative accuracy may be enough</h3>
+  <p>
+    Say we have a variety of different ways to structure debate with humans.  Ideally, we would like to achieve results of the form "debate structure $A$ is truth-seeking with 90% confidence".  Unfortunately, we may be unconfident that an absolute result of this form will generalize to advanced AI systems: it may hold for an experiment with simple tasks but break down later on.  However, even if we can't achieve such absolute results, we can still hope for relative results of the form "debate structure $A$ is reliably better than debate structure $B$".  Such a result may be more likely to generalize into the future, and assuming it does we will know to use structure $A$ rather than $B$.
+  </p>
+  <h3 id="no-need-to-pin-down-best-alignment-scheme">We don't need to pin down the best alignment scheme</h3>
+  <p>
+    As the AI safety field progresses to increasingly advanced ML systems, we expect research on the ML side and the human side to merge.  Starting social science experiments prior to this merging will give the field a head start, but we can also take advantage of the expected merging to make our goals easier.  If social science research narrows the design space of human-friendly AI alignment algorithms but does not produce a single best scheme, we can test the smaller design space once the machines are ready.
+  </p>
+  <h3 id="negative-result-would-be-important">A negative result would be important!</h3>
+  <p>
+    If we test an AI alignment scheme from the social science perspective and it fails, we've learned valuable information.  There are a variety of proposed alignment schemes, and learning which don't work early gives us more time to switch to others, or to intervene on a policy level to slow down dangerous development.  In fact, given our belief that AI alignment is harder for more advanced agents, a negative result might be easier to believe and thus more valuable that a less trustworthy positive result.
+  </p>
+
+  <h2 id="worry">Reasons to worry</h2>
+  <p>
+    We turn next to reasons social science experiments about AI alignment might fail to produce useful results.  We emphasize that useful results might be both positive and negative, so these are not reasons why alignment schemes might fail.  Our primary worry is one sided, that experiments would say an alignment scheme works when in fact it does not, though errors in the other direction are also undesirable.
+  </p>
+  <h3 id="conflicting-desiderate">Our desiderata are conflicting</h3>
+  <p>
+    As mentioned before, some of our criteria when picking experimental tasks are in conflict.  We want tasks that are sufficiently interesting (not too easy), with a source of verifiable ground truth, are not too hard, etc., etc.  "Not too easy" and "not too hard" are in obvious conflict, but there are other more subtle difficulties.  Domain experts with the knowledge to debate interesting tasks may not be the same people capable of lying effectively, and both restrictions make it hard to gather large volumes of data.  Lying effectively is required for a meaningful experiment, since a trained AI may have no trouble lying unless lying is a poor strategy to win debates.  Experiments to test whether ethical biases interfere with judgment may make it more difficult to find tasks with reliable ground truth, especially on subjects with significant disagreement across people.  The natural way out is to use many different experiments to cover different aspects of our uncertainty, but this would take more time and might fail to notice interactions between desiderata.
+  </p>
+  <h3 id="measure-judge-quality">We want to measure judge quality given optimal debaters</h3>
+  <p>
+    For debate, our end goal is to understand if the judge is capable of determining who is telling the truth.  However, we specifically care whether the judge performs well given that the debaters are performing well.  Thus our experiments have an inner/outer optimization structure: we first train the debaters to debate well, then measure how well the judges perform.  This increases time and cost: if we change the task, we may need to find new debaters or retrain existing debaters.  Worse, the human debaters may be bad at performing the task, either out of inclination or ability.  Poor performance is particularly bad if it is one sided and applies only to lying: a debater might be worse at lying out of inclination or lack of practice, and thus a win for the honest debater might be misleading.
+  </p>
+  <h3 id="ml-algorithms-will-change">ML algorithms will change</h3>
+  <p>
+    It is unclear when or if ML systems will reach various levels of capability, and the algorithms used to train them will evolve over time.  The AI alignment algorithms of the future may be similar to the proposed algorithms of today, or they may be very different.  However, we believe that knowledge gained on the human side will partially transfer: results about debate will teach us about how to gather data from humans even if debate is superseded.  The algorithms may change; humans will not.
+  </p>
+  <h3 id="strong-out-of-domain-generalization">Need strong out-of-domain generalization</h3>
+  <p>
+    Regardless of how carefully designed our experiments are, human+human+human debate will not be a perfect match to AI+AI+human debate.  We are seeking research results that generalize to the setting where we replace the human debaters (or similar) with AIs of the future, which is a hard ask.  This problem is fundamental: we do not have the advanced AI systems of the future to play with, and want to learn about human uncertainty starting now.
+  </p>
+  <h3 id="lack-of-philosophical-clarity">Lack of philosophical clarity</h3>
+  <p>
+    Any AI alignment scheme will be both an algorithm for training ML systems and a proposed definition of what it means to be aligned.  However, we do not expect humans to conform to any philosophically consistent notion of values, and concepts like reflective equilibrium must be treated with caution in case they break down when applied to real human judgement.  Fortunately, algorithms like debate need not presuppose philosophical consistency: a back and forth conversation to convince a human judge makes sense even if the human is leaning on heuristics, intuition, and emotion.  It is not obvious that debate works in this messy setting, but there is hope if we take advantage of inaction bias, uncertainty modeling, and other escape hatches.  We believe lack of philosophical clarity is an argument for investing in social science research: if humans are not simple, we must engage with their complexity.
+  </p>
+
+  <h2 id="scale">The scale of the challenge</h2>
+  <p>
+    Long-term AI safety is particularly important if we develop artificial general intelligence (AGI), which the OpenAI Charter defines as highly autonomous systems that outperform humans at most economically valuable work<d-cite key="openai2018charter"></d-cite>.  If we want to train an AGI with reward learning from humans, it is unclear how many samples will be required to align it.  As much as possible, we can try to replace human samples with knowledge about the world gained by reading language, the internet, and other sources of information.  But it is likely that a fairly large number of samples from people will still be required.  Since more samples means less noise and more safety, if we are uncertain about how many samples we need then we will want a lot of samples.
+  </p><p>
+    A lot of samples would mean recruiting a lot of people.  We cannot rule out needing to involve thousands to tens of thousands of people for millions to tens of millions of short interactions: answering questions, judging debates, etc.  We may need to train these people to be better judges, arrange for peers to judge each other's reasoning, determine who is doing better at judging and give them more weight or a more supervisory role, and so on.  Many researchers would be required on the social science side to extract the highest quality information from the judges.
+  </p><p>
+    A task of this scale would be a large interdisciplinary project, requiring close collaborations in which people of different backgrounds fill in each other's missing knowledge.  If machine learning reaches this scale, it is important to get a head start on the collaborations soon.
+  </p>
+
+  <h2 id="conclusion">Conclusion: how you can help</h2>
+  <p>
+    We have argued that the AI safety community needs social scientists to tackle a major source of uncertainty about AI alignment algorithms: will humans give good answers to questions?  This uncertainty is difficult to tackle with conventional machine learning experiments, since machine learning is primitive.  We are still in the early days of performance on natural language and other tasks, and problems with human reward learning may only show up on tasks we cannot yet tackle.
+  </p><p>
+    Our proposed solution is to replace machine learning with people, at least until ML systems can participate in the complexity of debates we are interested in.  If we want to understand a game played with ML and human participants, we replace the ML participants with people, and see how the all human game plays out.  For the specific example of debate, we start with debates with two ML debaters and a human judge, then switch to two human debaters and a human judge.  The result is a pure human experiment, motivated by machine learning but available to anyone with a solid background in experimental social science.  It won't be an easy experiment, which is all the more reason to start soon.
+  </p><p>
+    If you are a social scientist interested in these questions, please talk to AI safety researchers!  We are interested in both conversation and close collaboration.  There are many institutions engaged with safety work using reward learning, including our own institution <a href="https://openai.com">OpenAI</a>, <a href="https://deepmind.com">DeepMind</a>, and <a href="https://humancompatible.ai">Berkeley's CHAI</a>.  The AI safety organization <a href="https://ought.org">Ought</a> is already exploring similar questions, asking how iterated amplification behaves with humans.
+  </p><p>
+    If you are a machine learning researcher interested in or already working on safety, please think about how alignment algorithms will work once we advance to tasks beyond the abilities of current machine learning.  If your preferred alignment scheme uses humans in an important way, can you simulate the future by replacing some or all ML components with people?  If you can imagine these experiments but don't feel you have the expertise to perform them, find someone who does.
+  </p>
+
+</d-article>
+
+<d-appendix>
+  <h3 id="acknowledgements">Acknowledgments</h3>
+  <p>
+    We are grateful to Gillian Hadfield, Dario Amodei, Brian Christian, Michael Page, David Manley, Josh Kalla, Remco Zwetsloot, Baobao Zhang, David Moss, Daniel Greene, Daniel Ziegler, Danny Hernandez, Mahendra Prasad, Liv Boeree, Igor Kurganov, Cate Hall, Ashley Pilipiszyn, and others for extensive feedback on the article.  We had conversations with many social scientists during the process of writing this article, including Mariano-Florentino Cuéllar, Philip Tetlock, Rob MacCoun, John Ahlquist, the participants of a Stanford CASBS workshop organized by Margaret Levi and Federica Carugati, Tom Griffiths, Elizabeth Rhodes, Alex Newar, and Stefan Schubert. We are also grateful to participants at the EA Global 2018: London conference where this work was presented.  Paul Christiano participated in the domain expert debates and extensive discussion.  We emphasize that all mistakes in content and terminology are our own, not those of the acknowledged.
+  </p><p>
+    On the Distill side, we are grateful to Arvind Satyanarayan for handling the review process, and Shan Carter and Ludwig Schubert for extensive help on structure, diagrams, and formatting.
+  </p><p>
+    The debate tree diagram was made with the help of Mike Bostock's <a href="https://beta.observablehq.com/@mbostock/tree-o-matic">tree-o-matic notebook</a>.
+  </p>
+
+  <h2 id="quantum">Example debate: Quantum SAT solver</h2>
+  <p>
+    We've conducted a few informal <a href="#expert">domain expert debates</a> among people at OpenAI.  Here is one example on the following question:
+  </p><p>
+    <strong>Question:</strong> How fast can quantum computers solve boolean satisfiability?
+  </p><p>
+    Note that this question does not have a proven answer, so "correctness" is a mix of mathematical knowledge and subjective human judgement.  Both debaters knew quantum computation and had the same beliefs about the question, but one was trying to lie.  The judge was invited to comment and ask questions throughout the debate.  Full interaction from the judge was a change from a previous debate, where lack of judge participation meant that misinterpretations of statements early in the debate were not corrected.  Once the transcript was complete, it was shown to several other people to ensure that the first judge's confidence wasn't purely a result of facial expressions in the room or other side channels (this is far from perfect given the judge interaction).  All judges correctly determined who was telling the truth.
+  </p><p>
+    Each debater was given a budget of one sentence from Wikipedia to truthfully cite, excluding pages directly discussing the difficulty of quantum SAT solvers.  All their other statements could be lies.  The debaters were not allowed to take back moves, mostly to save time: a previous debate trying to get "the best transcript" by allowing debaters to rewind the game took many hours to complete.  As a result, the original debate transcript goes off on a variety of tangents before settling on a central disagreement.  As an illustration of how long the debate "might have been" if such tangents were avoided, we have provided a pruned transcript which culls away paths not relevant to the final deciding "line of argument".
+  </p><p>
+    Neither the original transcript or the pruned version are intended to be taken as real data: they serve only as an example of the types of interaction one might find in debate with domain experts and a lay judge.
+  </p>
+
+  <h3 id="instructions-for-judges">Instructions for judges</h3>
+  <ol class="instructions">
+    <li>The question of the debate and answers are given below.</li>
+    <li>Blue and Red are domain expert debaters.</li>
+    <li>The Judge is a non-domain expert that interacts with the debaters to help them model judges.</li>
+    <li>The debate was capped at 3000 words (for the unpruned version).</li>
+    <li>Check the time: we don't want judging to take more than 15 to 20 minutes.</li>
+    <li>Read the question and Blue and Red's answers and before reading the debate answer question (2).</li>
+    <li>Read through the debate transcript.</li>
+    <li>Answer the questions about the debate. Your key goal is to determine who is telling the truth.</li>
+  </ol>
+
+  <h3 id="questions-for-judges">Questions for judges</h3>
+  <ol class="instructions">
+    <li>Who do you think is telling the truth: Blue or Red?</li>
+    <li>How confident were you about whose claim was true before you read the debate?</li>
+    <li>How confident were you about whose claim was true at the end of the debate?</li>
+    <li>How useful did you find the interactive judge in this debate?</li>
+    <li>How did this compare with the previous transcript you were shown?</li>
+    <li>Do you have any other comments about the debate?</li>
+  </ol>
+
+  <h3 id="debate-transcript">Transcript</h3>
+  <div id="debate-transcripts">
+    <input class="tab" id="tab-debate-pruned" type="radio" name="tabs" checked>
+    <label for="tab-debate-pruned">Pruned</label>
+    <input class="tab"  id="tab-debate-unpruned" type="radio" name="tabs">
+    <label for="tab-debate-unpruned">Full length</label>
+    <section class="debate" id="debate-pruned">
+      <ol class="debate">
+        <li class="question"><span>How fast can quantum computers solve boolean satisfiability?</span></li>
+        <li class="red"><span>According to our current understanding of quantum mechanics, a quantum computer with roughly $N$ qbits can solve an $N$ input SAT instance in roughly $N^2$ time.  There is a particular quantum algorithm (Shor’s) that solves SAT this quickly.</span>
+          <ol class="debate">
+            <li class="blue"><span>There is no such algorithm.</span></li>
+          </ol>
+        </li>
+        <li class="judge"><span>What does it mean to solve boolean satisfiability?  What's an $N$ input SAT instance?</span>
+          <ol class="debate">
+            <li class="blue"><span>Boolean satisfiability (SAT) with $N$ inputs is the task of deciding if a circuit with $N$ inputs and "and", "or", and "not" gates has an assignment to its inputs which makes it evaluate to true.  E.g., "x or y if not z" is a 3 input SAT instance.</span></li>
+          </ol>
+        </li>
+        <li class="judge"><span>What is a quantum computer and is the question about quantum computers in principle?</span>
+          <ol class="debate">
+            <li class="blue"><span>A quantum computer is a computer whose bits (called qbits) have quantum state, and are operated on with quantum operations.</span></li>
+          </ol>
+        </li>
+        <li class="red"><span>The rough outline of the algorithm is as follows:</span>
+          <ol class="debate">
+            <li class="red"><span>Define $F(x) =$ "$x$ is all zeros, or $x$ is an input which makes the circuit evaluate to true".</span></li>
+            <li class="red"><span>Start in the all zeros state.</span></li>
+            <li class="red"><span>Allow $x$ to slowly diffuse into other possible states.  By "diffuse" I mean that at every point in time, each bit of $x$ has some small probability of flipping.</span></li>
+            <li class="red"><span>Constantly evaluate $F$.</span></li>
+            <li class="red"><span>Use the fact that a quantum watched pot never boils to infer that $F(x)$ is always true.</span></li>
+          </ol>
+        </li>
+        <li class="blue"><span>Quantum mechanics has a complex amplitude on each state, and the probability of a state is $\textrm{amplitude}^2$.  At any step of the algorithm, we have amplitude $\alpha$ on all ones (assuming that’s the solution), and amplitude $\sqrt{1 - \alpha^2}$ on all zeros.  Initially $\alpha = 0$.  Red’s algorithm is wrong because it increases $\alpha$ by an additive exponentially small amount each step, so it takes exponentially many steps to get alpha high enough.</span>
+          <ol class="debate">
+            <li class="red"><span>It’s not the case that the amplitude on the solution increases by an exponentially small additive amount each step. Instead it gets multiplied by a small factor each step.</span></li>
+            <li class="blue"><span>I request the specific diffusion operator as a unitary matrix.</span></li>
+            <li class="red"><span>I can define the matrix precisely+implicitly as: "the matrix for which the amplitude in state 0 decreases by $\epsilon/n \times \textrm{amplitude}(x)$ and the amplitude in state $x$ increases by $\epsilon/n \times \textrm{amplitude}(x)$".</span></li>
+            <li class="note"><span>The segment below contains a reference to Wikipedia. Please do not follow the link. The line from Wikipedia has been pasted in for you.</span></li>
+            <li class="blue"><span>The first line of <a href="https://en.wikipedia.org/wiki/Unitarity_(physics)">https://en.wikipedia.org/wiki/Unitarity_(physics)</a> says the sum of probabilities is conserved.  Red says an equal amount is subtracted from one amplitude and added to another, implying the sum of amplitudes are conserved.  But probabilities are the squared magnitudes of amplitudes, so this is a contradiction.</span></li>
+            <li class="wikipedia"><span>"In quantum physics, unitarity is a restriction on the allowed evolution of quantum systems that ensures the sum of probabilities of all possible outcomes of any event always equals 1."</span></li>
+            <li class="red"><span>There is no reason the sum of amplitudes can’t be conserved as well by any particular matrix (though I agree they aren’t always conserved).  In this case, both the sum of probabilities and the sum of amplitudes are conserved.</span></li>
+            <li class="blue"><span>Assume a tiny nonzero amplitude $\alpha$ on all ones and the remaining amplitude $\sqrt{1-\alpha^2}$ on all zeros.  After one step, the amplitude on all ones is $\alpha (1 + \epsilon/n)$, and the amplitude on all zeros is $\sqrt{1-\alpha^2} + \alpha \epsilon/n$.  These two numbers do not sum to one when squared: contradiction.</span></li>
+            <li class="red"><span>After each step we perform a measurement and renormalize the amplitudes.</span></li>
+            <li class="blue"><span>The contradiction occurs before the measurement.  The laws of physics must hold for all points in time.</span></li>
+            <li class="note"><span>At this point we reached the word/time limit for the debate.</span></li>
+          </ol>
+        </li>
+      </ol>
+      <label for="tab-debate-unpruned" onclick="document.getElementById('debate-transcript').scrollIntoView({behavior: 'smooth', block: 'start'})">Read full length transcript</label>
+    </section>
+    <section class="debate" id="debate-unpruned">
+      <ol class="debate">
+        <li class="question"><span>How fast can quantum computers solve boolean satisfiability?</span></li>
+        <li class="red"><span>According to our current understanding of quantum mechanics, a quantum computer with roughly $N$ qbits can solve an $N$ variable SAT instance in roughly $N^2$ time.</span></li>
+        <li class="blue"><span>There is no proven answer, but from what we believe so far there is a high probability that it takes at least $O(2^{cn})$ time for some constant $c$, where $c \lt 1/2$ and probably $c \gt 1/10$ or so.</span></li>
+        <li class="judge"><span>What does it mean to solve boolean satisfiability?</span></li>
+        <li class="judge"><span>What's an $N$ variable SAT instance?</span></li>
+        <li class="judge"><span>What do you mean by $N^2$ time and $O(2^{cn})$ time?</span></li>
+        <li class="judge"><span>What is a quantum computer and is the question about quantum computers in principle?</span></li>
+        <li class="judge"><span>What is a qbit?</span></li>
+        <li class="blue"><span>Boolean satisfiability (SAT) is the task of deciding whether a circuit with "and", "or", and "not" gates has an assignment to its inputs which makes it evaluate to true.</span>
+          <ol class="debate">
+            <li class="judge"><span>So solving "$x$ or $y$ if not $z$" is a 3 variable SAT instance?</span></li>
+            <li class="blue"><span>Yes.  And a true one in that case.</span></li>
+            <li class="red"><span>Yes, but you are going to have to work with all of these concepts in the abstract to reach the truth in a reasonable amount of time.</span></li>
+          </ol>
+        </li>
+        <li class="blue"><span>$N$ variables means there are $N$ inputs to each circuit.</span></li>
+        <li class="blue"><span>$N^2$ and $2^{cN}$ are rough estimates of the number of operations required by an algorithm to solve SAT.  Both estimates ignore factors related to the number of operations in the circuit.</span>
+          <ol class="debate">
+            <li class="judge"><span>But what is the difference between these estimates and is $2^{cN}$ the same as what Red said above?</span></li>
+            <li class="red"><span>$N^2$ is very fast, $2^{cN}$ is very slow, e.g. for $N = 100$ one is 10,000 and one is {two big to write}.</span></li>
+            <li class="judge"><span>What is O in Blue's answer?</span></li>
+            <li class="blue"><span>The O hides a constant, so ignoring constant factors I mean just $2^{cN}$.</span></li>
+          </ol>
+        </li>
+        <li class="blue"><span>A quantum computer is a computer whose bits (called qbits) have quantum state, and are operated on with quantum operations.</span>
+          <ol class="debate">
+            <li class="judge"><span>What's a quantum operation?  [If it's important]</span></li>
+          </ol>
+        </li>
+        <li class="judge"><span>In this question, are we asking how long it takes to solve for any instance of an $N$ variable           SAT?  (i.e., not just the average or something else)</span>
+          <ol class="debate">
+            <li class="blue"><span>Yes, the algorithm needs to be fast in all cases.</span></li>
+          </ol>
+        </li>
+        <li class="blue"><span>Important claim: In the black box model, whether the computer is quantum or not changes the exponent (the constant $c$), but only by a moderate factor.  In the simplest case this factor is 2.  It is unlikely that quantum vs. not changes the runtime from exponential $2^{cn}$ to polynomial $n^2$.</span>
+          <ol class="debate">
+            <li class="red"><span>I disagree.</span></li>
+            <li class="judge"><span>[if relevant] what is the "black box model"?</span>
+              <ol class="debate">
+                <li class="blue"><span>The black box model is where the algorithm is given the circuit as a black box which accepts values of variables and splits out the circuit's value, but where the algorithm can't peer inside the box to see the circuit.  In this case, the provable complexity of SAT is $2^n$ for quantum computers (using Grover's algorithm).</span></li>
+                <li class="judge"><span>Red, do you agree with the claim about provable complexity of SAT from quantum computers?</span></li>
+                <li class="red"><span>No.  Grover's algorithm solves the black box case in time $2^{n/2}$, but Shor's solves it in time $n^2$.</span></li>
+              </ol>
+            </li>
+            <li class="judge"><span>[if not covered below] why is it unlikely that quantum vs. not changes the runtime to this degree?</span>
+              <ol class="debate">
+                <li class="blue"><span>Because we have a proof that in the black box model classical -> quantum changes $c$ from 1 to $1/2$.</span></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li class="judge"><span>For Red, why can a quantum computer solve an $N$ variable SAT so quickly?</span>
+          <ol class="debate">
+            <li class="red"><span>There is a particular quantum algorithm (Shor's) that solves SAT quickly.  I think we should focus on debating whether Shor's algorithm in fact solves SAT quickly (since this will settle the issue and is easier to argue about than impossibility arguments).</span></li>
+            <li class="judge"><span>They key question is how quickly Shor's algorithm solves SAT.  Blue: Do you agree that Shor's solves SAT quickly?</span></li>
+            <li class="blue"><span>I do not agree, but I also disagree with the metapoint that the argument should focus on Shor.  We have a proof of the quantum complexity of SAT in the black box case, so the important thing to discuss is whether white boxing reduces the complexity further from $2^{n/2}$, not details of Shor.</span></li>
+            <li class="red"><span>I disagree that quantum computers can't solve the black box case (Shor's algorithm solves SAT in the black box case).</span></li>
+            <li class="judge"><span>Blue, what is white boxing?</span>
+              <ol class="debate">
+                <li class="blue"><span>Black box means you can't look at the circuit (inside the box), white box means you can look inside.  This is not important anymore since Red has agreed to consider the black box case.</span></li>
+              </ol>
+            </li>
+            <li class="judge"><span>Blue: Are you claiming that quantum computers can't solve the black box case (re: Red's response)?</span>
+              <ol class="debate">
+                <li class="blue"><span>Yes.</span></li>
+                <li class="judge"><span>I am confused by this.  It sounded like you thought that they could solve the black box case but were debating about the time it takes.</span></li>
+                <li class="red"><span>By "can solve" we both mean "can solve in time $N^2$</span></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li class="judge"><span>For Blue, why is the answer not proven and why do we think it would take so long?</span>
+          <ol class="debate">
+            <li class="blue"><span>In the classical computer case, whether we can solve SAT quickly or not is the P vs. NP question, which is still unresolved (though most computer scientists believe P $\ne$ NP.  Indeed, the majority view is that there is no significantly faster algorithm than checking all possible assignments to the input variables, and there are $2^n$ of these.</span></li>
+            <li class="judge"><span>Why does moving to a quantum computer help at all?  Are there reasons you can give for the claim that the improvement is modest?</span></li>
+            <li class="blue"><span>Grover's algorithm (a quantum algorithm) takes $2^{n/2}$ time, vs. $2^n$ for classical.  That's the evidence for a modest speedup.</span></li>
+            <li class="judge"><span>Can you explain why using a quantum algorithm helps?</span>
+              <ol class="debate">
+                <li class="blue"><span>A classical computer with $n$ bits has $2^n$ possible values, but a quantum computer with $n$ qbits has a larger state space: it has a complex amplitude (roughly) a probability for each of the $2^n$ classical values, and thus each operation does more.</span></li>
+              </ol>
+            </li>
+            <li class="judge"><span>Why is the evidence of a single algorithm that takes this time strong evidence for such a high lower bound on time?</span>
+              <ol class="debate">
+                <li class="blue"><span>When I said Grover there I was including the proof that Grover is optimal.</span></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li class="blue"><span>There are two ways we can continue.  One is to discuss Shor's algorithm, and the other is to discuss the proof that Grover ($2^{n/2}$ time) is optimal.  Does the judge have a preference?</span>
+          <ol class="debate">
+            <li class="red"><span>I agree those seem like the two ways to continue.  I think in general algorithms are simpler than lower bounds, but this algorithm is a little bit complicated.</span></li>
+            <li class="blue"><span>I'm fine going with Shor.  I claim that no such algorithm exists, so I'll let Red describe it.</span></li>
+            <li class="judge"><span>Let's go with Shor.</span></li>
+          </ol>
+        </li>
+        <li class="red"><span>The rough outline of the algorithm is as follows:</span>
+          <ol class="debate">
+            <li class="red"><span>Define $F(x) =$ "$x$ is all zeros, or $x$ is a satisfying input"</span>
+              <ol class="debate">
+                <li class="judge"><span>What do you mean a satisfying input?</span></li>
+                <li class="red"><span>An input that makes the circuit evaluate to true</span></li>
+              </ol>
+            </li>
+            <li class="red"><span>Start in the all zeros state.</span></li>
+            <li class="red"><span>Allow $x$ to slowly diffuse into other possible states</span>
+              <ol class="debate">
+                <li class="judge"><span>Flagging that I don't totally understand this in case it's important later</span></li>
+                <li class="red"><span>By "diffuse" I mean that at every point in time, each bit of $x$ has some small probability of flipping.</span></li>
+              </ol>
+            </li>
+            <li class="red"><span>Constantly evaluate $F$.</span></li>
+            <li class="red"><span>Use the fact that a quantum watched pot never boils to infer that $F$ is always true</span>
+              <ol class="debate">
+                <li class="blue"><span>There is no such fact with this implication.  There might be only one satisfying input, and as $x$ diffuses the average value of $F(x)$ will decrease and eventually be exponentially small.</span></li>
+                <li class="red"><span>I mean the following: suppose you have a quantum system with two states $A$ and $B$, and it has a small probability of moving from state $A$ to state $B$ at each point in time.  Then if you keep checking whether it's in state $A$ or state $B$ frequently enough, it will never move from state $A$ to state $B$.  In this case, state $A$ is "$x$ is zero or an input that makes the circuit true" and state $B$ is "a nonzero input that makes the circuit false.</span></li>
+                <li class="blue"><span>Ah, I agree with that fact, and had missed the "constantly evaluate $F$".  So I agree that $F(x)$ will state true with high probability, but forcing it to be true will prevent it from diffusing outwards if the satisfying assignment is far from the all zero vector.  Thus, the distribution will stay focused on the all zero vector in the worst case.</span></li>
+                <li class="judge"><span>Okay my intuition here is that in a case with one satisfying assignment this will be extremely hard to find and that makes me question the usefulness of something that always evaluates to true.  But what does it mean for it to diffuse outwards?</span></li>
+                <li class="red"><span>Intuitions from classical physics are extremely unreliable; there is a critical (but subtle) sense in which a quantum computer simultaneously acts on every possible state at once.  There are many cases that make this intuitive weirdness very clear, so Blue should be willing to grant that classical intuitions are very unreliable.</span></li>
+                <li class="blue"><span>Many classical intuitions are unreliable, but not your intuition in this case.  You should ask Red what the distribution looks like "halfway" through the algorithm if the unique satisfying assignment in the all one vector (furthest away from the starting all zero vector).  Since $F(x)$ is always close to 1 in expectation, it must always be close to the all zero distribution.</span></li>
+                <li class="judge"><span>Red: The general claim that intuitions about physics seems weak relative to alternatives I'd expect of you if you had a compelling argument.  The key claim is the claim about simultaneity.  If this is doing work why wouldn't we expect an almost immediate solution?</span></li>
+                <li class="red"><span>The strongest argument is the calculation that this process works, though it's a claim that depends on quantum mechanics (but we'll have to get into it).  I don't have a simple argument that doesn't depend on quantum or addresses the intuition more directly.</span></li>
+                <li class="red"><span>If Blue wants to defend this intuition as a reason for skepticism, I would want to point to the easiest obviously wrong implications of that intuition.</span></li>
+                <li class="red"><span>I suspect we should just look at object level arguments for this procedure working.</span></li>
+                <li class="red"><span>I don't want to totally reject the classical intuition, I'm happy to focus on the object level and just admit the intuition as evidence against.</span></li>
+              </ol>
+            </li>
+            <li class="red"><span>If we wait for $N$ time, our variables will be uniformly random between "all zeros" and "satisfying input"</span></li>
+            <li class="red"><span>Measure, and with probability 1/2 we get a satisfying input if one exists</span></li>
+          </ol>
+        </li>
+        <li class="blue"><span>Disbelieve his "believe the calculation" argument.  Red: What does the distribution look like halfway through in the case I mentioned?</span>
+          <ol class="debate">
+            <li class="red"><span>Initially the state is entirely the zero state.  After one step the state is $1 - 2^{-2N}$ of the zero state plus $2^{-2N}$ of the ones state.  The amplitude on the ones state increases exponentially over subsequent steps, reaching $2^{-N}$ after $N$ steps and $1/2$ after $2N$ steps.</span></li>
+            <li class="blue"><span>Red is telling the truth about the numbers after 1 step.  This step diffuses out by a $2^{-n}$ amount, and there are $2^n$ options, so a $2^{-2n}$ portion ends up on all ones.  At this point I need to have worked through the calculation to know the next move in detail, but fundamentally what will happen is that mass will diffuse away from the all one vector fast enough to make the speed not work.  However, I have to have worked through the calculation to know what specifically to disagree with: he's correct that it's about the calculation.</span></li>
+            <li class="judge"><span>Blue: If the calculation works as Red says (a) does this mean the algorithm works as he says and (b) if so, does this establish his claim?</span></li>
+            <li class="blue"><span>Yes and yes.</span></li>
+            <li class="judge"><span>Can both of you show me the results of the calculation?</span></li>
+            <li class="blue"><span>Yes, but I've never done it, so I will need an adjournment.</span></li>
+          </ol>
+        </li>
+        <li class="note"><span>We decided to continue the debate without showing the calculation.</span></li>
+        <li class="blue"><span>Some quick quantum background: quantum mechanics has a complex amplitude on each state, and the probability of a state is $\textrm{amplitude}^2$.  Thus, at any step of the algorithm, we have amplitude $\alpha$ on all ones (assuming that's the solution), and amplitude $\sqrt{1 - \alpha^2}$ on all zeros.  Initially $\alpha = 0$.  Red's algorithm is wrong because it only increases $\alpha$ by a roughly additive exponentially small amount at each step, so it takes exponentially many steps to get $\alpha$ high enough.</span>
+          <ol class="debate">
+            <li class="judge"><span>Blue: Do I need to know what amplitude refers to here?</span></li>
+            <li class="blue"><span>You can treat them as abstract complex numbers, though they are physically and philosophically real.</span></li>
+            <li class="judge"><span>Red: Response?</span></li>
+            <li class="red"><span>It's not the case that the amplitude on the solution increases by an exponentially small additive amount each step.  Instead it gets multiplied by a small factor each step.</span></li>
+            <li class="blue"><span>Can you write down the specific operator used for diffusion, and your calculation that gives a multiplicative increase?</span></li>
+            <li class="red"><span>The amplitude flow from the 0 to $x$ is $\epsilon/n \times 2^{-n}$ in step 1 and $\epsilon/n \times \textrm{amplitude}(x)$ in subsequent steps, and the flow backwards is 0 in step 1 and $\epsilon/n \times \textrm{amplitude}(x)$ in subsequent steps, where $\epsilon$ is some small constant such that choosing smaller $\epsilon$ makes it take longer but makes the algorithm more likely to succeed.</span></li>
+            <li class="blue"><span>Are you claiming those are exact values?</span></li>
+            <li class="red"><span>Yes.</span></li>
+            <li class="blue"><span>The formula for subsequent steps implies the initial flow is 0.  Why is the initial step different?</span></li>
+            <li class="red"><span>We are free to choose the quantities in order to make the algorithm work, that's how algorithms work.</span></li>
+            <li class="blue"><span>The algorithm description implied a constant diffusion operator.  I request the specific operator or changing operators as a unitary matrix.</span>
+              <ol class="debate">
+                <li class="red"><span>The preceding description was way more informal than spelling out the dependence of the diffusion operator on time, as is necessary since the full algorithm description would use our whole word budget...</span></li>
+              </ol>
+            </li>
+            <li class="red"><span>The description in my previous line is a complete description of the update operator (it acts symmetrically over all $x$).</span></li>
+            <li class="blue"><span>What does "amplitude flow" mean, given that total amplitude is not conserved by quantum mechanics (only the sum of squared magnitudes of amplitudes is preserved)?</span></li>
+            <li class="judge"><span>There's a lot going on here that's over my head.  I think we need to either agree on a piece of evidence that would bottom this out, or do a quick detour through the Grover proof, or agree on a simple claim to focus on.</span></li>
+            <li class="blue"><span>The properties of Red's operator contradict quantum mechanics.  Operators here are unitary matrices, and Red is refusing to write down his matrix.  In particular, he is using terms like "amplitude flow" that do not have precise and unambiguous meanings.  Since he claims a concrete algorithm, describing the matrix should be easy.</span></li>
+            <li class="red"><span>The matrix is the composition of a large number of individual gates, the full matrix doesn't generally have a compact representation so we shouldn't be "writing down the matrix."</span></li>
+            <li class="blue"><span>Red claims that he gave the exact "amplitude flow".  If "amplitude flow" was a real concept, this would be equivalent to giving the exact matrix, contradicting his claim that the full matrix lacks a compact representation.</span></li>
+            <li class="red"><span>I can define the matrix precisely+implicitly as "the matrix for which the amplitude in state 0 decreases by $\epsilon/n \times \textrm{amplitude}(x)$ and the amplitude in state $x$ increases by $\epsilon/n \times \textrm{amplitude}(x)$</span>
+              <ol class="debate">
+                <li class="judge"><span>If you're giving a definition without specifying an instance, I'd expect this to be common practice.  One option is for you to give evidence that this is done (if available on Wikipedia)</span></li>
+                <li class="red"><span>I claim that the majority of unitary evolution matrices described in wikipedia will be described implicitly in this way.</span></li>
+                <li class="red"><span>I claim that this matrix is exponentially big, such that it would be impossible to write down the full matrix in a reasonable amount of time.</span></li>
+                <li class="blue"><span>This kind of implicit definition is fine practice.</span></li>
+                <li class="judge"><span>Cool.</span></li>
+              </ol>
+            </li>
+            <li class="note"><span>The segment below contains a reference to wikipedia.  Please do not follow the link.  The line from wikipedia has been pasted in for you.</span></li>
+            <li class="blue"><span>See the first line of <a href="https://en.wikipedia.org/wiki/Unitarity_(physics)">https://en.wikipedia.org/wiki/Unitarity_(physics)</a>, which says that the sum of probabilities is conserved.  Since Red says an equal amount is subtracted from one amplitude and added to another, he is implying the sum of amplitudes are conserved.  But probabilities are the squared magnitudes of amplitudes, so this is a contradiction.</span></li>
+            <li class="wikipedia"><span>"In quantum physics, unitarity is a restriction on the allowed evolution of quantum systems that ensures the sum of probabilities of all possible outcomes of any event always equals 1."</span></li>
+            <li class="red"><span>There is no reason the sum of amplitudes can't be conserved as well by any particular matrix (though I agree they aren't always conserved).</span></li>
+            <li class="judge"><span>Red: Why isn't your parentheses inconsistent with the first line that Blue cited?</span></li>
+            <li class="red"><span>The line Blue cited says that sum of probabilities is conserved, but sum of amplitudes isn't always conserved.  (Though the sum of amplitudes is conserved in this case.)</span></li>
+            <li class="blue"><span>Say we have a very tiny but nonzero amplitude $\alpha$ on all ones and the remaining amplitude $\sqrt{1-\alpha^2}$ on all zeros.  After one of Red's imaginary steps, the amplitude on all ones is $\alpha (1 + \epsilon/n)$, and the amplitude on all zeros is $\sqrt{1-\alpha^2} + \alpha \epsilon/n$.  But these two numbers do not sum to one when squared: contradiction.</span></li>
+            <li class="red"><span>After each step of the algorithm we perform a measurement and renormalize the amplitudes.</span></li>
+            <li class="blue"><span>The contradiction occurs before the measurement.  The laws of physics must hold for all points in time.</span></li>
+          </ol>
+        </li>
+        <li class="note"><span>This is the point at which we reached the word/time limit for the debate.</span></li>
+      </ol>
+    </section>
+  </div>
+
+  <d-footnote-list></d-footnote-list>
+  <d-bibliography src="references.bib"></d-bibliography>
+  <d-citation-list></d-citation-list>
+</d-appendix>
+
+<script type="text/javascript" src="index.bundle.js"></script></body>

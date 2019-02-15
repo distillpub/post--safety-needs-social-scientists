@@ -59,3 +59,8 @@ typings/
 
 # next.js build output
 .next
+
+.DS_Store
+
+# production build produces unnecessary js file
+public/index.bundle.js
