@@ -147,6 +147,9 @@ module.exports = {
       }, {
         match: /( *)<debate name="([^"]+)"\/>/g,
         replacement: (_, indent, name) => format_debate(indent, name)
+      },{
+          match: '<script type="text/javascript" src="index.bundle.js"></script>',
+          replacement: (_) => ''
       }]
     })
   ],
