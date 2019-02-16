@@ -226,67 +226,47 @@ ol.debate li.wikipedia>span::before {
 
 /* TOC */
 
-/* @media (min-width: 1180px) {
-    body {
-        display: flex;
-        height: 100vh;
-    }
-    main {
-        order: 2;
-        overflow-y: scroll;
-    }
-    aside {
-        padding: 2em;
-        max-width: 24em;
-        order: 1;
-        position: sticky;
-        top: 0;
-        border-right: 1px solid #eee;
-        overflow-y: scroll;
-    }
-} */
-
-nav a {
+#contents nav a {
     color: rgba(0, 0, 0, 0.8);
     border-bottom: none;
     text-decoration: none;
     /* text-decoration: underline solid rgba(0, 0, 0, 0.2); */
 }
 
-nav ul li {
+#contents nav ul li {
     margin-bottom: .25em;
 }
 
-nav a:hover {
+#contents nav a:hover {
     text-decoration: underline solid rgba(0, 0, 0, 0.6);
 }
 
-nav details ul {
+#contents nav details ul {
     margin-top: 0;
 }
 
-nav details > a {
+#contents nav details > a {
     margin-left: 1.06em;
 }
 
-nav summary,
-nav > div,
-nav details > a {
+#contents nav summary,
+#contents nav > div,
+#contents nav details > a {
     display: block;
     outline: none;
     margin-bottom: 0.5em;
 }
 
-nav > div {
+#contents nav > div {
     margin-left: 1.06em;
 }
 
-nav summary {
+#contents nav summary {
     cursor: context-menu;
 }
 
-nav summary,
-nav > div > a {
+#contents nav summary,
+#contents nav > div > a {
     font-size: 13px;
     font-weight: 600;
 }
@@ -345,7 +325,7 @@ a.section-number:hover {
 <d-byline></d-byline>
 
 <div class="base-grid" style="border-top: 1px solid #eee; padding: 1.5rem 0;">
-    <nav id="nav" class="l-text toc figcaption">
+    <nav id="contents" class="l-text toc figcaption">
         <h3>Contents</h3>
         <details>
             <summary>An overview of AI alignment</summary>
