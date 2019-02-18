@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://staging.distill.pub/template.v2.js"></script>
+  <script src="/template.v2.js"></script>
   <style>.subgrid {
     grid-column: screen;
     display: grid;
@@ -73,17 +73,6 @@ d-appendix ol.debate li {
 
 /* ## Debate Styling ## */
 
-/* Color Definitions, from Shan's SVGs */
-
-:root {
-    --red-fg-color: hsl(18, 100%, 50%);
-    --red-bg-color: hsl(18, 95%, 92%);
-    --red-border-color: hsl(18, 100%, 92%);
-    --blue-fg-color: hsl(205, 100%, 50%);
-    --blue-bg-color: hsl(205, 95%, 92%);
-    --blue-border-color: hsl(205, 100%, 92%);
-}
-
 /* List */
 
 ol.debate {
@@ -137,13 +126,13 @@ ol.debate li.note>span {
 }
 
 ol.debate li.red>span {
-    background-color: var(--red-bg-color);
-    border-color: var(--red-border-color);
+    background-color: hsl(18, 95%, 92%);
+    border-color: hsl(18, 100%, 92%);
 }
 
 ol.debate li.blue>span {
-    background-color: var(--blue-bg-color);
-    border-color: var(--blue-border-color);
+    background-color: hsl(205, 95%, 92%);
+    border-color: hsl(205, 100%, 92%);
 }
 
 /* RED/BLUE identifiers */
@@ -162,21 +151,17 @@ ol.debate li>span::before {
 
 ol.debate li.red>span::before {
     content: "Red";
-    color: var(--red-fg-color);
+    color: hsl(18, 100%, 50%);
 }
 
 ol.debate li.blue>span::before {
     content: "Blue";
-    color: var(--blue-fg-color);
+    color: hsl(205, 100%, 50%);
 }
 
 ol.debate li.judge>span::before {
     content: "Judge";
 }
-
-/* ol.debate li.note > span::before {
-    content: "Note for Judges";
-} */
 
 ol.debate li.wikipedia>span::before {
     position: relative;
@@ -230,7 +215,6 @@ ol.debate li.wikipedia>span::before {
     color: rgba(0, 0, 0, 0.8);
     border-bottom: none;
     text-decoration: none;
-    /* text-decoration: underline solid rgba(0, 0, 0, 0.2); */
 }
 
 #contents nav ul li {
@@ -324,8 +308,8 @@ a.section-number:hover {
 
 <d-byline></d-byline>
 
-<div class="base-grid" style="border-top: 1px solid #eee; padding: 1.5rem 0;">
-    <nav id="contents" class="l-text toc figcaption">
+<div id="contents" class="base-grid" style="border-top: 1px solid #eee; padding: 1.5rem 0;">
+    <nav class="l-text toc figcaption">
         <h3>Contents</h3>
         <details>
             <summary>An overview of AI alignment</summary>
