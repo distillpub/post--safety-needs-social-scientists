@@ -66,6 +66,41 @@ d-appendix ol.debate li {
     margin-bottom: initial;
 }
 
+@media (min-width: 1000px) {
+    #figure-debate-tree figcaption {
+        position: absolute;
+        bottom: 0;
+        left: 1em;
+        max-width: 25em;
+    }
+}
+
+#figure-debate-experiments figcaption {
+    margin-top: 1em;
+}
+
+@media (min-width: 1180px) {
+    #figure-debate-experiments {
+        position: relative;
+        display: grid;
+        grid-template-columns: 33% 1fr;
+        grid-gap: inherit;
+    }
+
+    #figure-debate-experiments svg {
+        order: 2;
+    }
+
+    #figure-debate-experiments figcaption {
+        order: 1;
+    }
+}
+
+#dog-debate figcaption {
+    margin-bottom: 1em;
+}
+
+
 /* ## Debate Styling ## */
 
 /* List */

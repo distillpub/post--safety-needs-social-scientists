@@ -213,7 +213,7 @@
   </p>
   <figure class="l-page" id="figure-debate-tree">
     <%= require("./diagrams/debate-tree.svg") %>
-    <figcaption style="position: absolute; bottom: 1em; left: 1em; max-width: 25em;">
+    <figcaption>
         <a href="#figure-debate-tree" class="figure-number">1</a>
         A hypothetical partial debate tree for the question “Where should I go on vacation?” A single debate would explore only one of these paths, but a single path chosen by good debaters is evidence that other paths would not change the result of the game.
     </figcaption>
@@ -252,15 +252,15 @@
   </p><p>
     Rather than waiting for ML to catch up to natural language debate, we propose simulating our eventual setting (two AI debaters and one human judge) with all human debates: two human debaters and one human judge.  Since an all human debate doesn't involve any machine learning, it becomes a pure social science experiment: motivated by ML considerations but not requiring ML expertise to run.  This lets us focus on the component of AI alignment uncertainty specific to humans.
   </p>
-  <figure id="figure-debate-experiments" style="contain: style; position: relative; display: grid; grid-template-columns: 33% 1fr; grid-gap: inherit;">
-        <figcaption>
-            <a href="#figure-debate-experiments" class="figure-number">2</a>
-            <span>
-                Our goal is ML+ML+human debates, but ML is currently too primitive to do many interesting tasks.
-                Therefore, we propose replacing ML debaters with human debaters, learning how to best conduct debates in this human-only setting, and eventually applying what we learn to the ML+ML+human case.
-            </span>
-        </figcaption>
-        <%= require("./diagrams/ml-ml-human-apply-lessons.svg") %>
+  <figure id="figure-debate-experiments">
+    <%= require("./diagrams/ml-ml-human-apply-lessons.svg") %>
+    <figcaption>
+        <a href="#figure-debate-experiments" class="figure-number">2</a>
+        <span>
+            Our goal is ML+ML+human debates, but ML is currently too primitive to do many interesting tasks.
+            Therefore, we propose replacing ML debaters with human debaters, learning how to best conduct debates in this human-only setting, and eventually applying what we learn to the ML+ML+human case.
+        </span>
+    </figcaption>
   </figure>
   <p>
     To make human+human+human debate experiments concrete, we must choose who to use as judges and debaters and which tasks to consider.  We also can choose to structure the debate in various ways, some of which overlaps with the choice of judge since we can instruct a judge to penalize deviations from a given format.  By task we mean the questions our debates will try to resolve, together with any information provided to the debaters or to the judge.  Such an experiment would then try to answer the following question:
