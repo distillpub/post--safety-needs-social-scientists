@@ -17,11 +17,11 @@
     "eases-jsnext": "^1.0.10",
     "file-loader": "^1.1.11",
     "html-string-replace-webpack-plugin": "^1.0.5",
-    "html-webpack-plugin": "^2.29.0",
+    "html-webpack-plugin": "^5.5.0",
     "lucid-components": "0.0.6",
     "npm": "^8.19.2",
     "raw-loader": "^0.5.1",
-    "svg-inline-loader": "^0.8.0",
+    "svg-inline-loader": "^0.8.2",
     "webpack": "^3",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.11"
