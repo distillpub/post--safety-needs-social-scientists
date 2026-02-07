@@ -19,7 +19,7 @@
     "html-string-replace-webpack-plugin": "^1.0.5",
     "html-webpack-plugin": "^5.5.0",
     "lucid-components": "0.0.6",
-    "npm": "^11.8.0",
+    "npm": "^11.9.0",
     "raw-loader": "^0.5.1",
     "svg-inline-loader": "^0.8.2",
     "webpack": "^5",
